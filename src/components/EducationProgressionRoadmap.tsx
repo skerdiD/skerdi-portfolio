@@ -8,30 +8,30 @@ interface EducationProgressionRoadmapProps {
 
 export const EducationProgressionRoadmap: React.FC<EducationProgressionRoadmapProps> = ({ progress }) => {
   const prefersReducedMotion = useReducedMotion();
-  const [hoveredStage, setHoveredStage] = useState<number | null>(null);
+  const [hoveredStage, setHoveredStage] = useState<number | string | null>(null);
 
   // =========================================================================
   // SCROLL-DRIVEN STORY SEQUENCE (0% to 100%)
-  // 0–25%: 2020 node activates with subtle orange pulse.
-  // 25–55%: trajectory draws toward 2022, arrowhead appears.
-  // 55–80%: 2022 milestone activates with subtle glow.
+  // 0–25%: 2023 node activates with subtle orange pulse.
+  // 25–55%: trajectory draws toward 2023–26, arrowhead appears.
+  // 55–80%: 2023–26 milestone activates with subtle glow.
   // 80–100%: trajectory completes toward 2026, final arrowhead reaches 2026,
   //          flag activates with stronger glow pulse, line-by-line reveal of "CREATE IMPACT".
   // =========================================================================
 
-  // Stage 1: 2020 Milestone Activation (0% - 25%)
-  const node2020Opacity = useTransform(progress, [0, 0.22], prefersReducedMotion ? [1, 1] : [0.4, 1]);
-  const node2020Scale = useTransform(progress, [0, 0.22], prefersReducedMotion ? [1, 1] : [0.92, 1]);
+  // Stage 1: 2023 Milestone Activation (0% - 25%)
+  const node2023Opacity = useTransform(progress, [0, 0.22], prefersReducedMotion ? [1, 1] : [0.4, 1]);
+  const node2023Scale = useTransform(progress, [0, 0.22], prefersReducedMotion ? [1, 1] : [0.92, 1]);
 
-  // Stage 2: Trajectory from 2020 -> 2022 (25% - 55%)
+  // Stage 2: Trajectory from 2023 -> 2023–26 (25% - 55%)
   const path1Length = useTransform(progress, [0.22, 0.55], prefersReducedMotion ? [1, 1] : [0, 1]);
   const arrow1Opacity = useTransform(progress, [0.42, 0.55], prefersReducedMotion ? [1, 1] : [0, 1]);
 
-  // Stage 3: 2022 Milestone Activation (55% - 78%)
-  const node2022Opacity = useTransform(progress, [0.52, 0.72], prefersReducedMotion ? [1, 1] : [0.4, 1]);
-  const node2022Scale = useTransform(progress, [0.52, 0.72], prefersReducedMotion ? [1, 1] : [0.92, 1]);
+  // Stage 3: 2023–26 Milestone Activation (55% - 78%)
+  const nodeStudyOpacity = useTransform(progress, [0.52, 0.72], prefersReducedMotion ? [1, 1] : [0.4, 1]);
+  const nodeStudyScale = useTransform(progress, [0.52, 0.72], prefersReducedMotion ? [1, 1] : [0.92, 1]);
 
-  // Stage 4: Trajectory from 2022 -> 2026 (70% - 95%)
+  // Stage 4: Trajectory from 2023–26 -> 2026 (70% - 95%)
   const path2Length = useTransform(progress, [0.70, 0.94], prefersReducedMotion ? [1, 1] : [0, 1]);
   const arrow2Opacity = useTransform(progress, [0.82, 0.94], prefersReducedMotion ? [1, 1] : [0, 1]);
 
@@ -58,7 +58,7 @@ export const EducationProgressionRoadmap: React.FC<EducationProgressionRoadmapPr
         <div className="flex items-start justify-between w-full pt-0.5 pb-1">
           <div className="flex items-center gap-1.5 text-[9px] font-mono tracking-widest text-[#FF5722]/80 uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-[#FF5722] animate-pulse" />
-            <span>TRAJECTORY // 2020-2026</span>
+            <span>TRAJECTORY // 2023-2026</span>
           </div>
           <div className="text-right font-mono text-[10px] lg:text-[11px] tracking-widest text-muted-foreground/80 dark:text-slate-400 font-bold uppercase leading-tight">
             <div>EDUCATION</div>
@@ -117,7 +117,7 @@ export const EducationProgressionRoadmap: React.FC<EducationProgressionRoadmapPr
 
             {/* =================================================================== */}
             {/* CONTINUOUS ASCENDING ORANGE PATH                                    */}
-            {/* Segment 1: 2020 (55, 125) -> 2022 (175, 80)                         */}
+            {/* Segment 1: 2023 (55, 125) -> 2023–26 (175, 80)                         */}
             {/* =================================================================== */}
             <motion.line
               x1="55"
@@ -132,7 +132,7 @@ export const EducationProgressionRoadmap: React.FC<EducationProgressionRoadmapPr
             />
 
             {/* =================================================================== */}
-            {/* Segment 2: 2022 (175, 80) -> 2026 (295, 35)                         */}
+            {/* Segment 2: 2023–26 (175, 80) -> 2026 (295, 35)                         */}
             {/* =================================================================== */}
             <motion.line
               x1="175"
@@ -147,9 +147,9 @@ export const EducationProgressionRoadmap: React.FC<EducationProgressionRoadmapPr
             />
 
             {/* =================================================================== */}
-            {/* DIRECTIONAL ARROWHEADS (pointing 2020 -> 2022 -> 2026 at -20.55deg)  */}
+            {/* DIRECTIONAL ARROWHEADS (pointing 2023 -> 2023–26 -> 2026 at -20.55deg)  */}
             {/* =================================================================== */}
-            {/* Arrowhead 1: mid-trajectory between 2020 and 2022 (x=115, y=102.5)   */}
+            {/* Arrowhead 1: mid-trajectory between 2023 and 2023–26 (x=115, y=102.5)   */}
             <motion.g
               style={{ opacity: arrow1Opacity }}
               transform="translate(115, 102.5) rotate(-20.55)"
@@ -165,7 +165,7 @@ export const EducationProgressionRoadmap: React.FC<EducationProgressionRoadmapPr
               />
             </motion.g>
 
-            {/* Arrowhead 2: mid-trajectory between 2022 and 2026 (x=235, y=57.5)    */}
+            {/* Arrowhead 2: mid-trajectory between 2023–26 and 2026 (x=235, y=57.5)    */}
             <motion.g
               style={{ opacity: arrow2Opacity }}
               transform="translate(235, 57.5) rotate(-20.55)"
@@ -204,15 +204,15 @@ export const EducationProgressionRoadmap: React.FC<EducationProgressionRoadmapPr
           </motion.svg>
 
           {/* ===================================================================== */}
-          {/* MILESTONE 1: 2020 EXPLORE (Lower-Left: x=55, y=125 => 15.3%, 58.1%)   */}
+          {/* MILESTONE 1: 2023 EXPLORE (Lower-Left: x=55, y=125 => 15.3%, 58.1%)   */}
           {/* ===================================================================== */}
           <div
             className="absolute left-[15.3%] top-[58.1%] -translate-x-1/2 -translate-y-1/2 cursor-pointer z-10 group"
-            onMouseEnter={() => setHoveredStage(2020)}
+            onMouseEnter={() => setHoveredStage(2023)}
             onMouseLeave={() => setHoveredStage(null)}
           >
             <motion.div
-              style={{ opacity: node2020Opacity, scale: node2020Scale }}
+              style={{ opacity: node2023Opacity, scale: node2023Scale }}
               whileHover={{ scale: 1.06 }}
               transition={{ type: "spring", stiffness: 400, damping: 25 }}
               className="relative flex flex-col items-center"
@@ -220,7 +220,7 @@ export const EducationProgressionRoadmap: React.FC<EducationProgressionRoadmapPr
               {/* Node Icon Box - Centered at anchor */}
               <div
                 className={`w-9 h-9 lg:w-10 lg:h-10 rounded-xl border border-[#FF5722]/60 bg-background/95 dark:bg-[#0c1017] flex items-center justify-center transition-all duration-300 shadow-md ${
-                  hoveredStage === 2020
+                  hoveredStage === 2023
                     ? "border-[#FF5722] shadow-[0_0_16px_rgba(255,87,34,0.65)] bg-[#FF5722]/15"
                     : "shadow-[0_0_10px_rgba(255,87,34,0.3)] hover:border-[#FF5722]"
                 }`}
@@ -230,10 +230,10 @@ export const EducationProgressionRoadmap: React.FC<EducationProgressionRoadmapPr
 
               {/* Milestone Details Below */}
               <div className="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 text-center font-mono whitespace-nowrap pointer-events-none">
-                <div className="text-xs font-bold text-foreground dark:text-white tracking-tight">2020</div>
+                <div className="text-xs font-bold text-foreground dark:text-white tracking-tight">2023</div>
                 <div
                   className={`text-[10px] font-bold tracking-wider uppercase transition-colors duration-200 ${
-                    hoveredStage === 2020 ? "text-[#FF5722] drop-shadow-[0_0_6px_rgba(255,87,34,0.7)]" : "text-[#FF5722]"
+                    hoveredStage === 2023 ? "text-[#FF5722] drop-shadow-[0_0_6px_rgba(255,87,34,0.7)]" : "text-[#FF5722]"
                   }`}
                 >
                   EXPLORE
@@ -246,15 +246,15 @@ export const EducationProgressionRoadmap: React.FC<EducationProgressionRoadmapPr
           </div>
 
           {/* ===================================================================== */}
-          {/* MILESTONE 2: 2022 LEARN (Center: x=175, y=80 => 48.6%, 37.2%)         */}
+          {/* MILESTONE 2: 2023–26 LEARN (Center: x=175, y=80 => 48.6%, 37.2%)         */}
           {/* ===================================================================== */}
           <div
             className="absolute left-[48.6%] top-[37.2%] -translate-x-1/2 -translate-y-1/2 cursor-pointer z-10 group"
-            onMouseEnter={() => setHoveredStage(2022)}
+            onMouseEnter={() => setHoveredStage("study")}
             onMouseLeave={() => setHoveredStage(null)}
           >
             <motion.div
-              style={{ opacity: node2022Opacity, scale: node2022Scale }}
+              style={{ opacity: nodeStudyOpacity, scale: nodeStudyScale }}
               whileHover={{ scale: 1.06 }}
               transition={{ type: "spring", stiffness: 400, damping: 25 }}
               className="relative flex flex-col items-center"
@@ -262,7 +262,7 @@ export const EducationProgressionRoadmap: React.FC<EducationProgressionRoadmapPr
               {/* Node Icon Box - Centered at anchor */}
               <div
                 className={`w-10 h-10 lg:w-11 lg:h-11 rounded-xl border border-[#FF5722]/70 bg-background/95 dark:bg-[#0c1017] flex items-center justify-center transition-all duration-300 shadow-md ${
-                  hoveredStage === 2022
+                  hoveredStage === "study"
                     ? "border-[#FF5722] shadow-[0_0_18px_rgba(255,87,34,0.7)] bg-[#FF5722]/15"
                     : "shadow-[0_0_12px_rgba(255,87,34,0.35)] hover:border-[#FF5722]"
                 }`}
@@ -272,10 +272,10 @@ export const EducationProgressionRoadmap: React.FC<EducationProgressionRoadmapPr
 
               {/* Milestone Details Below */}
               <div className="absolute top-full mt-1.5 left-1/2 -translate-x-1/2 text-center font-mono whitespace-nowrap pointer-events-none">
-                <div className="text-xs font-bold text-foreground dark:text-white tracking-tight">2022</div>
+                <div className="text-xs font-bold text-foreground dark:text-white tracking-tight">2023–26</div>
                 <div
                   className={`text-[10px] font-bold tracking-wider uppercase transition-colors duration-200 ${
-                    hoveredStage === 2022 ? "text-[#FF5722] drop-shadow-[0_0_6px_rgba(255,87,34,0.7)]" : "text-[#FF5722]"
+                    hoveredStage === "study" ? "text-[#FF5722] drop-shadow-[0_0_6px_rgba(255,87,34,0.7)]" : "text-[#FF5722]"
                   }`}
                 >
                   LEARN

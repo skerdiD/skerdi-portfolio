@@ -226,7 +226,7 @@ const TechIcon = ({
         </svg>
       );
     default:
-      return null;
+      return <span className={className} aria-hidden="true">{name.slice(0, 2)}</span>;
   }
 };
 
@@ -234,38 +234,38 @@ const skillData = {
   frontend: {
     title: "Frontend",
     subtitle: "Modern Web Interfaces",
-    badge: "4 Technologies",
-    items: ["React", "Next.js", "Tailwind CSS", "Vite"],
+    badge: "Frontend",
+    items: ["React", "Next.js", "Interfaces", "Web applications"],
   },
   languages: {
     title: "Languages",
     subtitle: "Core Programming",
-    badge: "4 Languages",
-    items: ["Java", "Python", "C++", "TypeScript"],
+    badge: "Web Languages",
+    items: ["JavaScript", "HTML", "CSS", "TypeScript"],
   },
   databases: {
     title: "Databases",
     subtitle: "Data & Caching",
-    badge: "3 Systems",
-    items: ["PostgreSQL", "MongoDB", "Redis"],
+    badge: "Data Layer",
+    items: ["Databases", "Data modeling", "Data access"],
   },
   backend: {
     title: "Backend & APIs",
     subtitle: "Server & Microservices",
     badge: "3 Frameworks",
-    items: ["Node.js", "Express", "Firebase"],
+    items: ["Node.js", "Express", "NestJS"],
   },
   aiMobile: {
-    title: "AI & Mobile",
+    title: "AI & Applications",
     subtitle: "App & Intelligent Systems",
-    badge: "3 Platforms",
-    items: ["Android", "TensorFlow", "OpenCV"],
+    badge: "Applications",
+    items: ["AI integrations", "AI features", "Web applications"],
   },
   cloud: {
-    title: "Cloud & DevOps",
-    subtitle: "Infrastructure & CI/CD",
-    badge: "3 Cloud Tools",
-    items: ["AWS", "Docker", "Google Cloud"],
+    title: "Background Processing",
+    subtitle: "Application Workflows",
+    badge: "Processing",
+    items: ["Background jobs", "Backend systems", "System design"],
   },
 };
 
@@ -417,11 +417,11 @@ export const SkillsSection = () => {
   const leftRailOpacity = useTransform(scrollYProgress, [0.10, 0.22], [0, 1], { clamp: true });
 
   const count30Text = useTransform(scrollYProgress, (v) => {
-    if (prefersReducedMotion) return "30+";
+    if (prefersReducedMotion) return "20";
     if (v < 0.14) return "0";
     if (v < 0.18) return "10";
     if (v < 0.22) return "20";
-    return "30+";
+    return "20";
   });
   const count30Highlight = useTransform(scrollYProgress, [0.14, 0.22, 0.25, 0.32], [0, 0, 1, 0], { clamp: true });
   const count30Scale = useTransform(scrollYProgress, [0.16, 0.26], [0, 1], { clamp: true });
@@ -676,7 +676,7 @@ export const SkillsSection = () => {
               }}
               className="font-grotesk max-w-xl mx-auto text-xs lg:text-xs xl:text-[15px] mt-0.5 lg:mt-1 leading-relaxed px-4 transition-colors"
             >
-              Technologies and tools I work with to build modern, scalable web platforms and software applications.
+              Skills, concepts, and tools I work with to build modern, scalable web platforms and software applications.
             </motion.p>
           </div>
         </div>
@@ -708,7 +708,7 @@ export const SkillsSection = () => {
                 className="text-[9.5px] xl:text-xs font-mono tracking-widest mt-1 uppercase font-medium"
                 style={{ color: isDark ? "#94A3B8" : "#64748B" }}
               >
-                Technologies
+                Skills & Concepts
               </div>
               <motion.div
                 style={{
@@ -1185,47 +1185,47 @@ export const SkillsSection = () => {
             >
               <div className="flex items-center gap-1.5 text-[10.5px] xl:text-xs font-bold font-outfit tracking-tight text-foreground transition-colors group-hover/pillar:text-[#F05323]">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#F05323] shrink-0 shadow-[0_0_6px_rgba(240,83,35,0.6)]" />
-                <span>Certified Core</span>
+                <span>Core Focus</span>
               </div>
               <p
                 className="text-[9px] xl:text-[10.5px] font-grotesk mt-0.5 leading-snug pl-2.5"
                 style={{ color: isDark ? "#94A3B8" : "#64748B" }}
               >
-                Oracle Certified Java SE 17
+                Full-Stack Development
               </p>
             </motion.div>
 
-            {/* Highlight 2: Production Shipped */}
+            {/* Highlight 2: Web Applications */}
             <motion.div
               style={prefersReducedMotion ? {} : { x: pillar2X, opacity: pillar2Opacity }}
               className="group/pillar"
             >
               <div className="flex items-center gap-1.5 text-[10.5px] xl:text-xs font-bold font-outfit tracking-tight text-foreground transition-colors group-hover/pillar:text-[#F05323]">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0 shadow-[0_0_6px_rgba(16,185,129,0.6)]" />
-                <span>Production Shipped</span>
+                <span>Web Applications</span>
               </div>
               <p
                 className="text-[9px] xl:text-[10.5px] font-grotesk mt-0.5 leading-snug pl-2.5"
                 style={{ color: isDark ? "#94A3B8" : "#64748B" }}
               >
-                UniVault & SaveethaHub
+                React / Next.js & NestJS
               </p>
             </motion.div>
 
-            {/* Highlight 3: Full-Stack & Cloud */}
+            {/* Highlight 3: Backend Systems */}
             <motion.div
               style={prefersReducedMotion ? {} : { x: pillar3X, opacity: pillar3Opacity }}
               className="group/pillar"
             >
               <div className="flex items-center gap-1.5 text-[10.5px] xl:text-xs font-bold font-outfit tracking-tight text-foreground transition-colors group-hover/pillar:text-[#F05323]">
                 <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 shrink-0 shadow-[0_0_6px_rgba(6,182,212,0.6)]" />
-                <span>Full-Stack & Cloud</span>
+                <span>Backend Systems</span>
               </div>
               <p
                 className="text-[9px] xl:text-[10.5px] font-grotesk mt-0.5 leading-snug pl-2.5"
                 style={{ color: isDark ? "#94A3B8" : "#64748B" }}
               >
-                React, Node, Docker & AWS
+                Express.js, NestJS & Databases
               </p>
             </motion.div>
           </div>
@@ -1355,12 +1355,12 @@ export const SkillsSection = () => {
           }}
         >
           <div>
-            <div className="text-base sm:text-xl font-extrabold font-outfit text-[#F05323]">30+</div>
+            <div className="text-base sm:text-xl font-extrabold font-outfit text-[#F05323]">20</div>
             <div
               className="text-[9px] sm:text-[10px] font-mono tracking-wider uppercase mt-0.5"
               style={{ color: isDark ? "#94A3B8" : "#64748B" }}
             >
-              Technologies
+              Skills & Concepts
             </div>
           </div>
           <div>

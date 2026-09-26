@@ -24,42 +24,25 @@ import { MagneticButton } from "./MagneticButton";
 import { useGithubContributions } from "@/hooks/useDeveloperStats";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
 
-const roles = [
-  "Software Engineer",
-  "Full Stack Developer",
-  "Java Developer",
-  "Product-Minded Builder",
-];
+const roles = ["Full-Stack Developer"];
 
 const desktopSocialLinks = [
   {
     icon: Github,
-    href: "https://github.com/comrademohan",
+    href: "https://github.com/skerdiD",
     label: "GitHub Profile",
     event: "github_hero",
     hoverClass: "hover:text-[#FF4500] hover:border-[#FF4500]/50 hover:bg-[#FF4500]/10 dark:hover:text-[#FF4500] dark:hover:border-[#FF4500]/50 dark:hover:bg-[#FF4500]/15",
   },
   {
     icon: Linkedin,
-    href: "https://www.linkedin.com/in/mmohanreddy",
+    href: "https://www.linkedin.com/in/skerdi-cacaj",
     label: "LinkedIn Profile",
     event: "linkedin_hero",
     hoverClass: "hover:text-[#0077b5] hover:border-[#0077b5]/50 hover:bg-[#0077b5]/10 dark:hover:text-[#0077b5] dark:hover:border-[#0077b5]/50 dark:hover:bg-[#0077b5]/15",
   },
-  {
-    icon: Instagram,
-    href: "https://www.instagram.com/comrade_mohan666/",
-    label: "Instagram Profile",
-    event: "instagram_hero",
-    hoverClass: "hover:text-[#E1306C] hover:border-[#E1306C]/50 hover:bg-[#E1306C]/10 dark:hover:text-[#E1306C] dark:hover:border-[#E1306C]/50 dark:hover:bg-[#E1306C]/15",
-  },
-  {
-    isLeetcode: true,
-    href: "https://leetcode.com/u/Comrademohan",
-    label: "LeetCode Profile",
-    event: "leetcode_hero",
-    hoverClass: "hover:text-[#FFA116] hover:border-[#FFA116]/50 hover:bg-[#FFA116]/10 dark:hover:text-[#FFA116] dark:hover:border-[#FFA116]/50 dark:hover:bg-[#FFA116]/15",
-  },
+
+
 ];
 
 const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
@@ -108,8 +91,8 @@ const HeroSection = () => {
   const prefersReducedMotion = useReducedMotion();
 
   const [nameHovered, setNameHovered] = useState(false);
-  const firstName = useTextMorph(nameHovered ? "Comrade" : "Mohan", 28);
-  const lastName = useTextMorph(nameHovered ? "Mohan" : "Reddy", 28);
+  const firstName = useTextMorph(nameHovered ? "SKERDI" : "Skerdi", 28);
+  const lastName = useTextMorph(nameHovered ? "CACAJ" : "Cacaj", 28);
 
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
@@ -122,7 +105,7 @@ const HeroSection = () => {
   const { data: contributionsData } = useGithubContributions("hero");
   const liveCommitsCount = contributionsData?.totalLifetime
     ? `${contributionsData.totalLifetime.toLocaleString()}+`
-    : "5,008+";
+    : "—";
 
   // Scroll transforms for hero container
   const { scrollYProgress } = useScroll({
@@ -236,10 +219,10 @@ const HeroSection = () => {
   }, [displayText, isDeleting, roleIndex, typewriterStarted]);
 
   const stats = [
-    { value: "2026", label: "Graduate" },
-    { value: "8.646", label: "CGPA" },
-    { value: "10+", label: "Projects" },
-    { value: liveCommitsCount, label: "Code Commits" },
+    { value: "2026", label: "Education" },
+    { value: "UNYT", label: "University" },
+    { value: "Web", label: "Applications" },
+    { value: liveCommitsCount, label: "Contributions" },
   ];
 
   return (
@@ -282,8 +265,8 @@ const HeroSection = () => {
             {/* Photo with live status */}
             <div className="w-[clamp(110px,17svh,165px)] md:w-[170px] h-[clamp(135px,21svh,205px)] md:h-[205px] rounded-2xl md:rounded-3xl overflow-hidden relative shrink-0 border border-purple-500/30 bg-gradient-to-b from-purple-950/40 via-card to-card p-[1px]">
               <img
-                src="/mohan-reddy-full-stack-developer.webp"
-                alt="Mohan Reddy - Full Stack Developer"
+                src="https://github.com/skerdiD.png"
+                alt="Skerdi Cacaj - Full-Stack Developer"
                 className="w-full h-full object-cover object-top rounded-[15px] md:rounded-[23px]"
               />
               <span className="absolute bottom-2 right-2 md:bottom-2.5 md:right-2.5 flex h-3.5 w-3.5 md:h-4 md:w-4">
@@ -323,7 +306,7 @@ const HeroSection = () => {
               {/* Social links */}
               <div className="flex items-center gap-2 md:gap-3">
                 <a
-                  href="https://github.com/comrademohan"
+                  href="https://github.com/skerdiD"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="GitHub Profile"
@@ -332,33 +315,13 @@ const HeroSection = () => {
                   <Github className="w-3.5 h-3.5 md:w-4 md:h-4" />
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/mmohanreddy"
+                  href="https://www.linkedin.com/in/skerdi-cacaj"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn Profile"
                   className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium border bg-white dark:bg-[#0C1017] w-8 h-8 md:w-9 md:h-9 rounded-full border-slate-200 dark:border-white/10 text-slate-700 dark:text-white hover:border-[#0077b5] hover:text-[#0077b5] hover:bg-[#0077b5]/10 dark:hover:border-[#0077b5] dark:hover:text-[#0077b5] dark:hover:bg-[#0077b5]/15 transition-colors"
                 >
                   <Linkedin className="w-3.5 h-3.5 md:w-4 md:h-4" />
-                </a>
-                <a
-                  href="https://www.instagram.com/comrade_mohan666/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram Profile"
-                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium border bg-white dark:bg-[#0C1017] w-8 h-8 md:w-9 md:h-9 rounded-full border-slate-200 dark:border-white/10 text-slate-700 dark:text-white hover:border-[#E1306C] hover:text-[#E1306C] hover:bg-[#E1306C]/10 dark:hover:border-[#E1306C] dark:hover:text-[#E1306C] dark:hover:bg-[#E1306C]/15 transition-colors"
-                >
-                  <Instagram className="w-3.5 h-3.5 md:w-4 md:h-4" />
-                </a>
-                <a
-                  href="https://leetcode.com/u/Comrademohan"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LeetCode Profile"
-                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium border bg-white dark:bg-[#0C1017] w-8 h-8 md:w-9 md:h-9 rounded-full border-slate-200 dark:border-white/10 text-slate-700 dark:text-white hover:border-[#FFA116] hover:text-[#FFA116] hover:bg-[#FFA116]/10 dark:hover:border-[#FFA116] dark:hover:text-[#FFA116] dark:hover:bg-[#FFA116]/15 transition-colors"
-                >
-                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5 md:w-4 md:h-4">
-                    <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z" />
-                  </svg>
                 </a>
               </div>
             </div>
@@ -367,14 +330,13 @@ const HeroSection = () => {
 
         {/* Description */}
         <p className="text-slate-600 dark:text-muted-foreground text-[clamp(11.5px,1.6svh,15px)] md:text-sm lg:text-base leading-relaxed font-grotesk px-1">
-          Product-Minded Developer crafting digital experiences with modern technologies. Turning ideas into elegant, functional solutions.
+          Building complete web applications from modern interfaces to backend systems, databases, background processing, and AI integrations.
         </p>
 
-        {/* Download Resume Button */}
+        {/* View Resume Button */}
         <div>
           <a
-            href="/mohan_resume_.pdf"
-            download="Mohan_Reddy_Resume.pdf"
+            href="/resume"
             target="_blank"
             rel="noopener noreferrer"
             className="whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 px-4 py-2 w-full h-[clamp(40px,5.2svh,50px)] md:h-12 rounded-2xl bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold font-outfit text-sm md:text-base flex items-center justify-center gap-2 shadow-lg shadow-orange-500/25 cursor-pointer"
@@ -394,33 +356,33 @@ const HeroSection = () => {
               <div className="text-[clamp(1.05rem,2.5svh,1.45rem)] md:text-xl font-extrabold text-[#FF4500] font-outfit leading-tight truncate">
                 <AnimatedCounter value="2026" />
               </div>
-              <div className="text-[10px] sm:text-xs text-slate-500 dark:text-muted-foreground font-grotesk truncate">Graduate</div>
+              <div className="text-[10px] sm:text-xs text-slate-500 dark:text-muted-foreground font-grotesk truncate">Education</div>
             </div>
           </div>
 
-          {/* 8.646 CGPA */}
+          {/* University */}
           <div className="p-[clamp(9px,1.6svh,16px)] md:p-3.5 rounded-2xl bg-white/80 dark:bg-card/75 border border-slate-200/80 dark:border-border/70 backdrop-blur-xs flex items-center gap-2.5 md:gap-3 shadow-2xs">
             <div className="w-[clamp(34px,4.5svh,44px)] h-[clamp(34px,4.5svh,44px)] rounded-full bg-purple-500/15 text-purple-500 dark:text-purple-400 flex items-center justify-center shrink-0 border border-purple-500/25">
               <ChartColumn className="w-3.5 h-3.5 md:w-4 md:h-4" />
             </div>
             <div className="min-w-0">
               <div className="text-[clamp(1.05rem,2.5svh,1.45rem)] md:text-xl font-extrabold text-[#FF4500] font-outfit leading-tight truncate">
-                <AnimatedCounter value="8.646" />
+                <AnimatedCounter value="UNYT" />
               </div>
-              <div className="text-[10px] sm:text-xs text-slate-500 dark:text-muted-foreground font-grotesk truncate">CGPA</div>
+              <div className="text-[10px] sm:text-xs text-slate-500 dark:text-muted-foreground font-grotesk truncate">University</div>
             </div>
           </div>
 
-          {/* 10+ Projects */}
+          {/* Web Applications */}
           <div className="p-[clamp(9px,1.6svh,16px)] md:p-3.5 rounded-2xl bg-white/80 dark:bg-card/75 border border-slate-200/80 dark:border-border/70 backdrop-blur-xs flex items-center gap-2.5 md:gap-3 shadow-2xs">
             <div className="w-[clamp(34px,4.5svh,44px)] h-[clamp(34px,4.5svh,44px)] rounded-full bg-purple-500/15 text-purple-500 dark:text-purple-400 flex items-center justify-center shrink-0 border border-purple-500/25">
               <FolderCode className="w-3.5 h-3.5 md:w-4 md:h-4" />
             </div>
             <div className="min-w-0">
               <div className="text-[clamp(1.05rem,2.5svh,1.45rem)] md:text-xl font-extrabold text-[#FF4500] font-outfit leading-tight truncate">
-                <AnimatedCounter value="10+" />
+                <AnimatedCounter value="Web" />
               </div>
-              <div className="text-[10px] sm:text-xs text-slate-500 dark:text-muted-foreground font-grotesk truncate">Projects</div>
+              <div className="text-[10px] sm:text-xs text-slate-500 dark:text-muted-foreground font-grotesk truncate">Applications</div>
             </div>
           </div>
 
@@ -433,7 +395,7 @@ const HeroSection = () => {
               <div className="text-[clamp(1.05rem,2.5svh,1.45rem)] md:text-xl font-extrabold text-[#FF4500] font-outfit leading-tight truncate">
                 <AnimatedCounter value={liveCommitsCount} />
               </div>
-              <div className="text-[10px] sm:text-xs text-slate-500 dark:text-muted-foreground font-grotesk truncate">Code Commits</div>
+              <div className="text-[10px] sm:text-xs text-slate-500 dark:text-muted-foreground font-grotesk truncate">Contributions</div>
             </div>
           </div>
         </div>
@@ -441,11 +403,11 @@ const HeroSection = () => {
         {/* Looking For Card */}
         <div className="p-3.5 sm:p-4 rounded-2xl bg-white/80 dark:bg-card/75 border border-slate-200/80 dark:border-border/70 backdrop-blur-xs shadow-2xs text-left">
           <p className="text-[11px] font-bold font-grotesk tracking-wider uppercase text-emerald-500 dark:text-emerald-400 mb-1">LOOKING FOR</p>
-          <p className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-foreground leading-snug mb-3">Full Stack Developer &amp; Software Engineer roles.</p>
+          <p className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-foreground leading-snug mb-3">Full-Stack Developer roles.</p>
           <div className="grid grid-cols-2 gap-2">
             <span className="px-3 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-medium text-center font-grotesk">Full Time</span>
             <span className="px-3 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-medium text-center font-grotesk">Remote</span>
-            <span className="px-3 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-medium text-center font-grotesk">Internships</span>
+            <span className="px-3 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-medium text-center font-grotesk">Collaboration</span>
             <span className="px-3 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-medium text-center font-grotesk">On-site</span>
           </div>
         </div>
@@ -494,7 +456,7 @@ const HeroSection = () => {
                 </motion.p>
               </div>
 
-              {/* 2. Oversized Heading: Mohan + Reddy (kinetic typography + hover morph to Comrade Mohan) */}
+              {/* 2. Oversized Heading: Skerdi + Cacaj (kinetic typography + hover morph to Skerdi Cacaj) */}
               <h1
                 onMouseEnter={() => setNameHovered(true)}
                 onMouseLeave={() => setNameHovered(false)}
@@ -544,7 +506,7 @@ const HeroSection = () => {
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.4, delay: 0.26, ease: [0.22, 1, 0.36, 1] }}
                   >
-                    Product-Minded Developer crafting digital experiences
+                    Building complete web applications from modern interfaces
                   </motion.p>
                 </div>
                 <div className="overflow-hidden">
@@ -553,12 +515,12 @@ const HeroSection = () => {
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.4, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
                   >
-                    with modern technologies. Turning ideas into elegant, functional solutions.
+                    to backend systems, databases, background processing, and AI integrations.
                   </motion.p>
                 </div>
               </div>
 
-              {/* 5. Action Row: Socials + Download Resume */}
+              {/* 5. Action Row: Socials + View Resume */}
               <div className="flex flex-wrap items-center gap-3 mb-7 sm:mb-8">
                 {/* Social circular outline buttons */}
                 <div className="flex items-center gap-2">
@@ -579,20 +541,14 @@ const HeroSection = () => {
                         onClick={() => trackEvent("click", "social", social.event)}
                       >
                         <a href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label}>
-                          {social.isLeetcode ? (
-                            <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
-                              <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z" />
-                            </svg>
-                          ) : (
-                            <social.icon className="w-4 h-4" />
-                          )}
+                          <social.icon className="w-4 h-4" />
                         </a>
                       </Button>
                     </motion.div>
                   ))}
                 </div>
 
-                {/* Orange-red Download Resume Button */}
+                {/* Orange-red View Resume Button */}
                 <motion.div
                   initial={prefersReducedMotion ? false : { scale: 0.96, y: 10, opacity: 0 }}
                   animate={{ scale: 1, y: 0, opacity: 1 }}
@@ -607,8 +563,8 @@ const HeroSection = () => {
                       className="h-11 px-6 rounded-full bg-gradient-to-r from-[#FF4500] to-[#FF3300] hover:from-[#FF5A1A] hover:to-[#FF4010] text-white font-bold font-outfit text-sm sm:text-base flex items-center gap-2 shadow-lg shadow-[#FF4500]/30 hover:shadow-xl hover:shadow-[#FF4500]/45 transition-all cursor-pointer"
                       onClick={() => trackEvent("download", "resume", "resume_hero")}
                     >
-                      <a href="/mohan_resume_.pdf" download="Mohan_Reddy_Resume.pdf" role="button" target="_blank" rel="noopener noreferrer">
-                        <Download className="w-4 h-4 mr-1.5 shrink-0" /> Download Resume
+                      <a href="/resume" role="button" target="_blank" rel="noopener noreferrer">
+                        <Download className="w-4 h-4 mr-1.5 shrink-0" /> View Resume
                       </a>
                     </Button>
                   </MagneticButton>
@@ -684,7 +640,7 @@ const HeroSection = () => {
 
                 {/* 2. Unified Portrait & Halo Circle Container (strictly locked together) */}
                 <div className="absolute z-[2] bottom-0 left-[30px] xl:left-[45px] h-full aspect-square pointer-events-none select-none">
-                  {/* 2a. Orange Circle (z-index: 1) mathematically centered on Mohan's head */}
+                  {/* 2a. Orange Circle (z-index: 1) mathematically centered on the portrait */}
                   <motion.div
                     style={{
                       x: circleMouseX,
@@ -792,8 +748,8 @@ const HeroSection = () => {
                         className="w-full h-full"
                       >
                         <img
-                          src="/comrademohan.webp"
-                          alt="Mohan Reddy"
+                          src="https://github.com/skerdiD.png"
+                          alt="Skerdi Cacaj"
                           width="1254"
                           height="1254"
                           loading="eager"

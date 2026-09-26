@@ -16,16 +16,16 @@ interface SEOProps {
 const SEO = ({
   title,
   description,
-  keywords = "Mohan Reddy, Comrade Mohan, full stack developer, React developer, software engineer, Saveetha School of Engineering, India",
+  keywords = "Skerdi Cacaj, Full-Stack Developer, React, Next.js, Express.js, NestJS, Tirana, Albania",
   canonical,
   robots = "index, follow, max-image-preview:large",
   ogType = "website",
-  ogImage = "https://mohanreddy.me/mohan-reddy-full-stack-developer.webp",
+  ogImage = "https://github.com/skerdiD.png",
   ogUrl,
   schema
 }: SEOProps) => {
   const location = useLocation();
-  const currentUrl = ogUrl || `https://mohanreddy.me${location.pathname}`;
+  const currentUrl = ogUrl || `${window.location.origin}${location.pathname}`;
   const canonicalUrl = canonical || currentUrl;
 
   useEffect(() => {
@@ -49,7 +49,7 @@ const SEO = ({
     setMetaTag("name", "description", description);
     setMetaTag("name", "keywords", keywords);
     setMetaTag("name", "robots", robots);
-    setMetaTag("name", "author", "Mohan Reddy");
+    setMetaTag("name", "author", "Skerdi Cacaj");
 
     // 4. Set OpenGraph meta tags
     setMetaTag("property", "og:title", title);
@@ -57,18 +57,13 @@ const SEO = ({
     setMetaTag("property", "og:type", ogType);
     setMetaTag("property", "og:url", currentUrl);
     setMetaTag("property", "og:image", ogImage);
-    setMetaTag("property", "og:image:width", "1200");
-    setMetaTag("property", "og:image:height", "630");
-    setMetaTag("property", "og:image:type", "image/webp");
     setMetaTag("property", "og:image:alt", title);
-    setMetaTag("property", "og:site_name", "Mohan Reddy Portfolio");
+    setMetaTag("property", "og:site_name", "Skerdi Cacaj Portfolio");
 
     // 5. Set Twitter Card meta tags
     setMetaTag("name", "twitter:title", title);
     setMetaTag("name", "twitter:description", description);
     setMetaTag("name", "twitter:image", ogImage);
-    setMetaTag("name", "twitter:image:width", "1200");
-    setMetaTag("name", "twitter:image:height", "630");
     setMetaTag("name", "twitter:image:alt", title);
     setMetaTag("name", "twitter:card", "summary_large_image");
 

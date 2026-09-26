@@ -16,7 +16,7 @@ const colors = [
   "hsl(145, 60%, 45%)",  // green
 ];
 
-const TEXT = "COMRADEMOHAN";
+const TEXT = "SKERDI CACAJ";
 const LETTER_STAGGER = 0.05; // seconds between each letter's entry
 const LETTER_DURATION = 0.5; // seconds for a single letter to settle
 const EXIT_DURATION = 0.6; // seconds of fade-out, shared by the exit transition

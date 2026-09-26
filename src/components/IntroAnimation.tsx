@@ -9,7 +9,7 @@ interface IntroAnimationProps {
 }
 
 // ─── Session-storage key ─────────────────────────────────────────────────────
-export const INTRO_PLAYED_KEY = "mohan-intro-played";
+export const INTRO_PLAYED_KEY = "skerdi-intro-played";
 
 export const hasIntroPlayed = (): boolean => {
   try {
@@ -115,7 +115,7 @@ const IntroAnimation = ({ onHandoff, onComplete }: IntroAnimationProps) => {
               <span>INITIALIZING PORTFOLIO</span>
             </motion.div>
 
-            {/* Main Centerpiece Typography: MOHAN REDDY */}
+            {/* Main Centerpiece Typography: SKERDI CACAJ */}
             <div className="overflow-hidden mb-3">
               <motion.h1
                 initial={{ opacity: 0, y: 28, scale: 0.94 }}
@@ -127,7 +127,7 @@ const IntroAnimation = ({ onHandoff, onComplete }: IntroAnimationProps) => {
                   className="text-[#FF5722] drop-shadow-[0_0_24px_rgba(255,87,34,0.42)] inline-block"
                   style={{ letterSpacing: "0.02em" }}
                 >
-                  MOHAN
+                  SKERDI
                 </span>
                 <span
                   className="inline-block"
@@ -136,7 +136,7 @@ const IntroAnimation = ({ onHandoff, onComplete }: IntroAnimationProps) => {
                     letterSpacing: "0.02em",
                   }}
                 >
-                  REDDY
+                  CACAJ
                 </span>
               </motion.h1>
             </div>
@@ -149,7 +149,7 @@ const IntroAnimation = ({ onHandoff, onComplete }: IntroAnimationProps) => {
               className="text-[11px] sm:text-xs md:text-sm font-grotesk tracking-[0.24em] uppercase mb-8 font-medium"
               style={{ color: isDark ? "#94A3B8" : "#64748B" }}
             >
-              Full Stack Developer &bull; Software Engineer
+              Full-Stack Developer
             </motion.p>
 
             {/* High-Tech Progress Bar */}

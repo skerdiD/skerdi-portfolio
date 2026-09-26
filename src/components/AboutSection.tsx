@@ -14,22 +14,13 @@ import { Link } from "react-router-dom";
 import ScrollHighlightSpan from "./motion/ScrollHighlightSpan";
 import EducationProgressionRoadmap from "./EducationProgressionRoadmap";
 
-const education = [
-  {
-    degree: "B.E. Computer Science & Engineering",
-    school: "Saveetha School of Engineering (SIMATS)",
-    duration: "2022 — 2026",
-    location: "Chennai, Tamil Nadu",
-    grade: "CGPA: 8.646 / 10",
-  },
-  {
-    degree: "Intermediate (MPC + Computer Science)",
-    school: "Loyola Public School",
-    duration: "2020 — 2022",
-    location: "Guntur, Andhra Pradesh",
-    grade: "Percentage: 81.6%",
-  }
-];
+const education = [{
+  degree: "Bachelor in Computer Science",
+  school: "University of New York Tirana (UNYT)",
+  duration: "2023 – 2026",
+  location: "Tirana, Albania",
+  grade: "Computer Science",
+}];
 
 const AboutSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -122,30 +113,16 @@ const AboutSection = () => {
               {/* Bio Paragraphs with scroll-driven word-by-word highlight */}
               <div className="space-y-2.5 text-xs sm:text-[13px] text-foreground/80 dark:text-slate-300 font-grotesk leading-relaxed">
                 <p>
-                  Final-year Computer Science and Engineering student at{" "}
-                  <ScrollHighlightSpan startIndex={0}>
-                    Saveetha School of Engineering (SIMATS)
-                  </ScrollHighlightSpan>
-                  , Chennai, with a{" "}
-                  <ScrollHighlightSpan startIndex={5}>
-                    CGPA of 8.646
-                  </ScrollHighlightSpan>
-                  . I enjoy building practical software that solves real problems and can be used beyond the classroom.
+                  Full-Stack Developer building complete web applications, from modern{" "}
+                  <ScrollHighlightSpan startIndex={0}>React/Next.js interfaces</ScrollHighlightSpan>{" "}
+                  to backend systems with <ScrollHighlightSpan startIndex={5}>Express.js and NestJS</ScrollHighlightSpan>,
+                  databases, background processing, and AI-powered features.
                 </p>
                 <p>
-                  I have independently built{" "}
-                  <ScrollHighlightSpan startIndex={8}>
-                    SaveethaHub
-                  </ScrollHighlightSpan>
-                  , an academic platform using React, Supabase, Firebase, and AI features, and{" "}
-                  <ScrollHighlightSpan startIndex={9}>
-                    UniVault
-                  </ScrollHighlightSpan>
-                  , an Android exam-preparation app published on the Google Play Store. I also hold the{" "}
-                  <ScrollHighlightSpan startIndex={10}>
-                    Oracle Certified Professional: Java SE 17 Developer
-                  </ScrollHighlightSpan>{" "}
-                  certification and am strengthening my skills in data structures, algorithms, and full-stack development.
+                  I enjoy working across the full stack, with a particular interest in{" "}
+                  <ScrollHighlightSpan startIndex={8}>backend systems</ScrollHighlightSpan>,{" "}
+                  <ScrollHighlightSpan startIndex={9}>application architecture</ScrollHighlightSpan>, and{" "}
+                  <ScrollHighlightSpan startIndex={10}>system design</ScrollHighlightSpan>.
                 </p>
               </div>
 
@@ -165,11 +142,11 @@ const AboutSection = () => {
                 <div className="grid grid-cols-3 gap-2">
                   <div className="flex items-center justify-center gap-1.5 px-2 py-1.5 rounded-lg bg-background dark:bg-[#111622] border border-border/70 dark:border-white/5 text-[10px] sm:text-[11px] font-medium text-foreground/90 dark:text-slate-300 shadow-2xs">
                     <Layers className="w-3 h-3 text-orange-500 shrink-0" />
-                    <span className="truncate">Data Structures</span>
+                    <span className="truncate">Backend Systems</span>
                   </div>
                   <div className="flex items-center justify-center gap-1.5 px-2 py-1.5 rounded-lg bg-background dark:bg-[#111622] border border-border/70 dark:border-white/5 text-[10px] sm:text-[11px] font-medium text-foreground/90 dark:text-slate-300 shadow-2xs">
                     <Code2 className="w-3 h-3 text-pink-500 shrink-0" />
-                    <span className="truncate">Algorithms</span>
+                    <span className="truncate">System Design</span>
                   </div>
                   <div className="flex items-center justify-center gap-1.5 px-2 py-1.5 rounded-lg bg-background dark:bg-[#111622] border border-border/70 dark:border-white/5 text-[10px] sm:text-[11px] font-medium text-foreground/90 dark:text-slate-300 shadow-2xs">
                     <BarChart3 className="w-3 h-3 text-blue-500 shrink-0" />
@@ -185,7 +162,7 @@ const AboutSection = () => {
                 to="/about"
                 className="inline-flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full border border-[#FF5722] bg-background dark:bg-[#0c1017] text-[#FF5722] hover:bg-[#FF5722]/10 hover:shadow-[0_0_15px_rgba(255,87,34,0.25)] transition-all duration-300 text-xs font-semibold font-grotesk group"
               >
-                <span>Read Full Biography & Stats</span>
+                <span>Read Full Biography</span>
                 <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
 
@@ -200,6 +177,7 @@ const AboutSection = () => {
           {/* RIGHT COLUMN: EDUCATION JOURNEY (CONTENT FIRST ~65%, DECORATIVE VISUAL ~35%) */}
           {/* ========================================================================= */}
           <div
+            id="education"
             ref={timelineRef}
             className="rounded-2xl bg-card/90 dark:bg-[#0c1017]/95 border border-border/80 dark:border-[#22283a]/80 hover:border-[#FF5722]/40 backdrop-blur-md p-5 sm:p-6 transition-all duration-300 shadow-md dark:shadow-xl dark:shadow-black/30 flex flex-col justify-between relative overflow-hidden group min-h-[320px]"
           >
@@ -215,7 +193,7 @@ const AboutSection = () => {
                 </span>
               </div>
               <span className="text-xs sm:text-sm font-mono text-[#FF5722] font-semibold">
-                2020 — 2026
+                2023 – 2026
               </span>
             </div>
 
@@ -324,16 +302,16 @@ const AboutSection = () => {
           {/* Stats Cluster */}
           <div className="flex items-center justify-between md:justify-end w-full md:w-auto gap-4 sm:gap-5 font-mono">
             <div className="flex items-baseline gap-1">
-              <span className="text-sm font-bold text-[#FF5722]">10+</span>
-              <span className="text-[10px] text-muted-foreground dark:text-slate-400">Projects</span>
+              <span className="text-sm font-bold text-[#FF5722]">Albanian</span>
+              <span className="text-[10px] text-muted-foreground dark:text-slate-400">Native</span>
             </div>
             <div className="flex items-baseline gap-1">
-              <span className="text-sm font-bold text-foreground dark:text-white">5,009+</span>
-              <span className="text-[10px] text-muted-foreground dark:text-slate-400">Code Commits</span>
+              <span className="text-sm font-bold text-foreground dark:text-white">English</span>
+              <span className="text-[10px] text-muted-foreground dark:text-slate-400">B2 (Upper-Intermediate)</span>
             </div>
             <div className="flex items-baseline gap-1">
-              <span className="text-sm font-bold text-[#FF5722]">8.646</span>
-              <span className="text-[10px] text-muted-foreground dark:text-slate-400">CGPA</span>
+              <span className="text-sm font-bold text-[#FF5722]">UNYT</span>
+              <span className="text-[10px] text-muted-foreground dark:text-slate-400">2023 – 2026</span>
             </div>
             <div className="hidden lg:flex items-center gap-1 text-[9px] text-muted-foreground dark:text-slate-400 tracking-widest uppercase">
               <span className="text-[#FF5722]/60 font-bold">//</span>

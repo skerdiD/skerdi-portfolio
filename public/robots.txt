@@ -1,4 +1,3 @@
-# Robots.txt for Mohan Reddy Portfolio (https://mohanreddy.me/)
 User-agent: *
 Allow: /
 Disallow: /api/
@@ -25,5 +24,3 @@ User-agent: WhatsApp
 Allow: /
 
 # Sitemap Location
-Sitemap: https://mohanreddy.me/sitemap.xml
-Host: https://mohanreddy.me

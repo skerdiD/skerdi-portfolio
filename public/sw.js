@@ -1,15 +1,11 @@
-const CACHE_NAME = "mohan-portfolio-v1";
+const CACHE_NAME = "skerdi-portfolio-v2";
 const STATIC_ASSETS = [
   "/",
   "/about",
-  "/developer",
   "/resume",
-  "/blog",
   "/case-study/saveethahub",
   "/case-study/univault",
-  "/favicon.png",
-  "/comrademohan.webp",
-  "/mohan-reddy-full-stack-developer.webp",
+  "/favicon.svg",
   "/site.webmanifest"
 ];
 

@@ -32,7 +32,7 @@ const NotFound = () => {
   const [food, setFood] = useState({ x: 5, y: 5 });
   const [snakeScore, setSnakeScore] = useState(0);
   const [snakeHighScore, setSnakeHighScore] = useState(() => {
-    return parseInt(localStorage.getItem("mohan_snake_highscore") || "0", 10);
+    return parseInt(localStorage.getItem("skerdi_snake_highscore") || "0", 10);
   });
   const [isSnakeRunning, setIsSnakeRunning] = useState(false);
   const [isSnakeGameOver, setIsSnakeGameOver] = useState(false);
@@ -101,7 +101,7 @@ const NotFound = () => {
             const nextScore = s + 10;
             if (nextScore > snakeHighScore) {
               setSnakeHighScore(nextScore);
-              localStorage.setItem("mohan_snake_highscore", nextScore.toString());
+              localStorage.setItem("skerdi_snake_highscore", nextScore.toString());
             }
             return nextScore;
           });
@@ -125,7 +125,7 @@ const NotFound = () => {
   const [ball, setBall] = useState({ x: 50, y: 50, dx: 0.55, dy: 0.38 });
   const [pongScore, setPongScore] = useState(0);
   const [pongHighScore, setPongHighScore] = useState(() => {
-    return parseInt(localStorage.getItem("mohan_pong_highscore") || "0", 10);
+    return parseInt(localStorage.getItem("skerdi_pong_highscore") || "0", 10);
   });
   const [isPongRunning, setIsPongRunning] = useState(false);
   const [isPongGameOver, setIsPongGameOver] = useState(false);
@@ -163,7 +163,7 @@ const NotFound = () => {
               const next = s + 1;
               if (next > pongHighScore) {
                 setPongHighScore(next);
-                localStorage.setItem("mohan_pong_highscore", next.toString());
+                localStorage.setItem("skerdi_pong_highscore", next.toString());
               }
               return next;
             });
@@ -239,8 +239,8 @@ const NotFound = () => {
   return (
     <>
       <SEO
-        title="404 - Page Lost in Cyberspace | Mohan Reddy"
-        description="404 Not Found. Return to Mohan Reddy's developer portfolio."
+        title="404 - Page Lost in Cyberspace | Skerdi Cacaj"
+        description="404 Not Found. Return to Skerdi Cacaj's developer portfolio."
       />
       <div className="min-h-screen bg-background text-foreground font-grotesk flex flex-col justify-between p-4 sm:p-8 relative overflow-hidden select-none transition-colors duration-300">
         
@@ -346,7 +346,7 @@ const NotFound = () => {
             <div className="text-muted-foreground space-y-1">
               <div>$ GET {location.pathname}</div>
               <div className="text-rose-500 font-bold">» HTTP 404: Resource unreachable</div>
-              <div className="text-emerald-500">» Redirect ready: [ Home / Stats / Resume ]</div>
+              <div className="text-emerald-500">» Redirect ready: [ Home / About / Resume ]</div>
             </div>
           </motion.div>
 
@@ -364,22 +364,16 @@ const NotFound = () => {
               <Home className="w-4 h-4" /> Home Page
             </Link>
             <Link
-              to="/developer"
+              to="/about"
               className="p-3 rounded-2xl bg-card hover:bg-accent text-foreground font-semibold text-xs border border-border flex items-center justify-center gap-2 shadow-xs active:scale-95 transition-all"
             >
-              <Code2 className="w-4 h-4 text-amber-500" /> Dev Stats
+              <Code2 className="w-4 h-4 text-amber-500" /> About Me
             </Link>
             <Link
               to="/resume"
               className="p-3 rounded-2xl bg-card hover:bg-accent text-foreground font-semibold text-xs border border-border flex items-center justify-center gap-2 shadow-xs active:scale-95 transition-all"
             >
               <FileText className="w-4 h-4 text-primary" /> Resume
-            </Link>
-            <Link
-              to="/blog"
-              className="p-3 rounded-2xl bg-card hover:bg-accent text-foreground font-semibold text-xs border border-border flex items-center justify-center gap-2 shadow-xs active:scale-95 transition-all"
-            >
-              <Layers className="w-4 h-4 text-purple-400" /> Tech Blog
             </Link>
           </motion.div>
         </div>
@@ -417,10 +411,10 @@ const NotFound = () => {
                 <Home className="w-4 h-4" /> Home
               </Link>
               <Link
-                to="/developer"
+                to="/about"
                 className="px-4 py-2.5 rounded-xl bg-card hover:bg-accent text-foreground font-semibold text-xs border border-border transition-all flex items-center gap-2 shadow-xs active:scale-95"
               >
-                <Code2 className="w-4 h-4 text-amber-500" /> Dev Stats
+                <Code2 className="w-4 h-4 text-amber-500" /> About Me
               </Link>
               <Link
                 to="/resume"
@@ -444,7 +438,7 @@ const NotFound = () => {
               <div className="flex items-center justify-between mb-4 pb-3 border-b border-border/80">
                 <div className="flex items-center gap-2">
                   <Gamepad2 className="w-5 h-5 text-primary" />
-                  <span className="font-bold text-sm text-foreground font-outfit">MOHAN-ARCADE</span>
+                  <span className="font-bold text-sm text-foreground font-outfit">SKERDI-ARCADE</span>
                 </div>
 
                 {/* Game Tabs */}

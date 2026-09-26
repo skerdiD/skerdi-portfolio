@@ -9,101 +9,58 @@ import {
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { trackEvent } from "@/lib/analytics";
-import { useLeetcodeStats, useLeetcodeDetails } from "@/hooks/useDeveloperStats";
 
 // Fallback GitHub data
 const githubFallback = {
-  avatar: "https://avatars.githubusercontent.com/u/129178102?v=4",
-  name: "Mohan Reddy",
-  bio: "Full Stack Developer specializing in React, TypeScript, Java, and Kotlin. Builder of UniVault & SaveethaHub.",
-  followers: 13,
-  streak: "229 Days",
-  publicRepos: 99,
-  location: "Chennai, India",
-  company: "Saveetha School of Engineering",
-  website: "https://mohanreddy.me",
-  htmlUrl: "https://github.com/ComradeMohan",
-  latestRepo: {
-    name: "UniVault",
-    url: "https://github.com/ComradeMohan/UniVault",
-    description: "Secure local offline-first Android password manager using AES-256 and Room database.",
-    updatedAt: "Jun 2026"
-  }
+  avatar: "https://github.com/skerdiD.png",
+  name: "Skerdi Cacaj",
+  bio: "Full-Stack Developer building complete web applications, from modern React/Next.js interfaces to backend systems with Express.js and NestJS, databases, background processing, and AI-powered features.",
+  followers: "—",
+  streak: "—",
+  publicRepos: "—",
+  location: "Tirana, Albania",
+  company: "University of New York Tirana (UNYT)",
+  website: "https://github.com/skerdiD",
+  htmlUrl: "https://github.com/skerdiD",
+  latestRepo: { name: "Repositories", url: "https://github.com/skerdiD?tab=repositories", description: "Explore my work on GitHub.", updatedAt: "" }
 };
 
 // LinkedIn Information
 const linkedinInfo = {
-  name: "Mohan Reddy",
-  title: "Full Stack Developer & Software Engineer",
-  avatar: "/mohan-reddy-full-stack-developer.webp",
-  location: "Chennai, Tamil Nadu, India",
-  education: "Saveetha School of Engineering (SIMATS)",
-  headline: "Building UniVault & SaveethaHub. Open to full-time roles & internships starting 2026.",
-  profileUrl: "https://www.linkedin.com/in/mmohanreddy/",
-  skills: ["React", "TypeScript", "Android/Kotlin", "Java", "Firebase", "SQL"]
+  name: "Skerdi Cacaj",
+  title: "Full-Stack Developer",
+  avatar: "https://github.com/skerdiD.png",
+  location: "Tirana, Albania",
+  education: "University of New York Tirana (UNYT)",
+  headline: "Building complete web applications with React, Next.js, Express.js, and NestJS.",
+  profileUrl: "https://www.linkedin.com/in/skerdi-cacaj/",
+  skills: ["React", "Next.js", "Express.js", "NestJS", "Databases", "AI integrations"]
 };
-
-// LeetCode Information
-const leetcodeInfo = {
-  handle: "Comrademohan",
-  profileUrl: "https://leetcode.com/u/Comrademohan",
-  headline: "Problem Solving & Algorithmic Thinking in Java, C++ & TypeScript",
-  topics: ["Data Structures", "Algorithms", "Dynamic Programming", "Trees & Graphs"],
-  solvedCount: "100+ Solved"
-};
-
-const LeetCodeIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
-    <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z" />
-  </svg>
-);
 
 // Resume Information
 const resumeInfo = {
-  education: "B.E. Computer Science & Engineering",
-  experience: "Lead Creator of UniVault (AES-256 Room DB) & SaveethaHub (2000+ users)",
-  skills: ["React/Vite", "TypeScript", "Kotlin/Android", "Java SE 17", "Tailwind CSS", "Firebase/SQL"],
-  downloadUrl: "/mohan_resume_.pdf",
-  previewUrl: "/mohan_resume_.pdf"
+  education: "Bachelor in Computer Science",
+  focus: "Backend systems, application architecture, and system design",
+  skills: ["React", "Next.js", "Express.js", "NestJS", "Databases", "AI integrations"],
+  downloadUrl: "/resume",
+  previewUrl: "/resume"
 };
 
 // Email Information
 const emailInfo = {
-  address: "madhiremohanreddy@gmail.com",
-  preferredMethod: "Email (Direct response within 24 hours)",
+  address: "skerdi.cacaj.dev@gmail.com",
+  preferredMethod: "Email",
   availability: "Available for technical discussions and inquiries."
 };
 
-// Auto-format phone number to international E.164 standard (defaults 10-digit numbers to +91 India)
+// Normalize local Albanian numbers and international numbers for contact drafts.
 const formatToE164 = (phone: string): string => {
-  let cleaned = phone.trim().replace(/[\s\-().]/g, "");
+  const cleaned = phone.trim().replace(/[\s\-().]/g, "");
   if (!cleaned) return "";
-
-  if (cleaned.startsWith("+")) {
-    return "+" + cleaned.slice(1).replace(/\D/g, "");
-  }
-
-  if (cleaned.startsWith("00")) {
-    return "+" + cleaned.slice(2).replace(/\D/g, "");
-  }
-
-  // 11 digits starting with 0 (e.g. 06281359314)
-  if (cleaned.startsWith("0") && cleaned.length === 11) {
-    cleaned = cleaned.slice(1);
-  }
-
-  // 10 digits (Standard Indian Mobile e.g. 6281359314 or 9876543210)
-  if (cleaned.length === 10) {
-    return `+91${cleaned}`;
-  }
-
-  // 12 digits starting with 91 (e.g. 916281359314)
-  if (cleaned.startsWith("91") && cleaned.length === 12) {
-    return `+${cleaned}`;
-  }
-
-  // Any other international number without '+'
-  return `+${cleaned.replace(/\D/g, "")}`;
+  if (cleaned.startsWith("+")) return cleaned;
+  if (cleaned.startsWith("00")) return `+${cleaned.slice(2)}`;
+  if (cleaned.startsWith("0")) return `+355${cleaned.slice(1)}`;
+  return `+${cleaned}`;
 };
 
 // Component to dynamically load the official LinkedIn Badge
@@ -141,14 +98,14 @@ const LinkedInBadge = ({ theme }: { theme: "light" | "dark" }) => {
         data-size="medium"
         data-theme={theme}
         data-type="VERTICAL"
-        data-vanity="mmohanreddy"
+        data-vanity="skerdi-cacaj"
         data-version="v1"
       >
         <a
           className="badge-base__link LI-simple-link text-xs text-orange-400 font-grotesk font-semibold hover:underline"
-          href="https://in.linkedin.com/in/mmohanreddy?trk=profile-badge"
+          href="https://in.linkedin.com/in/skerdi-cacaj?trk=profile-badge"
         >
-          Mohan Reddy
+          Skerdi Cacaj
         </a>
       </div>
     </div>
@@ -268,21 +225,7 @@ export const ContactSection = () => {
   const isHoveringPopoverRef = useRef(false);
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Live LeetCode Stats hook (Single source of truth)
-  const { data: leetcodeData, isLoading: isLeetcodeLoading } = useLeetcodeStats("contact");
-  const { data: leetcodeDetails } = useLeetcodeDetails("contact");
-  const lcTotalSolved = leetcodeData?.profile?.solvedProblem ?? 481;
-  const lcEasySolved = leetcodeData?.profile?.easySolved ?? 160;
-  const lcMediumSolved = leetcodeData?.profile?.mediumSolved ?? 248;
-  const lcHardSolved = leetcodeData?.profile?.hardSolved ?? 73;
-  const lcContestRating = Math.round(leetcodeData?.contest?.contestRating ?? 1673);
-  const lcTopPercentage = leetcodeData?.contest?.contestTopPercentage ? `${Number(leetcodeData.contest.contestTopPercentage).toFixed(1)}%` : "16.1%";
-  const lcAvatar = leetcodeData?.baseProfile?.userAvatar || "https://assets.leetcode.com/users/ComradeMohan/avatar_1784641288.png";
-  const lcName = leetcodeData?.baseProfile?.realName || "M Mohan Reddy";
-  const lcStreak = leetcodeDetails?.calendar?.streak ?? 51;
-  const lcActiveDays = leetcodeDetails?.calendar?.totalActiveDays ?? 106;
-
-  // GitHub API state
+  // GitHub profile preview
   const [githubData, setGithubData] = useState<any>(null);
   const [githubLoading, setGithubLoading] = useState(false);
   const [githubError, setGithubError] = useState(false);
@@ -308,17 +251,8 @@ export const ContactSection = () => {
   }, []);
 
   // Preload LinkedIn CDN Avatar, fallback safely to local WebP if loading or offline
-  const [linkedinAvatar, setLinkedinAvatar] = useState<string>("/mohan-reddy-full-stack-developer.webp");
-  useEffect(() => {
-    const remoteUrl = "https://media.licdn.com/dms/image/v2/D4D03AQGTQJPkQH3_ag/profile-displayphoto-scale_400_400/B4DZ8OHCXzKYAg-/0/1782648154909?e=1788393600&v=beta&t=gl5WrAKTfI5vJFHnCHgQ9X1584GbUezNvH1pVBJkdB8";
-    const img = new Image();
-    img.src = remoteUrl;
-    img.onload = () => {
-      setLinkedinAvatar(remoteUrl);
-    };
-  }, []);
+  const linkedinAvatar = "https://github.com/skerdiD.png";
 
-  // Escape key handler
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -381,8 +315,8 @@ export const ContactSection = () => {
     setGithubError(false);
     try {
       const [userRes, reposRes] = await Promise.all([
-        fetch("https://api.github.com/users/ComradeMohan"),
-        fetch("https://api.github.com/users/ComradeMohan/repos?sort=updated&per_page=1")
+        fetch("https://api.github.com/users/skerdiD"),
+        fetch("https://api.github.com/users/skerdiD/repos?sort=updated&per_page=1")
       ]);
 
       if (!userRes.ok) throw new Error("GitHub user endpoint failed");
@@ -404,9 +338,9 @@ export const ContactSection = () => {
         }
       }
 
-      let calculatedStreak = "229 Days";
+      let calculatedStreak = "—";
       try {
-        const contribRes = await fetch("https://github-contributions-api.jogruber.de/v4/ComradeMohan");
+        const contribRes = await fetch("https://github-contributions-api.jogruber.de/v4/skerdiD");
         if (contribRes.ok) {
           const contribData = await contribRes.json();
           const list = (contribData.contributions || []).filter((c: any) => new Date(c.date) <= new Date());
@@ -423,19 +357,19 @@ export const ContactSection = () => {
           if (maxStreak > 0) calculatedStreak = `${maxStreak} Days`;
         }
       } catch {
-        calculatedStreak = "229 Days";
+        calculatedStreak = "—";
       }
 
       setGithubData({
         avatar: userData.avatar_url,
-        name: userData.name || "Mohan Reddy",
-        bio: userData.bio || "Full Stack Developer",
-        followers: userData.followers ?? 13,
+        name: userData.name || "Skerdi Cacaj",
+        bio: userData.bio || "Full-Stack Developer",
+        followers: userData.followers ?? "—",
         streak: calculatedStreak,
-        publicRepos: userData.public_repos ?? 99,
-        location: userData.location || "India",
-        company: userData.company || "SIMATS",
-        website: userData.blog || "https://mohanreddy.me",
+        publicRepos: userData.public_repos ?? "—",
+        location: userData.location || "Tirana, Albania",
+        company: userData.company || "University of New York Tirana (UNYT)",
+        website: userData.blog || "https://github.com/skerdiD",
         htmlUrl: userData.html_url,
         latestRepo
       });
@@ -457,99 +391,16 @@ export const ContactSection = () => {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  // Actual Network Dispatch function (triggered after 20s or on "Send Now")
-  const executeActualSend = async (dataToSend: { name: string; email: string; subject: string; message: string }) => {
+  // Actual Network Dispatch function (triggered after 20s or on "Open Email")
+  const executeActualSend = async (dataToSend: { name: string; email: string; phone?: string; subject: string; message: string }) => {
     if (undoTimerRef.current) clearTimeout(undoTimerRef.current);
     if (undoIntervalRef.current) clearInterval(undoIntervalRef.current);
     setIsUndoPending(false);
-    setIsSubmitting(true);
-
-    try {
-      // FormInit official API payload
-      const formData = new FormData();
-      formData.append("fi-sender-fullName", dataToSend.name);
-      formData.append("fi-sender-email", dataToSend.email);
-      if (dataToSend.phone && dataToSend.phone.trim().length > 0) {
-        formData.append("fi-sender-phone", formatToE164(dataToSend.phone));
-      }
-      formData.append("fi-text-subject", dataToSend.subject);
-      formData.append("fi-text-message", dataToSend.message);
-
-      // Official FormInit Honeypot field (must remain empty for legitimate users)
-      if (honeypot) {
-        formData.append("fi-honeypot", honeypot);
-      }
-
-      const searchParams = new URLSearchParams(window.location.search);
-      const trackingParams = {
-        utm_source: "utmSource",
-        utm_medium: "utmMedium",
-        utm_campaign: "utmCampaign",
-        utm_term: "utmTerm",
-        utm_content: "utmContent",
-        gclid: "gclid",
-        wbraid: "wbraid",
-        gbraid: "gbraid",
-        fbclid: "fbclid",
-        msclkid: "msclkid",
-        ttclid: "ttclid",
-        twclid: "twclid",
-        li_fat_id: "li_fat_id",
-        amzclid: "amzclid",
-        mc_cid: "mc_cid",
-        mc_eid: "mc_eid"
-      };
-
-      Object.entries(trackingParams).forEach(([urlKey, formKey]) => {
-        const val = searchParams.get(urlKey);
-        if (val) {
-          formData.append(`fi-tracking-${formKey}`, val);
-        }
-      });
-
-      const response = await fetch("https://forminit.com/f/t6libcvtapx", {
-        method: "POST",
-        headers: {
-          "FormInit-SDK-Version": "0.2.3",
-          "Accept": "application/json"
-        },
-        body: formData
-      });
-
-      const resJson = await response.json();
-      console.log("FormInit response:", resJson);
-
-      if (response.ok && resJson.success !== false) {
-        localStorage.setItem("form_last_submission", Date.now().toString());
-        trackEvent("submit", "contact", "contact_form_success");
-
-        setIsSent(true);
-        setTimeout(() => setIsSent(false), 3800);
-
-        toast({
-          title: "Message sent!",
-          description: "Thank you for reaching out. I'll get back to you soon."
-        });
-        setForm({ name: "", email: "", phone: "", subject: "", message: "" });
-        setHoneypot("");
-        pendingFormRef.current = null;
-      } else {
-        toast({
-          title: "Submission failed",
-          description: resJson?.error?.message || resJson?.message || "Something went wrong. Please try again.",
-          variant: "destructive"
-        });
-      }
-    } catch (err) {
-      console.error("Form submission error:", err);
-      toast({
-        title: "Connection failed",
-        description: "Could not reach the server. Please check your internet connection.",
-        variant: "destructive"
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+    const body = `Hi Skerdi,\n\n${dataToSend.message}\n\n${dataToSend.name}\n${dataToSend.email}\n${dataToSend.phone || ""}`;
+    window.location.href = `mailto:skerdi.cacaj.dev@gmail.com?subject=${encodeURIComponent(dataToSend.subject)}&body=${encodeURIComponent(body)}`;
+    toast({ title: "Email draft ready", description: "Complete sending in your email app. Your message stays here until you clear it." });
+    pendingFormRef.current = null;
+    setIsSubmitting(false);
   };
 
   // Initiates the 20-second Undo Send grace period buffer
@@ -561,8 +412,8 @@ export const ContactSection = () => {
       setIsSent(true);
       setTimeout(() => setIsSent(false), 3800);
       toast({
-        title: "Message sent!",
-        description: "Thank you for reaching out. I'll get back to you soon."
+        title: "Email draft ready",
+        description: "Complete sending in your email app."
       });
       setForm({ name: "", email: "", phone: "", subject: "", message: "" });
       setHoneypot("");
@@ -604,7 +455,7 @@ export const ContactSection = () => {
       return;
     }
 
-    // 4. Optional Phone Number Format Validation (auto-formats 10 digits to Indian +91 or validates international)
+    // 4. Optional Phone Number Format Validation (auto-formats Albanian local numbers or validates international)
     const trimmedPhone = form.phone.trim();
     if (trimmedPhone.length > 0) {
       const e164Phone = formatToE164(trimmedPhone);
@@ -612,7 +463,7 @@ export const ContactSection = () => {
       if (!e164Regex.test(e164Phone)) {
         toast({
           title: "Invalid Phone Number",
-          description: "Please enter a valid 10-digit mobile number or international number with country code.",
+          description: "Please enter a valid phone number with country code, for example +355 67 64 29 267.",
           variant: "destructive"
         });
         return;
@@ -713,8 +564,8 @@ export const ContactSection = () => {
     trackEvent("undo", "contact", "contact_form_undone");
 
     toast({
-      title: "Send Cancelled ↩️",
-      description: "Your message was not sent. You can edit and send whenever you're ready."
+      title: "Draft Cancelled ↩️",
+      description: "You can edit your message and prepare the email when ready."
     });
   };
 
@@ -727,10 +578,10 @@ export const ContactSection = () => {
   };
 
   const generateMailtoUrl = (customSubject?: string, customBody?: string) => {
-    const subject = customSubject || (form.subject.trim() ? form.subject.trim() : "Project Collaboration / Career Opportunity - Mohan Reddy");
+    const subject = customSubject || (form.subject.trim() ? form.subject.trim() : "Project Collaboration / Career Opportunity - Skerdi Cacaj");
     const body = customBody || (form.message.trim()
-      ? `Hi Mohan,\n\n${form.message.trim()}\n\nBest regards,\n${form.name.trim() || "[Your Name]"}\n${form.email.trim() || ""}`
-      : `Hi Mohan,\n\nI came across your portfolio and would like to connect regarding an opportunity / project collaboration.\n\nProject / Role Details:\n- Company / Organization: \n- Role / Project Scope: \n- Location / Work Mode (Remote / Hybrid / Onsite): \n- Timeline / Expected Start: \n\nPlease let me know your availability for a brief discussion.\n\nBest regards,\n${form.name.trim() || "[Your Name]"}\n${form.email.trim() || ""}`);
+      ? `Hi Skerdi,\n\n${form.message.trim()}\n\nBest regards,\n${form.name.trim() || "[Your Name]"}\n${form.email.trim() || ""}`
+      : `Hi Skerdi,\n\nI came across your portfolio and would like to connect regarding an opportunity / project collaboration.\n\nProject / Role Details:\n- Company / Organization: \n- Role / Project Scope: \n- Location / Work Mode (Remote / Hybrid / Onsite): \n- Timeline / Expected Start: \n\nPlease let me know your availability for a brief discussion.\n\nBest regards,\n${form.name.trim() || "[Your Name]"}\n${form.email.trim() || ""}`);
     return `mailto:${emailInfo.address}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
@@ -738,7 +589,7 @@ export const ContactSection = () => {
     {
       id: "email",
       label: "Email Me",
-      value: "madhiremohanreddy@gmail.com",
+      value: "skerdi.cacaj.dev@gmail.com",
       icon: <Mail className="w-5 h-5 text-orange-500 dark:text-orange-400" />,
       iconBoxClass: "bg-orange-500/10 border-orange-500/30 text-orange-500 dark:bg-[#1E1714] dark:text-orange-400 shadow-[0_0_15px_rgba(249,115,22,0.15)]",
       arrowClass: "text-orange-500 border-orange-500/30 bg-orange-500/10 group-hover:bg-orange-500 group-hover:text-white dark:group-hover:text-black group-hover:border-orange-500",
@@ -748,43 +599,39 @@ export const ContactSection = () => {
     {
       id: "linkedin",
       label: "LinkedIn",
-      value: "/in/mmohanreddy",
+      value: "/in/skerdi-cacaj",
       icon: <Linkedin className="w-5 h-5 text-sky-600 dark:text-sky-400" />,
       iconBoxClass: "bg-sky-500/10 border-sky-500/30 text-sky-600 dark:bg-[#0E1A29] dark:text-sky-400 shadow-[0_0_15px_rgba(14,165,233,0.15)]",
       arrowClass: "text-sky-600 dark:text-sky-400 border-sky-500/30 bg-sky-500/10 group-hover:bg-sky-500 group-hover:text-white dark:group-hover:text-black group-hover:border-sky-500",
-      href: "https://www.linkedin.com/in/mmohanreddy/",
+      href: "https://www.linkedin.com/in/skerdi-cacaj/",
       trackType: "linkedin_contact"
     },
     {
       id: "github",
       label: "GitHub",
-      value: "ComradeMohan",
+      value: "skerdiD",
       icon: <Github className="w-5 h-5 text-purple-600 dark:text-purple-400" />,
       iconBoxClass: "bg-purple-500/10 border-purple-500/30 text-purple-600 dark:bg-[#181426] dark:text-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.15)]",
       arrowClass: "text-purple-600 dark:text-purple-400 border-purple-500/30 bg-purple-500/10 group-hover:bg-purple-500 group-hover:text-white dark:group-hover:text-black group-hover:border-purple-500",
-      href: "https://github.com/ComradeMohan",
+      href: "https://github.com/skerdiD",
       trackType: "github_contact"
     },
     {
       id: "resume",
-      label: "Download Resume",
+      label: "View Resume",
       value: "View my latest resume",
       icon: <FileText className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />,
       iconBoxClass: "bg-emerald-500/10 border-emerald-500/30 text-emerald-600 dark:bg-[#0F221B] dark:text-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.15)]",
       arrowClass: "text-emerald-600 dark:text-emerald-400 border-emerald-500/30 bg-emerald-500/10 group-hover:bg-emerald-500 group-hover:text-white dark:group-hover:text-black group-hover:border-emerald-500",
-      href: "/mohan_resume_.pdf",
+      href: "/resume",
       trackType: "resume_contact"
     },
     {
-      id: "leetcode",
-      label: "LeetCode",
-      value: `${lcTotalSolved}+ Solved • Rating ${lcContestRating}`,
-      icon: <img src="/icons/leetcode-orange.svg" alt="LeetCode" className="w-5 h-5 object-contain" />,
+      id: "phone", label: "Phone", value: "+355 67 64 29 267",
+      icon: <Phone className="w-5 h-5 object-contain" />,
       iconBoxClass: "bg-amber-500/10 border-amber-500/30 text-amber-500 dark:bg-[#1E1912] dark:text-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.15)]",
-      arrowClass: "text-amber-500 dark:text-amber-400 border-amber-500/30 bg-amber-500/10 group-hover:bg-amber-500 group-hover:text-white dark:group-hover:text-black group-hover:border-amber-500",
-      href: "https://leetcode.com/u/Comrademohan",
-      trackType: "leetcode_contact",
-      mobileOnly: true
+      arrowClass: "text-amber-500 border-amber-500/30 bg-amber-500/10 group-hover:bg-amber-500 group-hover:text-white dark:group-hover:text-black group-hover:border-amber-500",
+      href: "tel:+355676429267", trackType: "phone_contact", mobileOnly: true
     }
   ];
 
@@ -823,7 +670,7 @@ export const ContactSection = () => {
           <img src={user.avatar} alt={user.name} className="w-12 h-12 rounded-full border border-purple-500/40 object-cover shrink-0" />
           <div>
             <h4 className="text-sm font-extrabold text-foreground leading-tight">{user.name}</h4>
-            <p className="text-xs text-orange-500 font-grotesk mt-0.5 leading-none">@ComradeMohan</p>
+            <p className="text-xs text-orange-500 font-grotesk mt-0.5 leading-none">@skerdiD</p>
             <span className="text-[10px] text-muted-foreground flex items-center gap-1 mt-1 font-grotesk">
               <MapPin className="w-3 h-3 text-purple-500" /> {user.location}
             </span>
@@ -836,16 +683,16 @@ export const ContactSection = () => {
 
         <div className="grid grid-cols-3 gap-2 py-2 border-y border-border text-center font-grotesk">
           <div>
-            <span className="block text-xs font-bold text-foreground">{user.publicRepos ?? 99}</span>
+            <span className="block text-xs font-bold text-foreground">{user.publicRepos ?? "—"}</span>
             <span className="text-[9px] text-muted-foreground uppercase tracking-wider">Repos</span>
           </div>
           <div>
-            <span className="block text-xs font-bold text-foreground">{user.followers ?? 13}</span>
+            <span className="block text-xs font-bold text-foreground">{user.followers ?? "—"}</span>
             <span className="text-[9px] text-muted-foreground uppercase tracking-wider">Followers</span>
           </div>
           <div>
             <span className="block text-xs font-bold text-orange-500 dark:text-orange-400">
-              {user.streak || "229 Days"}
+              {user.streak || "—"}
             </span>
             <span className="text-[9px] text-muted-foreground uppercase tracking-wider">Streak</span>
           </div>
@@ -883,9 +730,10 @@ export const ContactSection = () => {
           <div className="relative shrink-0">
             <img
               src={linkedinAvatar}
-              alt="Mohan Reddy LinkedIn Avatar"
+              alt="Skerdi Cacaj LinkedIn Avatar"
               onError={(e) => {
-                (e.target as HTMLImageElement).src = "/mohan-reddy-full-stack-developer.webp";
+                (e.target as HTMLImageElement).onerror = null;
+                (e.target as HTMLImageElement).src = "/placeholder.svg";
               }}
               className="w-16 h-16 rounded-full border-2 border-orange-500/80 shadow-[0_0_15px_rgba(249,115,22,0.4)] object-cover bg-slate-100 dark:bg-[#181a20] p-0.5"
             />
@@ -895,19 +743,19 @@ export const ContactSection = () => {
           <div className="min-w-0 flex-1">
             <div className="flex items-center gap-1.5">
               <h4 className="text-base font-extrabold text-foreground tracking-tight truncate">
-                Mohan Reddy
+                Skerdi Cacaj
               </h4>
               <ShieldCheck className="w-4 h-4 text-amber-500 shrink-0" />
             </div>
             <p className="text-xs text-muted-foreground font-grotesk leading-tight mt-0.5 truncate">
-              Full Stack Developer &amp; Software Engineer
+              Full-Stack Developer
             </p>
             <div className="flex items-center gap-1.5 text-[11px] text-muted-foreground font-grotesk mt-1.5">
               <span className="font-semibold text-foreground">React</span>
               <span>•</span>
               <span className="font-semibold text-foreground">Node.js</span>
               <span>•</span>
-              <span className="font-semibold text-foreground">AWS</span>
+              <span className="font-semibold text-foreground">NestJS</span>
             </div>
           </div>
         </div>
@@ -919,19 +767,19 @@ export const ContactSection = () => {
         <div className="space-y-2 text-xs text-foreground font-grotesk">
           <div className="flex items-center gap-2.5">
             <Briefcase className="w-4 h-4 text-sky-500 dark:text-sky-400 shrink-0" />
-            <span className="truncate">Saveetha School of Engineering (SIMATS)</span>
+            <span className="truncate">University of New York Tirana (UNYT)</span>
           </div>
           <div className="flex items-center gap-2.5">
             <GraduationCap className="w-4 h-4 text-sky-500 dark:text-sky-400 shrink-0" />
-            <span>B.Tech CSE • 2026</span>
+            <span>Bachelor in Computer Science • 2023 – 2026</span>
           </div>
           <div className="flex items-center gap-2.5">
             <MapPin className="w-4 h-4 text-sky-500 dark:text-sky-400 shrink-0" />
-            <span className="truncate">Chennai, Tamil Nadu, India</span>
+            <span className="truncate">Tirana, Albania</span>
           </div>
           <div className="flex items-center gap-2.5">
             <Users className="w-4 h-4 text-sky-500 dark:text-sky-400 shrink-0" />
-            <span>153 connections</span>
+            <span>Albanian — Native • English — B2</span>
           </div>
         </div>
 
@@ -945,7 +793,7 @@ export const ContactSection = () => {
               Open to Opportunities
             </div>
             <div className="text-[11px] text-slate-600 dark:text-muted-foreground font-grotesk leading-tight mt-0.5 truncate">
-              SDE Internships &amp; Fresher Roles
+              Full-Stack Developer
             </div>
           </div>
         </div>
@@ -1022,16 +870,16 @@ export const ContactSection = () => {
           <div className="w-[88px] h-[116px] bg-white rounded-lg border border-slate-200 dark:border-slate-700 shadow-[0_4px_12px_rgba(0,0,0,0.15)] shrink-0 p-2 flex flex-col justify-between select-none relative overflow-hidden">
             {/* Top Red PDF Tag */}
             <div className="absolute top-0 right-0 bg-red-600 text-white text-[6px] font-extrabold px-1.5 py-0.5 rounded-bl shadow-xs font-mono uppercase tracking-wider">
-              PDF
+              CV
             </div>
 
             {/* Document Header */}
             <div>
               <div className="text-[7.5px] font-extrabold text-slate-900 leading-tight tracking-tight">
-                MOHAN REDDY
+                SKERDI CACAJ
               </div>
               <div className="text-[5.5px] font-medium text-slate-500 leading-none mt-0.5">
-                Full Stack Developer
+                Full-Stack Developer
               </div>
               <div className="w-full h-[1px] bg-slate-300 my-1" />
             </div>
@@ -1044,7 +892,7 @@ export const ContactSection = () => {
                 <div className="w-4/5 h-[2px] bg-slate-200 rounded-[1px] mt-0.5" />
               </div>
               <div>
-                <div className="text-[5px] font-bold text-slate-800 uppercase tracking-wide">Experience &amp; Projects</div>
+                <div className="text-[5px] font-bold text-slate-800 uppercase tracking-wide">Skills &amp; Projects</div>
                 <div className="w-full h-[2.5px] bg-slate-300 rounded-[1px] mt-0.5" />
                 <div className="w-3/4 h-[2px] bg-slate-200 rounded-[1px] mt-0.5" />
               </div>
@@ -1067,9 +915,9 @@ export const ContactSection = () => {
               </p>
             </div>
             <div>
-              <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider block font-outfit">Experience</span>
+              <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider block font-outfit">Focus</span>
               <p className="text-muted-foreground text-[11px] leading-tight mt-0.5">
-                {resumeInfo.experience}
+                {resumeInfo.focus}
               </p>
             </div>
           </div>
@@ -1089,11 +937,11 @@ export const ContactSection = () => {
         <div className="grid grid-cols-2 gap-2 font-grotesk">
           <Button asChild variant="outline" className="rounded-xl text-xs py-2.5 h-auto flex items-center justify-center gap-1.5 border-emerald-500/40 bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 hover:bg-emerald-500/20 hover:text-emerald-700 dark:hover:text-emerald-200 shadow-2xs">
             <a href={resumeInfo.previewUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-1.5">
-              <Eye className="w-3.5 h-3.5" /> Preview PDF
+              <Eye className="w-3.5 h-3.5" /> View Resume
             </a>
           </Button>
           <Button asChild className="rounded-xl text-xs py-2.5 h-auto bg-emerald-500 hover:bg-emerald-600 text-white font-bold shadow-md">
-            <a href={resumeInfo.downloadUrl} download className="flex items-center justify-center gap-1.5">
+            <a href={resumeInfo.downloadUrl} className="flex items-center justify-center gap-1.5">
               <Download className="w-3.5 h-3.5" /> Download
             </a>
           </Button>
@@ -1102,160 +950,8 @@ export const ContactSection = () => {
     );
   };
 
-  const renderLeetcodeContent = () => {
-    const rawLangData = leetcodeData?.skill?.languageProblemCount;
-    const javaCount = rawLangData?.find((l: any) => l.languageName === "Java")?.problemsSolved ?? 419;
-    const mysqlCount = rawLangData?.find((l: any) => l.languageName === "MySQL")?.problemsSolved ?? 40;
-    const pythonCount = rawLangData?.find((l: any) => l.languageName?.toLowerCase().includes("python"))?.problemsSolved ?? 14;
-
-    return (
-      <div className="w-full text-left space-y-4 font-outfit text-foreground">
-        {/* Profile Card Header */}
-        <div className="flex items-center justify-between pb-3 border-b border-border/80">
-          <div className="flex items-center gap-3">
-            <div className="relative shrink-0">
-              <img
-                src={lcAvatar}
-                alt={`${lcName} LeetCode Avatar`}
-                className="w-12 h-12 rounded-2xl border border-amber-500/40 object-cover shadow-[0_0_15px_rgba(245,158,11,0.25)] bg-white dark:bg-[#181a20]"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = "/mohan-reddy-full-stack-developer.webp";
-                }}
-              />
-              <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-md bg-white dark:bg-[#181a20] border border-amber-500/40 flex items-center justify-center p-0.5 shadow-sm">
-                <img src="/icons/leetcode-orange.svg" alt="LC" className="w-3.5 h-3.5 object-contain" />
-              </div>
-            </div>
-            <div>
-              <div className="flex items-center gap-1.5">
-                <h4 className="text-sm font-extrabold text-foreground leading-tight">{lcName}</h4>
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_#10b981]" title="Active Solver" />
-              </div>
-              <p className="text-xs text-amber-600 dark:text-amber-400 font-grotesk mt-0.5 leading-none font-bold">@ComradeMohan</p>
-              <span className="text-[10px] text-muted-foreground flex items-center gap-1 mt-1 font-grotesk">
-                LeetCode Problem Solver
-              </span>
-            </div>
-          </div>
-          <div className="text-right flex flex-col items-end gap-1.5">
-            <span className="px-2.5 py-1 rounded-full text-[11px] font-extrabold bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/30 font-grotesk inline-flex items-center gap-1 shadow-xs">
-              <Flame className="w-3 h-3 text-amber-500 fill-amber-500" />
-              {isLeetcodeLoading ? (
-                <Loader2 className="w-3 h-3 animate-spin text-amber-500" />
-              ) : (
-                `${lcTotalSolved} Solved`
-              )}
-            </span>
-            <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-orange-500/15 text-orange-600 dark:text-orange-400 border border-orange-500/30 font-grotesk inline-flex items-center gap-1 shadow-xs">
-              <Flame className="w-2.5 h-2.5 text-orange-500 fill-orange-500 animate-pulse" />
-              {lcStreak} Days Streak
-            </span>
-          </div>
-        </div>
-
-        {/* Problem Breakdown Stats Grid */}
-        <div className="grid grid-cols-3 gap-2.5 text-center font-grotesk">
-          <div className="p-3 rounded-2xl bg-emerald-500/10 dark:bg-emerald-950/20 border border-emerald-500/25 shadow-xs">
-            <span className="block text-base font-extrabold text-emerald-700 dark:text-emerald-400">
-              {isLeetcodeLoading ? "-" : lcEasySolved}
-            </span>
-            <span className="text-[10px] text-emerald-700/80 dark:text-emerald-400/80 uppercase font-bold tracking-wider">
-              Easy
-            </span>
-          </div>
-          <div className="p-3 rounded-2xl bg-amber-500/10 dark:bg-amber-950/20 border border-amber-500/25 shadow-xs">
-            <span className="block text-base font-extrabold text-amber-700 dark:text-amber-400">
-              {isLeetcodeLoading ? "-" : lcMediumSolved}
-            </span>
-            <span className="text-[10px] text-amber-700/80 dark:text-amber-400/80 uppercase font-bold tracking-wider">
-              Medium
-            </span>
-          </div>
-          <div className="p-3 rounded-2xl bg-rose-500/10 dark:bg-rose-950/20 border border-rose-500/25 shadow-xs">
-            <span className="block text-base font-extrabold text-rose-700 dark:text-rose-400">
-              {isLeetcodeLoading ? "-" : lcHardSolved}
-            </span>
-            <span className="text-[10px] text-rose-700/80 dark:text-rose-400/80 uppercase font-bold tracking-wider">
-              Hard
-            </span>
-          </div>
-        </div>
-
-        {/* Contest & Language Highlights */}
-        <div className="grid grid-cols-2 gap-2.5 text-xs font-grotesk">
-          <div className="p-3 rounded-2xl bg-secondary/50 dark:bg-black/30 border border-border/70 space-y-1">
-            <div className="flex items-center gap-1.5 text-muted-foreground">
-              <Trophy className="w-3.5 h-3.5 text-yellow-500" />
-              <span className="text-[10px] uppercase font-bold tracking-wider">Contest Rating</span>
-            </div>
-            <div className="flex items-baseline gap-1.5">
-              <span className="text-sm font-extrabold text-foreground">{lcContestRating}</span>
-              <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold">Top {lcTopPercentage}</span>
-            </div>
-          </div>
-          <div className="p-3 rounded-2xl bg-secondary/50 dark:bg-black/30 border border-border/70 space-y-1">
-            <div className="flex items-center gap-1.5 text-muted-foreground">
-              <Code2 className="w-3.5 h-3.5 text-orange-500" />
-              <span className="text-[10px] uppercase font-bold tracking-wider">Primary Stack</span>
-            </div>
-            <div className="flex items-center gap-1.5 pt-0.5 font-grotesk text-foreground flex-wrap">
-              <div className="inline-flex items-center gap-1 group/lang cursor-default" title={`Java: ${javaCount} solved`}>
-                <JavaIcon className="w-4 h-4 sm:w-4.5 sm:h-4.5 shrink-0 transition-transform group-hover/lang:scale-110" />
-                <span className="text-xs font-extrabold text-foreground">{javaCount}</span>
-              </div>
-              <span className="text-muted-foreground/40 text-[9px]">•</span>
-              <div className="inline-flex items-center gap-1 group/lang cursor-default" title={`MySQL: ${mysqlCount} solved`}>
-                <MySQLIcon className="w-4 h-4 sm:w-4.5 sm:h-4.5 shrink-0 transition-transform group-hover/lang:scale-110" />
-                <span className="text-xs font-extrabold text-foreground">{mysqlCount}</span>
-              </div>
-              <span className="text-muted-foreground/40 text-[9px]">•</span>
-              <div className="inline-flex items-center gap-1 group/lang cursor-default" title={`Python: ${pythonCount} solved`}>
-                <PythonIcon className="w-4 h-4 sm:w-4.5 sm:h-4.5 shrink-0 transition-transform group-hover/lang:scale-110" />
-                <span className="text-xs font-extrabold text-foreground">{pythonCount}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Focus topics tags */}
-        <div className="space-y-1.5">
-          <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider block font-grotesk">
-            Key Focus Areas
-          </span>
-          <div className="flex flex-wrap gap-1.5">
-            {leetcodeInfo.topics.map(t => (
-              <span key={t} className="text-[10px] font-semibold px-2.5 py-1 rounded-lg bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/25 font-grotesk">
-                {t}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* Action Button - High Contrast & Clean in both Light & Dark Theme */}
-        <Button
-          asChild
-          className="w-full rounded-2xl text-xs py-3.5 h-auto font-outfit font-extrabold bg-gradient-to-r from-[#FFA116] via-[#FF7A00] to-[#FFA116] hover:from-[#FF7A00] hover:to-[#E56800] !text-white text-white shadow-[0_4px_18px_rgba(255,140,0,0.38)] hover:shadow-[0_6px_25px_rgba(255,140,0,0.58)] transition-all duration-300 group/btn cursor-pointer border border-amber-300/40"
-        >
-          <a
-            href={leetcodeInfo.profileUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2.5 !text-white text-white"
-          >
-            <div className="w-6 h-6 rounded-lg bg-black/20 dark:bg-black/30 border border-white/25 flex items-center justify-center shrink-0">
-              <LeetCodeIcon className="w-4 h-4 text-white transition-transform group-hover/btn:scale-110" />
-            </div>
-            <span className="tracking-wide text-[13px] font-bold !text-white text-white">
-              Open LeetCode Profile
-            </span>
-            <ExternalLink className="w-3.5 h-3.5 !text-white text-white transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
-          </a>
-        </Button>
-      </div>
-    );
-  };
-
   const handleCardInteractionStart = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    if (id === "phone") return;
     if (isMobile) return;
     if (closeTimeoutRef.current) {
       clearTimeout(closeTimeoutRef.current);
@@ -1278,6 +974,7 @@ export const ContactSection = () => {
   };
 
   const handleFocus = (e: React.FocusEvent<HTMLAnchorElement>, id: string) => {
+    if (id === "phone") return;
     if (closeTimeoutRef.current) {
       clearTimeout(closeTimeoutRef.current);
       closeTimeoutRef.current = null;
@@ -1305,6 +1002,7 @@ export const ContactSection = () => {
   };
 
   const handleCardClick = (e: React.MouseEvent, method: typeof contactMethods[0]) => {
+    if (method.id === "phone") return;
     if (isMobile) {
       e.preventDefault();
       setActiveBottomSheet(method.id);
@@ -1325,7 +1023,6 @@ export const ContactSection = () => {
       case "linkedin": return { width: 340, height: 420 };
       case "email": return { width: 290, height: 200 };
       case "resume": return { width: 320, height: 310 };
-      case "leetcode": return { width: 310, height: 330 };
       default: return { width: 300, height: 300 };
     }
   };
@@ -1445,7 +1142,7 @@ export const ContactSection = () => {
                   <a
                     key={method.id}
                     href={method.href}
-                    target={method.id !== "email" ? "_blank" : undefined}
+                    target={method.id !== "email" && method.id !== "phone" ? "_blank" : undefined}
                     rel={method.id !== "email" ? "noopener noreferrer" : undefined}
                     data-contact-card={method.id}
                     className={`p-3.5 rounded-2xl border border-border/60 bg-secondary/30 dark:bg-black/20 hover:border-orange-500/40 hover:bg-secondary/60 transition-all duration-300 flex items-center justify-between group cursor-pointer select-none ${method.mobileOnly ? "sm:hidden" : ""}`}
@@ -1454,7 +1151,7 @@ export const ContactSection = () => {
                     onMouseLeave={handleCardInteractionEnd}
                     onFocus={(e) => handleFocus(e, method.id)}
                     onBlur={() => setFocusedCard(null)}
-                    aria-haspopup="dialog"
+                    aria-haspopup={method.id === "phone" ? undefined : "dialog"}
                     aria-expanded={activeId === method.id}
                     aria-label={`${method.label} Card - Press Escape to close preview`}
                   >
@@ -1485,10 +1182,10 @@ export const ContactSection = () => {
                   </span>
                 </div>
                 <p className="text-xs sm:text-sm text-muted-foreground font-grotesk leading-snug">
-                  Actively looking for Full Stack Developer & Software Engineer roles.
+                  Actively looking for Full-Stack Developer roles.
                 </p>
                 <div className="flex flex-wrap gap-2 pt-0.5">
-                  {["Full Time", "Internships", "Remote", "On-site"].map((tag) => (
+                  {["Full Time", "Collaboration", "Remote", "On-site"].map((tag) => (
                     <span
                       key={tag}
                       className="text-xs font-medium px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-300 border border-emerald-500/30 font-grotesk"
@@ -1563,7 +1260,7 @@ export const ContactSection = () => {
                         <input
                           type="text"
                           name="fi-sender-fullName"
-                          placeholder="e.g. Mohan Reddy"
+                          placeholder="e.g. Skerdi Cacaj"
                           value={form.name}
                           onChange={(e) => setForm({ ...form, name: e.target.value })}
                           onFocus={() => setFocusedField("name")}
@@ -1611,7 +1308,7 @@ export const ContactSection = () => {
                         <input
                           type="email"
                           name="fi-sender-email"
-                          placeholder="e.g. mohanreddy@gmail.com"
+                          placeholder="e.g. your.name@example.com"
                           value={form.email}
                           onChange={(e) => setForm({ ...form, email: e.target.value })}
                           onFocus={() => setFocusedField("email")}
@@ -1664,7 +1361,7 @@ export const ContactSection = () => {
                         <input
                           type="tel"
                           name="fi-sender-phone"
-                          placeholder="e.g. +91 98765 43210"
+                          placeholder="e.g. +355 67 64 29 267"
                           value={form.phone}
                           onChange={(e) => setForm({ ...form, phone: e.target.value })}
                           onFocus={() => setFocusedField("phone")}
@@ -1843,7 +1540,7 @@ export const ContactSection = () => {
                             </div>
                           </div>
 
-                          {/* Right: Actions (Undo & Send Immediately) */}
+                          {/* Right: Actions (Undo & Open Email Now) */}
                           <div className="flex items-center gap-2 shrink-0 justify-end">
                             <Button
                               type="button"
@@ -1863,7 +1560,7 @@ export const ContactSection = () => {
                               className="flex-1 min-[480px]:flex-initial h-8 px-3 sm:px-3.5 rounded-lg bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-outfit font-bold text-xs flex items-center justify-center gap-1 shadow-[0_0_15px_rgba(249,115,22,0.35)] cursor-pointer"
                             >
                               <Zap className="w-3.5 h-3.5 fill-current" />
-                              <span>Send Now</span>
+                              <span>Open Email</span>
                             </Button>
                           </div>
                         </div>
@@ -1917,7 +1614,6 @@ export const ContactSection = () => {
             {activeId === "linkedin" && renderLinkedinContent()}
             {activeId === "email" && renderEmailContent()}
             {activeId === "resume" && renderResumeContent()}
-            {activeId === "leetcode" && renderLeetcodeContent()}
           </motion.div>
         )}
       </AnimatePresence>
@@ -1960,8 +1656,7 @@ export const ContactSection = () => {
                     {activeBottomSheet === "github" && "GitHub Profile Preview"}
                     {activeBottomSheet === "linkedin" && "LinkedIn Profile Preview"}
                     {activeBottomSheet === "email" && "Email Quick Actions"}
-                    {activeBottomSheet === "resume" && "Resume & Experience"}
-                    {activeBottomSheet === "leetcode" && "LeetCode Profile Preview"}
+                    {activeBottomSheet === "resume" && "Resume & Skills"}
                   </h3>
                   <p className="text-[10px] text-muted-foreground font-grotesk mt-0.5">
                     Swipe down to close
@@ -1982,7 +1677,6 @@ export const ContactSection = () => {
                 {activeBottomSheet === "linkedin" && renderLinkedinContent()}
                 {activeBottomSheet === "email" && renderEmailContent()}
                 {activeBottomSheet === "resume" && renderResumeContent()}
-                {activeBottomSheet === "leetcode" && renderLeetcodeContent()}
               </div>
 
               <Button
@@ -2086,7 +1780,7 @@ const LiquidWaveButton = ({
             <div className="w-6 h-6 rounded-full bg-emerald-500/20 border border-emerald-600 dark:border-emerald-400 flex items-center justify-center">
               <Check className="w-4 h-4 text-emerald-700 dark:text-emerald-300 stroke-[3]" />
             </div>
-            <span className="text-base tracking-tight font-extrabold">Message Sent!</span>
+            <span className="text-base tracking-tight font-extrabold">Email Draft Ready</span>
             {/* Success Celebration Sparkles */}
             <motion.span
               animate={{ opacity: [0, 1, 0], y: [-4, -14] }}
@@ -2105,7 +1799,7 @@ const LiquidWaveButton = ({
             className="flex items-center gap-2.5 z-10 text-white font-bold"
           >
             <Loader2 className="w-5 h-5 text-white animate-spin" />
-            <span className="text-base tracking-tight font-extrabold">Sending...</span>
+            <span className="text-base tracking-tight font-extrabold">Preparing...</span>
           </motion.div>
         ) : (
           <motion.div
@@ -2116,7 +1810,7 @@ const LiquidWaveButton = ({
             className="flex items-center gap-3 z-10 text-foreground group-hover:text-orange-500 transition-colors"
           >
             <Send className="w-4 h-4 text-orange-500 transition-transform group-hover:scale-110 group-hover:translate-x-0.5" />
-            <span className="font-extrabold text-base tracking-wide">Send Message</span>
+            <span className="font-extrabold text-base tracking-wide">Prepare Email</span>
           </motion.div>
         )}
       </AnimatePresence>

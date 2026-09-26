@@ -11,7 +11,7 @@ import {
   User, 
   Code2, 
   FolderGit2, 
-  BookOpen, 
+  GraduationCap,
   Send,
   ChevronRight
 } from "lucide-react";
@@ -24,14 +24,14 @@ const navLinks = [
   { label: "About", href: "/#about", icon: User },
   { label: "Skills", href: "/#skills", icon: Code2 },
   { label: "Projects", href: "/#projects", icon: FolderGit2 },
-  { label: "Blog", href: "/blog", icon: BookOpen },
+  { label: "Education", href: "/#education", icon: GraduationCap },
   { label: "Contact", href: "/#contact", icon: Send },
 ];
 
-export const HIRE_ME_MAILTO = `mailto:madhiremohanreddy@gmail.com?subject=${encodeURIComponent(
-  "Hiring Inquiry / SDE Opportunity for Mohan Reddy"
+export const HIRE_ME_MAILTO = `mailto:skerdi.cacaj.dev@gmail.com?subject=${encodeURIComponent(
+  "Hiring Inquiry / SDE Opportunity for Skerdi Cacaj"
 )}&body=${encodeURIComponent(
-  `Hi Mohan,\n\nWe came across your portfolio and would like to discuss an engineering opportunity with you.\n\nOpportunity Overview:\n- Company / Organization: \n- Role / Position: (e.g. SDE Intern / Full-Stack Engineer)\n- Employment Type: (Full-time / Internship / Contract)\n- Location / Work Mode: (Remote / Hybrid / On-site)\n- Estimated Timeline / Start Date: \n\nPlease let us know your availability for a brief introductory conversation.\n\nBest regards,\n[Your Name / Title]\n[Company / LinkedIn]`
+  `Hi Skerdi,\n\nWe came across your portfolio and would like to discuss an engineering opportunity with you.\n\nOpportunity Overview:\n- Company / Organization: \n- Role / Position: (e.g. SDE Intern / Full-Stack Engineer)\n- Employment Type: (Full-time / Internship / Contract)\n- Location / Work Mode: (Remote / Hybrid / On-site)\n- Estimated Timeline / Start Date: \n\nPlease let us know your availability for a brief introductory conversation.\n\nBest regards,\n[Your Name / Title]\n[Company / LinkedIn]`
 )}`;
 
 type NavAnimStage = "dot" | "circle" | "line" | "expanded" | "ready";
@@ -201,9 +201,6 @@ const Navbar = ({ skipEntryAnim = false, introActive = false }: { skipEntryAnim?
       }
       return false;
     }
-    if (href === "/blog") {
-      return location.pathname.startsWith("/blog");
-    }
     return location.pathname === href;
   };
 
@@ -340,8 +337,8 @@ const Navbar = ({ skipEntryAnim = false, introActive = false }: { skipEntryAnim?
               transition={{ duration: 0.3, delay: introActive ? 0 : 0.05, ease: [0.22, 1, 0.36, 1] }}
               className="font-outfit text-xl font-extrabold tracking-wider cursor-pointer select-none whitespace-nowrap shrink-0"
             >
-              <span className="text-[#FF5722] drop-shadow-[0_0_8px_rgba(255,87,34,0.4)]">MOHAN</span>{" "}
-              <span className="text-foreground dark:text-white">REDDY</span>
+              <span className="text-[#FF5722] drop-shadow-[0_0_8px_rgba(255,87,34,0.4)]">SKERDI</span>{" "}
+              <span className="text-foreground dark:text-white">CACAJ</span>
             </motion.a>
 
             {/* Desktop Navigation Links */}

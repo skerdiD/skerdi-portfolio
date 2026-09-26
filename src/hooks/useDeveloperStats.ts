@@ -2,19 +2,19 @@ import { useQuery } from "@tanstack/react-query";
 import fallbackData from "@/data/developerProfileFallback.json";
 
 // Single source of truth for the usernames these stat widgets pull from.
-const GITHUB_USERNAME = "ComradeMohan";
-const GITHUB_PORTFOLIO_REPO = "ComradeMohan/ComradeMohan.github.io";
-const LEETCODE_USERNAME = "ComradeMohan";
+const GITHUB_USERNAME = "skerdiD";
+const GITHUB_PORTFOLIO_REPO = ""; // Set when a portfolio repository is supplied.
+const LEETCODE_USERNAME = ""; // No LeetCode profile supplied.
 const LEETCODE_PIED_API_BASE = "https://leetcode-api-pied.vercel.app/user";
 const LEETCODE_FALLBACK_API_BASE = "https://alfa-leetcode-api.onrender.com";
 
 // Cache Keys for persistent client-side storage
 const CACHE_KEYS = {
-  LEETCODE_STATS: "dev_lc_stats_v4",
-  LEETCODE_DETAILS: "dev_lc_details_v4",
-  GITHUB_STATS: "dev_gh_stats_v4",
-  GITHUB_CONTRIBS: "dev_gh_contrib_v4",
-  LATEST_COMMIT: "dev_latest_commit_v1",
+  LEETCODE_STATS: "skerdiD_dev_lc_stats_v4",
+  LEETCODE_DETAILS: "skerdiD_dev_lc_details_v4",
+  GITHUB_STATS: "skerdiD_dev_gh_stats_v4",
+  GITHUB_CONTRIBS: "skerdiD_dev_gh_contrib_v4",
+  LATEST_COMMIT: "skerdiD_dev_latest_commit_v1",
 };
 
 export interface LeetcodeSubmission {
@@ -46,82 +46,32 @@ const getFallbackCount = (diff: string) => acStats.find((x: any) => x.difficulty
 
 export const DEFAULT_LEETCODE_STATS = {
   baseProfile: {
-    realName: fallbackData.profile?.profile?.realName || "M Mohan Reddy",
-    userAvatar: fallbackData.profile?.profile?.userAvatar || "https://assets.leetcode.com/users/ComradeMohan/avatar_1784641288.png",
-    ranking: fallbackData.profile?.profile?.ranking || 225675,
+    realName: fallbackData.profile?.profile?.realName || "",
+    userAvatar: fallbackData.profile?.profile?.userAvatar || "",
+    ranking: fallbackData.profile?.profile?.ranking || 0,
   },
   profile: {
-    solvedProblem: 426,
-    easySolved: 142,
-    mediumSolved: 219,
-    hardSolved: 65,
+    solvedProblem: 0,
+    easySolved: 0,
+    mediumSolved: 0,
+    hardSolved: 0,
   },
   contest: {
-    contestRating: fallbackData.contests?.userContestRanking?.rating || 1673.33,
-    contestTopPercentage: fallbackData.contests?.userContestRanking?.topPercentage || 16.1,
-    contestGlobalRanking: fallbackData.contests?.userContestRanking?.globalRanking || 138957,
-    contestAttend: fallbackData.contests?.userContestRanking?.attendedContestsCount || 15,
+    contestRating: fallbackData.contests?.userContestRanking?.rating || 0,
+    contestTopPercentage: fallbackData.contests?.userContestRanking?.topPercentage || 0,
+    contestGlobalRanking: fallbackData.contests?.userContestRanking?.globalRanking || 0,
+    contestAttend: fallbackData.contests?.userContestRanking?.attendedContestsCount || 0,
   },
   skill: fallbackData.skills || null,
 };
 
-export const DEFAULT_SUBMISSIONS: LeetcodeSubmission[] = Array.isArray(fallbackData.submissions)
-  ? (fallbackData.submissions as LeetcodeSubmission[]).slice(0, 6)
-  : [
-      { id: "1", title: "Stone Game IX", titleSlug: "stone-game-ix", timestamp: "1786874502", statusDisplay: "Accepted", langName: "Java", runtime: "4 ms", memory: "114 MB" },
-      { id: "2", title: "Longest Subsequence With Non-Zero Bitwise XOR", titleSlug: "longest-subsequence-with-non-zero-bitwise-xor", timestamp: "1786763579", statusDisplay: "Accepted", langName: "Java", runtime: "2 ms", memory: "133 MB" },
-      { id: "3", title: "Maximum Length Substring With Two Occurrences", titleSlug: "maximum-length-substring-with-two-occurrences", timestamp: "1786716065", statusDisplay: "Accepted", langName: "Java", runtime: "1 ms", memory: "43 MB" },
-      { id: "4", title: "Longest Substring of One Repeating Character", titleSlug: "longest-substring-of-one-repeating-character", timestamp: "1786612516", statusDisplay: "Accepted", langName: "Java", runtime: "18 ms", memory: "58 MB" },
-      { id: "5", title: "Combine Two Tables (SQL)", titleSlug: "combine-two-tables", timestamp: "1786020185", statusDisplay: "Accepted", langName: "MySQL", runtime: "320 ms", memory: "0 MB" },
-    ];
+export const DEFAULT_SUBMISSIONS: LeetcodeSubmission[] = [];
 
-export const DEFAULT_CONTEST_HISTORY: LeetcodeContestItem[] = Array.isArray(fallbackData.contests?.userContestRankingHistory)
-  ? (fallbackData.contests.userContestRankingHistory as any[]).filter((x) => x.attended).slice(-4).reverse()
-  : [
-      { attended: true, problemsSolved: 2, totalProblems: 4, rating: 1766.3, ranking: 6093, contest: { title: "Weekly Contest 427", startTime: 1733625000 } },
-      { attended: true, problemsSolved: 1, totalProblems: 4, rating: 1724.1, ranking: 13055, contest: { title: "Weekly Contest 429", startTime: 1734834600 } },
-      { attended: true, problemsSolved: 2, totalProblems: 4, rating: 1673.3, ranking: 20960, contest: { title: "Biweekly Contest 186", startTime: 1783175400 } },
-    ];
+export const DEFAULT_CONTEST_HISTORY: LeetcodeContestItem[] = [];
 
-const rawSkillsCombined = [
-  ...(fallbackData.skills?.fundamental || []),
-  ...(fallbackData.skills?.intermediate || []),
-  ...(fallbackData.skills?.advanced || []),
-];
-export const DEFAULT_SKILLS = rawSkillsCombined.length > 0
-  ? rawSkillsCombined.sort((a, b) => b.problemsSolved - a.problemsSolved)
-  : [
-      { tagName: "Array", problemsSolved: 248 },
-      { tagName: "String", problemsSolved: 115 },
-      { tagName: "Hash Table", problemsSolved: 84 },
-      { tagName: "Sorting", problemsSolved: 74 },
-      { tagName: "Math", problemsSolved: 72 },
-      { tagName: "Dynamic Programming", problemsSolved: 53 },
-      { tagName: "Two Pointers", problemsSolved: 47 },
-      { tagName: "Binary Search", problemsSolved: 46 },
-      { tagName: "Greedy", problemsSolved: 45 },
-      { tagName: "Matrix", problemsSolved: 41 },
-      { tagName: "Database", problemsSolved: 40 },
-      { tagName: "Bit Manipulation", problemsSolved: 36 },
-      { tagName: "Depth-First Search", problemsSolved: 33 },
-      { tagName: "Sliding Window", problemsSolved: 29 },
-      { tagName: "Breadth-First Search", problemsSolved: 27 },
-      { tagName: "Tree", problemsSolved: 26 },
-      { tagName: "Graph Theory", problemsSolved: 26 },
-      { tagName: "Binary Tree", problemsSolved: 24 },
-      { tagName: "Stack", problemsSolved: 21 },
-      { tagName: "Recursion", problemsSolved: 17 },
-      { tagName: "Backtracking", problemsSolved: 16 },
-    ];
+export const DEFAULT_SKILLS: Array<{ tagName: string; problemsSolved: number }> = [];
 
-export const DEFAULT_CALENDAR = fallbackData.calendar || {
-  totalActiveDays: 106,
-  streak: 51,
-  currentStreak: 51,
-  maxStreak: 30,
-  totalSubmissions: 211,
-  submissionCalendar: {},
-};
+export const DEFAULT_CALENDAR = { totalActiveDays: 0, streak: 0, currentStreak: 0, maxStreak: 0, totalSubmissions: 0, submissionCalendar: {} };
 
 export const DEFAULT_LEETCODE_DETAILS = {
   submissions: DEFAULT_SUBMISSIONS,
@@ -131,9 +81,9 @@ export const DEFAULT_LEETCODE_DETAILS = {
 };
 
 export const DEFAULT_GITHUB_STATS = {
-  followers: 13,
-  public_repos: 99,
-  avatar_url: "https://avatars.githubusercontent.com/u/129178102?v=4",
+  followers: null as number | null,
+  public_repos: null as number | null,
+  avatar_url: "https://github.com/skerdiD.png",
   login: GITHUB_USERNAME,
 };
 
@@ -193,12 +143,13 @@ export interface LatestCommit {
 }
 
 /**
- * Fetches the latest commit of the portfolio repo (ComradeMohan.github.io) shown in the footer.
+ * Fetches the latest commit of the portfolio repo (configured portfolio repository) shown in the footer.
  * Instantly initialized from LocalStorage cache and immediately re-syncs with the live GitHub API.
  */
 export function useLatestCommit(queryKeyPrefix: string = "footer") {
   return useQuery<LatestCommit | null>({
     queryKey: [queryKeyPrefix, "latestCommit", GITHUB_PORTFOLIO_REPO],
+    enabled: Boolean(GITHUB_PORTFOLIO_REPO),
     initialData: () => getCachedData<LatestCommit | null>(CACHE_KEYS.LATEST_COMMIT, null),
     initialDataUpdatedAt: 0, // Signals React Query to fetch fresh data immediately on mount
     refetchOnMount: "always",
@@ -234,12 +185,7 @@ export interface GithubContributionsData {
   contributions: Array<{ date: string; count: number; level: number }>;
 }
 
-const DEFAULT_GITHUB_CONTRIBS: GithubContributionsData = {
-  total: { "2023": 128, "2024": 353, "2025": 1663, "2026": 2393 },
-  totalLifetime: 4537,
-  totalThisYear: 2393,
-  contributions: [],
-};
+const DEFAULT_GITHUB_CONTRIBS: GithubContributionsData = { total: {}, totalLifetime: 0, totalThisYear: 0, contributions: [] };
 
 /**
  * Fetches live GitHub contribution calendar and calculates total lifetime & this-year commit stats.
@@ -260,12 +206,12 @@ export function useGithubContributions(queryKeyPrefix: string = "global") {
         const totalMap: Record<string, number> = data.total || {};
         const totalLifetime = Object.values(totalMap).reduce((acc: number, val: any) => acc + (typeof val === "number" ? val : 0), 0);
         const currentYear = new Date().getFullYear().toString();
-        const totalThisYear = totalMap[currentYear] || Object.values(totalMap)[Object.values(totalMap).length - 1] || 2393;
+        const totalThisYear = totalMap[currentYear] || Object.values(totalMap)[Object.values(totalMap).length - 1] || 0;
 
         const result: GithubContributionsData = {
           total: totalMap,
-          totalLifetime: totalLifetime > 0 ? totalLifetime : 4537,
-          totalThisYear: totalThisYear > 0 ? totalThisYear : 2393,
+          totalLifetime: totalLifetime,
+          totalThisYear: totalThisYear,
           contributions: data.contributions || [],
         };
         setCachedData(CACHE_KEYS.GITHUB_CONTRIBS, result);
@@ -285,6 +231,7 @@ export function useGithubContributions(queryKeyPrefix: string = "global") {
 export function useLeetcodeStats(queryKeyPrefix: string = "global") {
   return useQuery({
     queryKey: [queryKeyPrefix, "leetcodeStats", LEETCODE_USERNAME],
+    enabled: Boolean(LEETCODE_USERNAME),
     initialData: () => getCachedData(CACHE_KEYS.LEETCODE_STATS, DEFAULT_LEETCODE_STATS),
     initialDataUpdatedAt: 0, // Signals React Query to fetch fresh data immediately on mount
     refetchOnMount: "always",
@@ -426,6 +373,7 @@ export function computeCalendarStats(rawCalendar: any) {
 export function useLeetcodeDetails(queryKeyPrefix: string = "details") {
   return useQuery({
     queryKey: [queryKeyPrefix, "leetcodeDetails", LEETCODE_USERNAME],
+    enabled: Boolean(LEETCODE_USERNAME),
     initialData: () => getCachedData(CACHE_KEYS.LEETCODE_DETAILS, DEFAULT_LEETCODE_DETAILS),
     initialDataUpdatedAt: 0, // Signals React Query to fetch fresh data immediately on mount
     refetchOnMount: "always",

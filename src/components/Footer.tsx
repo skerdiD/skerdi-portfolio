@@ -651,7 +651,7 @@ const IndiaMap = () => {
         viewBox="0 0 180 220"
         role="img"
         className="w-full h-full text-foreground/40 dark:text-foreground/30 transition-colors duration-300 group-hover:text-foreground/60"
-        aria-label="Dot matrix map of India highlighting Hyderabad, Telangana"
+        aria-hidden="true"
       >
         <defs>
           <filter id="glow" x="-100%" y="-100%" width="300%" height="300%">
@@ -727,7 +727,7 @@ const IndiaMap = () => {
         </g>
       </svg>
 
-      {/* Animated Radar Beacon on Hyderabad, Telangana */}
+      {/* Animated Radar Beacon on Tirana */}
       <div
         className="absolute pointer-events-none"
         style={{
@@ -819,7 +819,7 @@ const Footer = () => {
             {/* 1. Identity & Signature Bio Section (Mobile: full, SM: Col 1, LG: Cols 1-4) */}
             <div className="sm:col-span-1 lg:col-span-4 flex flex-col justify-center lg:pr-4">
               <h3 className="font-signature text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent leading-tight tracking-wide">
-                Mohan Reddy
+                Skerdi Cacaj
               </h3>
               <p className="text-[11px] sm:text-xs text-muted-foreground font-grotesk mt-0.5 leading-snug">
                 Building solutions that make an impact.
@@ -835,38 +835,28 @@ const Footer = () => {
                 </span>
                 <div className="flex items-center gap-1.5">
                   <a
-                    href="https://github.com/ComradeMohan"
+                    href="https://github.com/skerdiD"
                     target="_blank"
                     rel="noopener noreferrer me"
-                    aria-label="Mohan Reddy's GitHub Profile"
+                    aria-label="Skerdi Cacaj's GitHub Profile"
                     onClick={() => trackEvent("click", "social", "github_footer")}
                     className="w-7 h-7 sm:w-7.5 sm:h-7.5 lg:w-8 lg:h-8 rounded-lg bg-secondary/70 hover:bg-secondary text-foreground hover:text-primary transition-all duration-300 flex items-center justify-center group"
                   >
                     <Github className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:scale-110 transition-transform" />
                   </a>
                   <a
-                    href="https://www.linkedin.com/in/mmohanreddy/"
+                    href="https://www.linkedin.com/in/skerdi-cacaj/"
                     target="_blank"
                     rel="noopener noreferrer me"
-                    aria-label="Mohan Reddy's LinkedIn Profile"
+                    aria-label="Skerdi Cacaj's LinkedIn Profile"
                     onClick={() => trackEvent("click", "social", "linkedin_footer")}
                     className="w-7 h-7 sm:w-7.5 sm:h-7.5 lg:w-8 lg:h-8 rounded-lg bg-secondary/70 hover:bg-secondary text-foreground hover:text-primary transition-all duration-300 flex items-center justify-center group"
                   >
                     <Linkedin className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:scale-110 transition-transform" />
                   </a>
                   <a
-                    href="https://x.com/ComradeMohan"
-                    target="_blank"
-                    rel="noopener noreferrer me"
-                    aria-label="Mohan Reddy's Twitter / X Profile"
-                    onClick={() => trackEvent("click", "social", "twitter_footer")}
-                    className="w-7 h-7 sm:w-7.5 sm:h-7.5 lg:w-8 lg:h-8 rounded-lg bg-secondary/70 hover:bg-secondary text-foreground hover:text-primary transition-all duration-300 flex items-center justify-center group"
-                  >
-                    <Twitter className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:scale-110 transition-transform" />
-                  </a>
-                  <a
-                    href="mailto:madhiremohanreddy@gmail.com"
-                    aria-label="Send Email to Mohan Reddy"
+                    href="mailto:skerdi.cacaj.dev@gmail.com"
+                    aria-label="Send Email to Skerdi Cacaj"
                     onClick={() => trackEvent("click", "contact", "email_footer")}
                     className="w-7 h-7 sm:w-7.5 sm:h-7.5 lg:w-8 lg:h-8 rounded-lg bg-secondary/70 hover:bg-secondary text-foreground hover:text-primary transition-all duration-300 flex items-center justify-center group"
                   >
@@ -906,7 +896,7 @@ const Footer = () => {
                   <div className="flex items-center gap-1.5">
                     <GitCommitHorizontal className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-muted-foreground flex-shrink-0" />
                     <span className="font-mono text-[10px] sm:text-[11px] text-muted-foreground font-grotesk">
-                      Fetching latest commit…
+                      Building complete web applications
                     </span>
                   </div>
                 )}
@@ -918,14 +908,14 @@ const Footer = () => {
               <IndiaMap />
               <div className="flex flex-col text-left">
                 <span className="font-outfit font-semibold text-[11px] sm:text-xs text-foreground whitespace-nowrap">
-                  Hyderabad, Telangana
+                  Tirana
                 </span>
                 <span className="font-grotesk text-[10px] sm:text-[11px] text-muted-foreground">
-                  India
+                  Albania
                 </span>
                 <div className="inline-flex items-center gap-1 text-[9px] sm:text-[10px] font-mono text-primary mt-0.5 font-medium">
                   <MapPin className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-primary fill-primary/30" />
-                  <span>500081</span>
+                  <a href="tel:+355676429267">+355 67 64 29 267</a>
                 </div>
               </div>
             </div>
@@ -945,14 +935,12 @@ const Footer = () => {
           <a href="/#projects" className="hover:text-primary transition-colors">Projects</a>
           <Link to="/case-study/saveethahub" className="hover:text-primary transition-colors">SaveethaHub</Link>
           <Link to="/case-study/univault" className="hover:text-primary transition-colors">UniVault</Link>
-          <Link to="/developer" className="hover:text-primary transition-colors">Developer Profile</Link>
           <Link to="/resume" className="hover:text-primary transition-colors">Resume</Link>
-          <Link to="/blog" className="hover:text-primary transition-colors">Technical Blog</Link>
         </div>
 
         {/* Copyright notice */}
         <p className="text-[10px] text-muted-foreground/70 font-grotesk text-center mt-1.5 sm:mt-2">
-          © {new Date().getFullYear()} <span className="text-primary font-semibold font-outfit">@comrademohan</span>. All rights reserved. Built with precision and passion.
+          © {new Date().getFullYear()} <span className="text-primary font-semibold font-outfit">@skerdiD</span>. All rights reserved. Built with precision and passion.
         </p>
 
       </div>

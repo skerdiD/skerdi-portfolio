@@ -605,13 +605,13 @@ export default function SaveethaHubCaseStudy() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://mohanreddy.me/"
+        "item": `${window.location.origin}/`
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "SaveethaHub Case Study",
-        "item": "https://mohanreddy.me/case-study/saveethahub"
+        "item": `${window.location.origin}/case-study/saveethahub`
       }
     ]
   };
@@ -623,13 +623,13 @@ export default function SaveethaHubCaseStudy() {
     "operatingSystem": "All",
     "applicationCategory": "EducationalApplication",
     "browserRequirements": "Requires HTML5, Javascript, CSS3",
-    "downloadUrl": "https://mohanreddy.me/case-study/saveethahub",
-    "url": "https://mohanreddy.me/case-study/saveethahub",
+    "downloadUrl": `${window.location.origin}/case-study/saveethahub`,
+    "url": `${window.location.origin}/case-study/saveethahub`,
     "description": "An academic platform designed for students at Saveetha School of Engineering, integrating study resource indices, community post boards, and interactive calculators.",
     "creator": {
       "@type": "Person",
       "name": "Mohan Reddy",
-      "url": "https://mohanreddy.me/"
+      "url": `${window.location.origin}/`
     },
     "aggregateRating": {
       "@type": "AggregateRating",
@@ -641,7 +641,7 @@ export default function SaveethaHubCaseStudy() {
   return (
     <div className="min-h-screen bg-[#FCF9F2] dark:bg-[#080d1a] text-slate-800 dark:text-slate-100 font-outfit relative selection:bg-[#F05323] selection:text-white pb-24 overflow-x-hidden transition-colors duration-300">
       <SEO
-        title="SaveethaHub Case Study | Mohan Reddy - Full Stack Developer"
+        title="SaveethaHub Case Study | Project Case Study"
         description="Comprehensive architectural overview of SaveethaHub. Built with React, Supabase, and Firebase, featuring AI course aids for Saveetha School of Engineering students."
         keywords="SaveethaHub, academic platform, React portfolio, Firebase study app, Saveetha University, student collaboration board, Mohan Reddy developer"
         schema={[breadcrumbSchema, appSchema]}

@@ -109,10 +109,6 @@ export const CommandMenu = ({ open: customOpen, onOpenChange }: CommandMenuProps
             <User className="mr-2 h-4 w-4 text-primary" />
             <span>Go to About Page (Biography)</span>
           </CommandItem>
-          <CommandItem onSelect={() => handleRoute("/blog")}>
-            <BookOpen className="mr-2 h-4 w-4 text-primary" />
-            <span>Go to Blog Articles</span>
-          </CommandItem>
           <CommandItem onSelect={() => handleNavigation("#skills")}>
             <Laptop className="mr-2 h-4 w-4 text-primary" />
             <span>Go to Skills Section</span>
@@ -121,9 +117,9 @@ export const CommandMenu = ({ open: customOpen, onOpenChange }: CommandMenuProps
             <FolderGit className="mr-2 h-4 w-4 text-primary" />
             <span>Go to Projects Section</span>
           </CommandItem>
-          <CommandItem onSelect={() => handleNavigation("#certifications")}>
+          <CommandItem onSelect={() => handleNavigation("#education")}>
             <FileCheck className="mr-2 h-4 w-4 text-primary" />
-            <span>Go to Certifications</span>
+            <span>Go to Education</span>
           </CommandItem>
           <CommandItem onSelect={() => handleNavigation("#contact")}>
             <Mail className="mr-2 h-4 w-4 text-primary" />
@@ -171,21 +167,17 @@ export const CommandMenu = ({ open: customOpen, onOpenChange }: CommandMenuProps
 
         {/* External Actions */}
         <CommandGroup heading="Links & Downloads">
-          <CommandItem onSelect={() => window.open("/mohan_resume_.pdf", "_blank")}>
+          <CommandItem onSelect={() => handleRoute("/resume")}>
             <FileDown className="mr-2 h-4 w-4 text-emerald-400" />
-            <span>Download Resume (PDF)</span>
+            <span>View Resume</span>
           </CommandItem>
-          <CommandItem onSelect={() => window.open("https://github.com/comrademohan", "_blank")}>
+          <CommandItem onSelect={() => window.open("https://github.com/skerdiD", "_blank")}>
             <Github className="mr-2 h-4 w-4 text-foreground" />
             <span>GitHub Profile</span>
           </CommandItem>
-          <CommandItem onSelect={() => window.open("https://www.linkedin.com/in/mmohanreddy", "_blank")}>
+          <CommandItem onSelect={() => window.open("https://www.linkedin.com/in/skerdi-cacaj", "_blank")}>
             <Linkedin className="mr-2 h-4 w-4 text-sky-500" />
             <span>LinkedIn Profile</span>
-          </CommandItem>
-          <CommandItem onSelect={() => window.open("https://www.instagram.com/comrade_mohan666/", "_blank")}>
-            <Instagram className="mr-2 h-4 w-4 text-pink-500" />
-            <span>Instagram Profile</span>
           </CommandItem>
         </CommandGroup>
       </CommandList>

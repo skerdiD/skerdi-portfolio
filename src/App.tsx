@@ -9,15 +9,12 @@ import Index from "./pages/Index";
 import CommandMenu from "./components/CommandMenu";
 
 // Route-level code splitting: the homepage (Index) is eager since it's the
-// entry point for almost every visitor, but the case studies, blog, and
+// entry point for almost every visitor, but the case studies and
 // secondary profile pages are only fetched when someone actually navigates there.
 const SaveethaHubCaseStudy = lazy(() => import("./pages/SaveethaHubCaseStudy"));
 const UniVaultCaseStudy = lazy(() => import("./pages/UniVaultCaseStudy"));
 const NotFound = lazy(() => import("./pages/NotFound"));
-const DeveloperProfile = lazy(() => import("./pages/DeveloperProfile"));
 const About = lazy(() => import("./pages/About"));
-const Blog = lazy(() => import("./pages/Blog"));
-const BlogPost = lazy(() => import("./pages/BlogPost"));
 const Resume = lazy(() => import("./pages/Resume"));
 
 const queryClient = new QueryClient();
@@ -57,7 +54,7 @@ const ScrollToTop = () => {
     // so internal client-side navigation to "/" will never trigger the splash screen.
     if (pathname !== "/" && pathname !== "") {
       try {
-        sessionStorage.setItem("mohan-intro-played", "true");
+        sessionStorage.setItem("skerdi-intro-played", "true");
         sessionStorage.setItem("portfolio_has_loaded", "true");
       } catch { }
     }
@@ -90,11 +87,8 @@ const AnimatedRoutes = () => {
       <Route path="/case-study/saveethahub" element={<PageWrapper><SaveethaHubCaseStudy /></PageWrapper>} />
       <Route path="/univault" element={<PageWrapper><UniVaultCaseStudy /></PageWrapper>} />
       <Route path="/case-study/univault" element={<PageWrapper><UniVaultCaseStudy /></PageWrapper>} />
-      <Route path="/developer" element={<PageWrapper><DeveloperProfile /></PageWrapper>} />
       <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
       <Route path="/resume" element={<PageWrapper><Resume /></PageWrapper>} />
-      <Route path="/blog" element={<PageWrapper><Blog /></PageWrapper>} />
-      <Route path="/blog/:slug" element={<PageWrapper><BlogPost /></PageWrapper>} />
       <Route path="*" element={<PageWrapper><NotFound /></PageWrapper>} />
     </Routes>
   );

@@ -553,13 +553,13 @@ export default function UniVaultCaseStudy() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://mohanreddy.me/"
+        "item": `${window.location.origin}/`
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "UniVault Case Study",
-        "item": "https://mohanreddy.me/case-study/univault"
+        "item": `${window.location.origin}/case-study/univault`
       }
     ]
   };
@@ -571,12 +571,12 @@ export default function UniVaultCaseStudy() {
     "operatingSystem": "Android",
     "applicationCategory": "EducationalApplication",
     "downloadUrl": "https://play.google.com/store/apps/details?id=com.simats.univault",
-    "url": "https://mohanreddy.me/case-study/univault",
+    "url": `${window.location.origin}/case-study/univault`,
     "description": "A secure offline-first exam preparation Android application. Encrypted with AES-256 and utilizing Room DB for localized caching of syllabus and study guides.",
     "creator": {
       "@type": "Person",
       "name": "Mohan Reddy",
-      "url": "https://mohanreddy.me/"
+      "url": `${window.location.origin}/`
     },
     "aggregateRating": {
       "@type": "AggregateRating",
@@ -588,7 +588,7 @@ export default function UniVaultCaseStudy() {
   return (
     <div className="min-h-screen bg-[#FCF9F2] dark:bg-[#080d1a] text-slate-800 dark:text-slate-100 font-outfit relative selection:bg-[#F05323] selection:text-white pb-24 overflow-x-hidden transition-colors duration-300">
       <SEO
-        title="UniVault Case Study | Mohan Reddy - Android & Kotlin Developer"
+        title="UniVault Case Study | Project Case Study"
         description="Comprehensive architectural overview of UniVault. A secure offline-first Android app built with Kotlin and Room DB, protecting exam resources with AES-256."
         keywords="UniVault, Android developer, Kotlin app, Room database FTS4, local file encryption AES-256, student exam prep app, Mohan Reddy developer"
         schema={[breadcrumbSchema, appSchema]}
