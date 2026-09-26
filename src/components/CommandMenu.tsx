@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import {
   CommandDialog,
   CommandInput,
@@ -95,6 +96,8 @@ export const CommandMenu = ({ open: customOpen, onOpenChange }: CommandMenuProps
 
   return (
     <CommandDialog open={isOpen} onOpenChange={setIsOpen}>
+      <DialogTitle className="sr-only">Portfolio commands</DialogTitle>
+      <DialogDescription className="sr-only">Search sections, projects, and contact links.</DialogDescription>
       <CommandInput placeholder="Type a command or search..." />
       <CommandList className="font-grotesk">
         <CommandEmpty>No results found.</CommandEmpty>
@@ -129,15 +132,15 @@ export const CommandMenu = ({ open: customOpen, onOpenChange }: CommandMenuProps
 
         <CommandSeparator />
 
-        {/* Case Studies */}
-        <CommandGroup heading="Case Studies">
-          <CommandItem onSelect={() => handleRoute("/saveethahub")}>
+        {/* Projects */}
+        <CommandGroup heading="Projects">
+          <CommandItem onSelect={() => window.open("https://github.com/skerdiD/BugTriage-AI", "_blank", "noopener,noreferrer")}>
             <BookOpen className="mr-2 h-4 w-4 text-accent" />
-            <span>SaveethaHub Case Study</span>
+            <span>BugTriage AI</span>
           </CommandItem>
-          <CommandItem onSelect={() => handleRoute("/univault")}>
+          <CommandItem onSelect={() => window.open("https://github.com/skerdiD/deliver-flow", "_blank", "noopener,noreferrer")}>
             <BookOpen className="mr-2 h-4 w-4 text-accent" />
-            <span>UniVault Case Study</span>
+            <span>DeliverFlow</span>
           </CommandItem>
         </CommandGroup>
 
@@ -171,11 +174,11 @@ export const CommandMenu = ({ open: customOpen, onOpenChange }: CommandMenuProps
             <FileDown className="mr-2 h-4 w-4 text-emerald-400" />
             <span>View Resume</span>
           </CommandItem>
-          <CommandItem onSelect={() => window.open("https://github.com/skerdiD", "_blank")}>
+          <CommandItem onSelect={() => window.open("https://github.com/skerdiD", "_blank", "noopener,noreferrer")}>
             <Github className="mr-2 h-4 w-4 text-foreground" />
             <span>GitHub Profile</span>
           </CommandItem>
-          <CommandItem onSelect={() => window.open("https://www.linkedin.com/in/skerdi-cacaj", "_blank")}>
+          <CommandItem onSelect={() => window.open("https://www.linkedin.com/in/skerdi-cacaj", "_blank", "noopener,noreferrer")}>
             <Linkedin className="mr-2 h-4 w-4 text-sky-500" />
             <span>LinkedIn Profile</span>
           </CommandItem>

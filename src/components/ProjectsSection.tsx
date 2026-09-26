@@ -131,27 +131,8 @@ const projects: Array<ComponentProps<typeof MobileProjectStack>["projects"][numb
 ];
 
 const ProjectDetailContent = ({ project }: { project: any }) => {
-  const [stars, setStars] = useState<number | null>(null);
   const [isHoveringVideo, setIsHoveringVideo] = useState(false);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
-
-  useEffect(() => {
-    if (project.title === "Saveetha Hub") {
-      fetch("https://api.github.com/repos/ComradeMohan/saveetha-companion")
-        .then((res) => {
-          if (!res.ok) throw new Error();
-          return res.json();
-        })
-        .then((data) => {
-          if (data && typeof data.stargazers_count === "number") {
-            setStars(data.stargazers_count);
-          }
-        })
-        .catch(() => {
-          setStars(21);
-        });
-    }
-  }, [project.title]);
 
   return (
     <div className="space-y-4">
@@ -178,16 +159,7 @@ const ProjectDetailContent = ({ project }: { project: any }) => {
                   {badge.text}
                 </span>
               ))}
-              {project.title === "Saveetha Hub" && (
-                <a
-                  href={project.githubLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-[10px] font-bold px-2.5 py-0.5 rounded-full border border-yellow-500/20 bg-yellow-500/10 text-yellow-500 hover:bg-yellow-500/20 transition-all duration-300"
-                >
-                  <Star className="w-3 h-3 fill-current text-yellow-500" /> {stars !== null ? stars : "21"} Stars
-                </a>
-              )}
+
             </div>
             <p className="text-xs sm:text-sm text-muted-foreground font-grotesk">{project.desc}</p>
           </div>
@@ -392,55 +364,9 @@ const ProjectDetailContent = ({ project }: { project: any }) => {
       ) : (
         /* Standard non-mobile mockup content */
         <div className="space-y-4">
-          {/* Show dynamic image comparison only for Object Detection */}
-          {project.title === "Object Detection in Python" && (
-            <div className="relative rounded-xl overflow-hidden shadow-lg border border-border/50 bg-black/40">
-              <ProgressiveImage
-                src="/object_detection_comparison.webp"
-                alt="Object Detection Comparison"
-                className="w-full h-auto"
-                containerClassName="w-full h-auto"
-              />
-              <span className="absolute top-3 left-3 px-3 py-1 rounded bg-[#FF5E36] text-[10px] uppercase font-bold text-white tracking-wider">
-                Original Image
-              </span>
-              <span className="absolute top-3 left-[51%] px-3 py-1 rounded bg-[#10B981] text-[10px] uppercase font-bold text-white tracking-wider">
-                Detection Output
-              </span>
-            </div>
-          )}
 
-          {/* Saveetha Hub Custom Dashboard Row (expanded to full width) */}
-          {project.title === "Saveetha Hub" && (
-            <div className="p-5 rounded-xl border border-border/40 bg-card/40 shadow-inner">
-              <h4 className="text-xs font-semibold text-foreground flex items-center gap-1.5 uppercase tracking-wider mb-4 font-outfit">
-                <TrendingUp className="w-4 h-4 text-primary" /> Live Performance
-              </h4>
 
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                {project.stats?.map((stat) => (
-                  <div key={stat.label} className="p-3 rounded-lg bg-secondary/80 dark:bg-black/30 border border-border/30 flex flex-col justify-between h-24">
-                    <div>
-                      <span className={`text-base font-extrabold ${stat.color} font-outfit`}>
-                        {stat.value}
-                      </span>
-                      <p className="text-[9px] text-foreground/80 font-bold uppercase tracking-tight mt-0.5 leading-none">
-                        {stat.label}
-                      </p>
-                      <p className="text-[8px] text-muted-foreground leading-none mt-1">
-                        {stat.sublabel}
-                      </p>
-                    </div>
-                    <Sparkline colorClass={stat.color} path={stat.path} />
-                  </div>
-                ))}
-              </div>
 
-              {/* <div className="text-[9px] text-muted-foreground mt-4 flex items-center gap-1 border-t border-border/20 pt-3">
-                🛡️ Analytics Data (Google Analytics & Search Console)
-              </div> */}
-            </div>
-          )}
 
           {/* Tech Stack for Standard layout */}
           {!project.pptLink && (
@@ -474,70 +400,7 @@ const ProjectDetailContent = ({ project }: { project: any }) => {
           )}
 
           {/* Key Results and Problem/Solution/Impact Row */}
-          {project.keyResults && (
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-5 pt-4 border-t border-border/40">
-              {/* Left: Key Results Card */}
-              <div className="md:col-span-5 p-4 rounded-xl bg-secondary/80 dark:bg-black/40 border border-border/50">
-                <h4 className="text-xs font-semibold text-foreground uppercase tracking-wider mb-3 font-outfit">📊 Key Results</h4>
-                <div className="space-y-2">
-                  {project.keyResults.map((res) => (
-                    <div key={res.name} className="space-y-1">
-                      <div className="flex justify-between text-[10px] font-semibold font-grotesk text-foreground/90 leading-none">
-                        <span>{res.name}</span>
-                        <span>{res.value}%</span>
-                      </div>
-                      <div className="w-full h-1.5 rounded-full bg-black/40 overflow-hidden">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          whileInView={{ width: `${res.value}%` }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 1, ease: "easeOut" }}
-                          className={`h-full ${res.color}`}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <div className="text-[8px] text-muted-foreground mt-3 pt-2.5 border-t border-border/20 flex items-center gap-1.5 leading-tight font-grotesk">
-                  📈 t-test (XGBoost vs Others): t = 5.892, p &lt; 0.001. Results are statistically significant.
-                </div>
-              </div>
 
-              {/* Middle: Problem & Solution */}
-              <div className="md:col-span-4 space-y-4">
-                <div className="space-y-1">
-                  <h5 className="text-xs font-bold text-foreground flex items-center gap-1.5 font-outfit">
-                    <span className="text-[#FF5E36]">🎯</span> Problem
-                  </h5>
-                  <p className="text-xs text-muted-foreground font-grotesk leading-relaxed">
-                    {project.problem}
-                  </p>
-                </div>
-                <div className="space-y-1 pt-2 border-t border-border/20">
-                  <h5 className="text-xs font-bold text-foreground flex items-center gap-1.5 font-outfit">
-                    <span className="text-[#A020F0]">🚀</span> Solution
-                  </h5>
-                  <p className="text-xs text-muted-foreground font-grotesk leading-relaxed">
-                    {project.solution}
-                  </p>
-                </div>
-              </div>
-
-              {/* Right: Impact */}
-              <div className="md:col-span-3 space-y-2">
-                <h5 className="text-xs font-bold text-foreground flex items-center gap-1.5 font-outfit">
-                  <span className="text-[#10B981]">📈</span> Impact
-                </h5>
-                <ul className="space-y-1.5">
-                  {project.impact.map((imp, idx) => (
-                    <li key={idx} className="text-xs text-muted-foreground font-grotesk flex items-center gap-1.5">
-                      <span className="text-[#10B981] font-bold">✓</span> {imp}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          )}
 
           {/* Standard Problem, Solution, Impact Grid for standard projects */}
           {!project.keyResults && (
@@ -714,7 +577,6 @@ const ProjectDetailContent = ({ project }: { project: any }) => {
 const ProjectsSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
-  const saveethaStars = null;
 
   const desktopShowcaseRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
@@ -799,11 +661,7 @@ const ProjectsSection = () => {
                         </div>
                         <div className="flex items-center gap-2">
                           <h3 className="text-lg font-bold text-foreground font-outfit">{project.title}</h3>
-                          {project.title === "Saveetha Hub" && (
-                            <div className="flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-md border border-yellow-500/20 bg-yellow-500/10 text-yellow-500">
-                              <Star className="w-2.5 h-2.5 fill-current" /> {saveethaStars !== null ? saveethaStars : "21"}
-                            </div>
-                          )}
+
                         </div>
                       </div>
                       {project.isFeatured && (
@@ -898,7 +756,6 @@ const ProjectsSection = () => {
         {/* Mobile: Smooth 3D Stack Scroll (< sm devices) */}
         <MobileProjectStack
           projects={projects}
-          saveethaStars={saveethaStars}
           onOpenModal={(i) => {
             setActiveIndex(i);
             setIsMobileOpen(true);

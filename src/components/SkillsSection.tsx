@@ -1353,7 +1353,6 @@ export const SkillsSection = () => {
           style={{
             backgroundColor: isDark ? "rgba(11, 15, 25, 0.6)" : "rgba(255, 255, 255, 0.7)",
             borderColor: isDark ? "rgba(255, 255, 255, 0.08)" : "rgba(226, 232, 240, 0.9)",
-            divideColor: isDark ? "rgba(255, 255, 255, 0.08)" : "rgba(226, 232, 240, 0.9)",
           }}
         >
           <div>

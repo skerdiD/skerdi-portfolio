@@ -84,12 +84,8 @@ const Sparkline = ({ colorClass, path, delay = 0.2 }: { colorClass: string; path
 );
 
 const bgGlowColors = [
-  "rgba(249, 115, 22, 0.10)", // Object Detection (Orange)
-  "rgba(249, 115, 22, 0.14)", // DeliverFlow (Orange)
-  "rgba(37, 99, 235, 0.14)",  // UniVault (Blue)
-  "rgba(99, 102, 241, 0.14)", // Ethereum Fraud (Indigo)
-  "rgba(14, 165, 233, 0.14)", // Skylink (Sky)
-  "rgba(168, 85, 247, 0.24)", // DevPulse (Purple)
+  "rgba(249, 115, 22, 0.10)", // BugTriage AI
+  "rgba(249, 115, 22, 0.14)", // DeliverFlow
 ];
 
 const slideVariants = {

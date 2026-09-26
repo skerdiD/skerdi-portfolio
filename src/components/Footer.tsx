@@ -845,7 +845,7 @@ const Footer = () => {
                     <Github className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:scale-110 transition-transform" />
                   </a>
                   <a
-                    href="https://www.linkedin.com/in/skerdi-cacaj/"
+                    href="https://www.linkedin.com/in/skerdi-cacaj"
                     target="_blank"
                     rel="noopener noreferrer me"
                     aria-label="Skerdi Cacaj's LinkedIn Profile"
@@ -933,8 +933,8 @@ const Footer = () => {
           <Link to="/about" className="hover:text-primary transition-colors">About Me</Link>
           <a href="/#skills" className="hover:text-primary transition-colors">Skills</a>
           <a href="/#projects" className="hover:text-primary transition-colors">Projects</a>
-          <Link to="/case-study/saveethahub" className="hover:text-primary transition-colors">SaveethaHub</Link>
-          <Link to="/case-study/univault" className="hover:text-primary transition-colors">UniVault</Link>
+          <a href="https://github.com/skerdiD/BugTriage-AI" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">BugTriage AI</a>
+          <a href="https://github.com/skerdiD/deliver-flow" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">DeliverFlow</a>
           <Link to="/resume" className="hover:text-primary transition-colors">Resume</Link>
         </div>
 

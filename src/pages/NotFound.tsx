@@ -239,6 +239,7 @@ const NotFound = () => {
   return (
     <>
       <SEO
+        robots="noindex, follow"
         title="404 - Page Lost in Cyberspace | Skerdi Cacaj"
         description="404 Not Found. Return to Skerdi Cacaj's developer portfolio."
       />

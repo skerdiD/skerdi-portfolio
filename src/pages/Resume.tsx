@@ -15,7 +15,7 @@ import { trackEvent } from "@/lib/analytics";
 import { useGithubContributions } from "@/hooks/useDeveloperStats";
 import { HIRE_ME_MAILTO } from "@/components/Navbar";
 
-type RoleFilter = "all" | "fullstack" | "android" | "backend";
+type RoleFilter = "all" | "fullstack" | "ai" | "backend";
 
 const plainTextResume = `SKERDI CACAJ
 Full-Stack Developer
@@ -26,6 +26,22 @@ https://github.com/skerdiD
 https://www.linkedin.com/in/skerdi-cacaj
 
 Full-Stack Developer building complete web applications, from modern React/Next.js interfaces to backend systems with Express.js and NestJS, databases, background processing, and AI-powered features. I enjoy working across the full stack, with a particular interest in backend systems, application architecture, and system design.
+
+TECH STACK
+Frontend: TypeScript, JavaScript, React, Next.js, Tailwind CSS, shadcn/ui
+Backend: Node.js, Express.js, NestJS, REST APIs
+Data & Services: PostgreSQL, Prisma, Supabase, MongoDB, Drizzle ORM, Redis, BullMQ, Zod
+AI & Infrastructure: LLM Integrations, Vercel AI SDK, Docker, GitHub Actions, Vercel, Render
+Testing & Monitoring: Vitest, Playwright, Sentry
+Developer Tools: Git, GitHub
+
+PROJECTS
+BugTriage AI - AI-powered issue triage and semantic duplicate detection across multi-tenant workspaces.
+Redis/BullMQ workers, retries, transactional outbox dispatch, pgvector similarity search, private attachments, and GitHub Issues export.
+https://github.com/skerdiD/BugTriage-AI
+DeliverFlow - Client delivery portal for projects, tasks, milestones, files, payments, feedback, and approvals.
+Role-based access, Supabase RLS, workspace-scoped data, signed file URLs, notifications, analytics, and payment reminders.
+https://github.com/skerdiD/deliver-flow
 
 EDUCATION
 Bachelor in Computer Science
@@ -80,16 +96,13 @@ const Resume = () => {
     }
   };
 
-  const isProjectVisible = (type: "fullstack" | "android" | "backend") => {
-    if (roleFilter === "all") return true;
-    return roleFilter === type;
-  };
+  const isProjectVisible = (hasAI: boolean) => roleFilter !== "ai" || hasAI;
 
   return (
     <>
       <SEO
         title="Resume | Skerdi Cacaj - Full-Stack Developer"
-        description="Full-Stack Developer building complete web applications, from modern React/Next.js interfaces to backend systems with Express.js and NestJS, databases, background processing, and AI-powered features."
+        description="Full-Stack Developer building modern web applications with React, Next.js, Node.js, Express.js, PostgreSQL, and modern backend tooling."
       />
 
       <Navbar />
@@ -167,9 +180,9 @@ const Resume = () => {
                 size="sm"
                 className="rounded-xl text-xs gap-1.5 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold shadow-md shadow-orange-500/20 cursor-pointer"
               >
-                <a href="#" onClick={(event) => { event.preventDefault(); handlePrint(); }}>
+                <button type="button" onClick={handlePrint}>
                   <Download className="w-3.5 h-3.5" /> Print / PDF
-                </a>
+                </button>
               </Button>
             </div>
           </div>
@@ -189,7 +202,7 @@ const Resume = () => {
                 {[
                   { id: "all", label: "🌟 All Projects" },
                   { id: "fullstack", label: "💻 Full Stack / Web" },
-                  { id: "android", label: "📱 Android / Mobile" },
+                  { id: "ai", label: "📱 AI & Background Jobs" },
                   { id: "backend", label: "⚙️ Backend" }
                 ].map((item) => (
                   <button
@@ -246,7 +259,7 @@ const Resume = () => {
                         <Code2 className="w-3.5 h-3.5 text-purple-400" /> GitHub
                       </a>
                       <a
-                        href="https://www.linkedin.com/in/skerdi-cacaj/"
+                        href="https://www.linkedin.com/in/skerdi-cacaj"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex-1 flex items-center justify-center gap-1.5 p-2 rounded-xl bg-secondary/50 hover:bg-secondary border border-border/70 transition-colors"
@@ -313,9 +326,9 @@ const Resume = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-grotesk">
                   <div className="p-3.5 rounded-2xl bg-secondary/20 border border-border/60 space-y-1.5">
-                    <span className="font-bold text-foreground block text-sm font-outfit">Programming Languages</span>
+                    <span className="font-bold text-foreground block text-sm font-outfit">Frontend</span>
                     <div className="flex flex-wrap gap-1.5">
-                      {["TypeScript", "JavaScript", "HTML", "CSS"].map((s) => (
+                      {["TypeScript", "JavaScript", "React", "Next.js", "Tailwind CSS", "shadcn/ui"].map((s) => (
                         <span key={s} className="px-2.5 py-1 rounded-lg bg-primary/10 text-primary border border-primary/25 font-semibold">
                           {s}
                         </span>
@@ -324,9 +337,9 @@ const Resume = () => {
                   </div>
 
                   <div className="p-3.5 rounded-2xl bg-secondary/20 border border-border/60 space-y-1.5">
-                    <span className="font-bold text-foreground block text-sm font-outfit">Frontend & Web Development</span>
+                    <span className="font-bold text-foreground block text-sm font-outfit">Backend</span>
                     <div className="flex flex-wrap gap-1.5">
-                      {["React", "Next.js", "Modern interfaces"].map((s) => (
+                      {["Node.js", "Express.js", "NestJS", "REST APIs"].map((s) => (
                         <span key={s} className="px-2.5 py-1 rounded-lg bg-sky-500/10 text-sky-400 border border-sky-500/25 font-semibold">
                           {s}
                         </span>
@@ -335,9 +348,9 @@ const Resume = () => {
                   </div>
 
                   <div className="p-3.5 rounded-2xl bg-secondary/20 border border-border/60 space-y-1.5">
-                    <span className="font-bold text-foreground block text-sm font-outfit">Application Architecture</span>
+                    <span className="font-bold text-foreground block text-sm font-outfit">Data & Services</span>
                     <div className="flex flex-wrap gap-1.5">
-                      {["System design", "Background processing", "AI integrations"].map((s) => (
+                      {["PostgreSQL", "Prisma", "Supabase", "MongoDB", "Drizzle ORM", "Redis", "BullMQ", "Zod"].map((s) => (
                         <span key={s} className="px-2.5 py-1 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/25 font-semibold">
                           {s}
                         </span>
@@ -346,9 +359,9 @@ const Resume = () => {
                   </div>
 
                   <div className="p-3.5 rounded-2xl bg-secondary/20 border border-border/60 space-y-1.5">
-                    <span className="font-bold text-foreground block text-sm font-outfit">Backend, Databases & Security</span>
+                    <span className="font-bold text-foreground block text-sm font-outfit">AI, Infrastructure & Tools</span>
                     <div className="flex flex-wrap gap-1.5">
-                      {["Express.js", "NestJS", "Databases", "Backend systems"].map((s) => (
+                      {["LLM Integrations", "Vercel AI SDK", "Docker", "GitHub Actions", "Vercel", "Render", "Vitest", "Playwright", "Sentry", "Git", "GitHub"].map((s) => (
                         <span key={s} className="px-2.5 py-1 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/25 font-semibold">
                           {s}
                         </span>
@@ -370,31 +383,31 @@ const Resume = () => {
                 </div>
 
                 <div className="space-y-6">
-                  {/* Project 1: UniVault */}
-                  {isProjectVisible("android") && (
+                  {/* Project 1: BugTriage AI */}
+                  {isProjectVisible(true) && (
                     <div className="p-5 rounded-2xl bg-secondary/20 border border-border/70 space-y-3 print:bg-transparent print:p-0">
                       <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-2">
                         <div>
                           <div className="flex items-center gap-2">
                             <h3 className="text-base sm:text-lg font-bold font-outfit text-foreground">
-                              UniVault – Secure Offline-First Android Password Manager
+                              BugTriage AI
                             </h3>
                             <span className="px-2 py-0.5 rounded-md bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 text-[10px] font-bold font-grotesk">
-                              Lead Creator
+                              AI Issue Triage
                             </span>
                           </div>
                           <p className="text-xs text-muted-foreground font-grotesk mt-0.5">
-                            Kotlin • Jetpack Compose • Room DB • AES-256-GCM • Android Keystore
+                            Next.js / TypeScript / Prisma / PostgreSQL / pgvector / Redis / BullMQ / Gemini AI / Vercel AI SDK
                           </p>
                         </div>
                         <div className="flex items-center gap-2 print:hidden">
                           <Button asChild variant="outline" size="sm" className="h-8 rounded-xl text-xs gap-1">
-                            <Link to="/univault">
-                              <Eye className="w-3.5 h-3.5" /> Case Study
-                            </Link>
+                            <a href="https://bug-triage-ai.vercel.app/" target="_blank" rel="noopener noreferrer">
+                              <Eye className="w-3.5 h-3.5" /> Live Demo
+                            </a>
                           </Button>
                           <Button asChild variant="outline" size="sm" className="h-8 rounded-xl text-xs gap-1">
-                            <a href="https://github.com/ComradeMohan/UniVault" target="_blank" rel="noopener noreferrer">
+                            <a href="https://github.com/skerdiD/BugTriage-AI" target="_blank" rel="noopener noreferrer">
                               <Code2 className="w-3.5 h-3.5" /> Code
                             </a>
                           </Button>
@@ -403,43 +416,43 @@ const Resume = () => {
 
                       <ul className="list-disc list-inside space-y-1.5 text-xs text-muted-foreground font-grotesk leading-relaxed">
                         <li>
-                          Architected an offline-first password vault with zero network dependencies, safeguarding credentials from cloud data leaks.
+                          Built AI-powered issue triage with semantic duplicate detection across multi-tenant workspaces.
                         </li>
                         <li>
-                          Implemented AES-256-GCM encryption with cryptographic keys anchored inside the hardware-backed Android Keystore.
+                          Designed Redis and BullMQ background processing with worker retries and transactional outbox dispatch.
                         </li>
                         <li>
-                          Engineered local password generator, multi-category organization, biometric app lock, and encrypted local backup/restore functionality.
+                          Integrated pgvector similarity search, private attachments, and GitHub Issues export.
                         </li>
                       </ul>
                     </div>
                   )}
 
-                  {/* Project 2: SaveethaHub */}
-                  {isProjectVisible("fullstack") && (
+                  {/* Project 2: DeliverFlow */}
+                  {isProjectVisible(false) && (
                     <div className="p-5 rounded-2xl bg-secondary/20 border border-border/70 space-y-3 print:bg-transparent print:p-0">
                       <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-2">
                         <div>
                           <div className="flex items-center gap-2">
                             <h3 className="text-base sm:text-lg font-bold font-outfit text-foreground">
-                              SaveethaHub – College Campus Management & Student Portal
+                              DeliverFlow
                             </h3>
                             <span className="px-2 py-0.5 rounded-md bg-orange-500/15 text-orange-400 border border-orange-500/30 text-[10px] font-bold font-grotesk">
-                              Production App
+                              Client Portal
                             </span>
                           </div>
                           <p className="text-xs text-muted-foreground font-grotesk mt-0.5">
-                            React 18 • TypeScript • Tailwind CSS • Firebase Firestore • Vite
+                            Next.js / TypeScript / PostgreSQL / Drizzle ORM / Supabase / Tailwind CSS
                           </p>
                         </div>
                         <div className="flex items-center gap-2 print:hidden">
                           <Button asChild variant="outline" size="sm" className="h-8 rounded-xl text-xs gap-1">
-                            <Link to="/saveethahub">
-                              <Eye className="w-3.5 h-3.5" /> Case Study
-                            </Link>
+                            <a href="https://github.com/skerdiD/deliver-flow" target="_blank" rel="noopener noreferrer">
+                              <Eye className="w-3.5 h-3.5" /> Code
+                            </a>
                           </Button>
                           <Button asChild variant="outline" size="sm" className="h-8 rounded-xl text-xs gap-1">
-                            <a href="https://saveethahub.site" target="_blank" rel="noopener noreferrer">
+                            <a href="https://deliver-flow.vercel.app/" target="_blank" rel="noopener noreferrer">
                               <Globe className="w-3.5 h-3.5" /> Live Demo
                             </a>
                           </Button>
@@ -448,13 +461,13 @@ const Resume = () => {
 
                       <ul className="list-disc list-inside space-y-1.5 text-xs text-muted-foreground font-grotesk leading-relaxed">
                         <li>
-                          Developed and deployed an all-in-one portal providing course syllabus, timetable tracking, GPA calculators, and circular broadcasts.
+                          Centralized projects, tasks, milestones, files, payments, feedback, and approvals across owner and client workspaces.
                         </li>
                         <li>
-                          Reached over 2,000+ active student users across departments with client-side caching achieving sub-50ms render latency.
+                          Implemented role-based access, Supabase RLS, workspace-scoped data, and private file storage with signed URLs.
                         </li>
                         <li>
-                          Engineered responsive dark/light UI, fast search filters, and real-time announcements synchronization with Firebase.
+                          Added workspace notifications, delivery analytics, and automated payment reminders.
                         </li>
                       </ul>
                     </div>

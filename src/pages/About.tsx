@@ -49,7 +49,7 @@ const About = () => {
     <>
       <SEO
         title="About Skerdi Cacaj | Full-Stack Developer"
-        description="Full-Stack Developer building complete web applications, from modern React/Next.js interfaces to backend systems with Express.js and NestJS, databases, background processing, and AI-powered features."
+        description="Full-Stack Developer building modern web applications with React, Next.js, Node.js, Express.js, PostgreSQL, and modern backend tooling."
         schema={personSchema}
       />
       <div className="min-h-screen bg-background text-foreground flex flex-col font-outfit">
@@ -179,9 +179,9 @@ const About = () => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm font-grotesk">
                   <div className="space-y-3">
-                    <h3 className="font-semibold text-foreground border-b border-border pb-1 font-outfit">Programming Languages</h3>
+                    <h3 className="font-semibold text-foreground border-b border-border pb-1 font-outfit">Frontend</h3>
                     <div className="flex flex-wrap gap-2">
-                      {["TypeScript", "JavaScript", "HTML", "CSS"].map(lang => (
+                      {["TypeScript", "JavaScript", "React", "Next.js", "Tailwind CSS", "shadcn/ui"].map(lang => (
                         <span key={lang} className="px-2.5 py-1 rounded bg-muted border border-border text-foreground text-xs">
                           {lang}
                         </span>
@@ -190,9 +190,9 @@ const About = () => {
                   </div>
 
                   <div className="space-y-3">
-                    <h3 className="font-semibold text-foreground border-b border-border pb-1 font-outfit">Frameworks & Technologies</h3>
+                    <h3 className="font-semibold text-foreground border-b border-border pb-1 font-outfit">Backend, Data & Tools</h3>
                     <div className="flex flex-wrap gap-2">
-                      {["React", "Next.js", "Express.js", "NestJS", "Databases", "Background processing", "AI integrations", "System design"].map(tech => (
+                      {["Node.js", "Express.js", "NestJS", "REST APIs", "PostgreSQL", "Prisma", "Supabase", "MongoDB", "Drizzle ORM", "Redis", "BullMQ", "Zod", "LLM Integrations", "Vercel AI SDK", "Docker", "GitHub Actions", "Vercel", "Render", "Vitest", "Playwright", "Sentry", "Git", "GitHub"].map(tech => (
                         <span key={tech} className="px-2.5 py-1 rounded bg-muted border border-border text-foreground text-xs">
                           {tech}
                         </span>
@@ -211,15 +211,15 @@ const About = () => {
                     <BookOpen className="w-5 h-5 text-primary" /> Real-World Products
                   </h2>
                   <p className="text-xs text-muted-foreground font-grotesk leading-relaxed">
-                    Read the detailed architectural case studies for SaveethaHub and UniVault, documenting problems, solutions, tech stack, and design lifecycles.
+                    Explore BugTriage AI and DeliverFlow: issue triage, background processing, and secure client delivery workflows.
                   </p>
                 </div>
                 <div className="flex gap-3 shrink-0">
                   <Button asChild className="bg-orange-500 hover:bg-orange-600 text-white font-semibold shadow-md transition-all border border-orange-400/30">
-                    <Link to="/case-study/saveethahub">SaveethaHub</Link>
+                    <a href="https://github.com/skerdiD/BugTriage-AI" target="_blank" rel="noopener noreferrer">BugTriage AI</a>
                   </Button>
                   <Button asChild className="bg-teal-600 hover:bg-teal-700 text-white font-semibold shadow-md transition-all border border-teal-500/30">
-                    <Link to="/case-study/univault">UniVault</Link>
+                    <a href="https://github.com/skerdiD/deliver-flow" target="_blank" rel="noopener noreferrer">DeliverFlow</a>
                   </Button>
                 </div>
               </section>

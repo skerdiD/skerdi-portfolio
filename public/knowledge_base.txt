@@ -17,3 +17,17 @@ Tirana, Albania
 LANGUAGES
 Albanian — Native
 English — B2 (Upper-Intermediate)
+
+PROJECTS
+BugTriage AI: AI-powered issue triage, semantic duplicate detection, and multi-tenant workspaces.
+https://github.com/skerdiD/BugTriage-AI
+DeliverFlow: Client delivery portal for projects, tasks, files, payments, feedback, and approvals.
+https://github.com/skerdiD/deliver-flow
+
+TECH STACK
+Frontend: TypeScript, JavaScript, React, Next.js, Tailwind CSS, shadcn/ui
+Backend: Node.js, Express.js, NestJS, REST APIs
+Data & Services: PostgreSQL, Prisma, Supabase, MongoDB, Drizzle ORM, Redis, BullMQ, Zod
+AI & Infrastructure: LLM Integrations, Vercel AI SDK, Docker, GitHub Actions, Vercel, Render
+Testing & Monitoring: Vitest, Playwright, Sentry
+Developer Tools: Git, GitHub

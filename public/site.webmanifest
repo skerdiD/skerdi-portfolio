@@ -1,7 +1,7 @@
 {
   "name": "Skerdi Cacaj | Full-Stack Developer",
   "short_name": "Skerdi Cacaj",
-  "description": "Full-Stack Developer building complete web applications, from modern React/Next.js interfaces to backend systems with Express.js and NestJS, databases, background processing, and AI-powered features.",
+  "description": "Full-Stack Developer building modern web applications with React, Next.js, Node.js, Express.js, PostgreSQL, and modern backend tooling.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#08090b",
@@ -36,10 +36,10 @@
       ]
     },
     {
-      "name": "SaveethaHub Case Study",
-      "short_name": "SaveethaHub",
-      "description": "SaveethaHub architecture case study",
-      "url": "/case-study/saveethahub",
+      "name": "Projects",
+      "short_name": "Projects",
+      "description": "BugTriage AI and DeliverFlow",
+      "url": "/#projects",
       "icons": [
         {
           "src": "/favicon.svg",
@@ -49,10 +49,10 @@
       ]
     },
     {
-      "name": "UniVault Case Study",
-      "short_name": "UniVault",
-      "description": "UniVault offline-first Android case study",
-      "url": "/case-study/univault",
+      "name": "Contact",
+      "short_name": "Contact",
+      "description": "Contact Skerdi Cacaj",
+      "url": "/#contact",
       "icons": [
         {
           "src": "/favicon.svg",

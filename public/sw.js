@@ -1,10 +1,8 @@
-const CACHE_NAME = "skerdi-portfolio-v2";
+const CACHE_NAME = "skerdi-portfolio-v3";
 const STATIC_ASSETS = [
   "/",
   "/about",
   "/resume",
-  "/case-study/saveethahub",
-  "/case-study/univault",
   "/favicon.svg",
   "/site.webmanifest"
 ];

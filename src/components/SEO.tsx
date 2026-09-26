@@ -2,20 +2,20 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 interface SEOProps {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   keywords?: string;
   canonical?: string;
   robots?: string;
   ogType?: string;
   ogImage?: string;
   ogUrl?: string;
-  schema?: any; // JSON-LD schema object
+  schema?: Record<string, unknown> | Record<string, unknown>[]; // JSON-LD schema object
 }
 
 const SEO = ({
-  title,
-  description,
+  title = "Skerdi Cacaj | Full-Stack Developer",
+  description = "Full-Stack Developer building modern web applications with React, Next.js, Node.js, Express.js, PostgreSQL, and modern backend tooling.",
   keywords = "Skerdi Cacaj, Full-Stack Developer, React, Next.js, Express.js, NestJS, Tirana, Albania",
   canonical,
   robots = "index, follow, max-image-preview:large",

@@ -25,8 +25,10 @@ Education: Bachelor in Computer Science, University of New York Tirana (UNYT), 2
 
 Languages: Albanian - Native; English - B2 (Upper-Intermediate).
 
-Project content and case studies are inherited from the original template and await replacement in the next task. They should not be treated as Skerdi's work. Unused legacy assets and the original architecture document remain for reference.
+Projects: [BugTriage AI](https://github.com/skerdiD/BugTriage-AI) and [DeliverFlow](https://github.com/skerdiD/deliver-flow). The homepage, resume, About page, footer, and command menu use these projects. Live demos are linked only after verification.
+
+No CV PDF has been supplied. Add the real document at `public/skerdi-cacaj-cv.pdf`, then point the existing resume/download links to `/skerdi-cacaj-cv.pdf`. Until then, links open the resume page and its browser print option; no downloadable CV is claimed.
 
 Contact submissions prepare an email draft to Skerdi; a new hosted submission endpoint has not been supplied. Resume links open the printable resume page. Profile images use the supplied GitHub account's avatar. Canonical URLs use the current site origin; no production domain is assumed.
 
-See [CONTENT_MIGRATION.md](CONTENT_MIGRATION.md) for changed files, remaining references, and verification results.
+See [CONTENT_MIGRATION.md](CONTENT_MIGRATION.md) for the current content audit and validation results.

@@ -11,8 +11,6 @@ import CommandMenu from "./components/CommandMenu";
 // Route-level code splitting: the homepage (Index) is eager since it's the
 // entry point for almost every visitor, but the case studies and
 // secondary profile pages are only fetched when someone actually navigates there.
-const SaveethaHubCaseStudy = lazy(() => import("./pages/SaveethaHubCaseStudy"));
-const UniVaultCaseStudy = lazy(() => import("./pages/UniVaultCaseStudy"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const About = lazy(() => import("./pages/About"));
 const Resume = lazy(() => import("./pages/Resume"));
@@ -41,13 +39,6 @@ const ScrollToTop = () => {
           }
         }
       }, 120);
-    }
-
-    if (typeof window !== "undefined" && (window as any).gtag) {
-      (window as any).gtag("config", "G-MZYV7RYP9N", {
-        page_path: pathname,
-        page_title: document.title
-      });
     }
 
     // If the visitor is navigating or landed on an interior route, mark portfolio as loaded
@@ -83,10 +74,6 @@ const AnimatedRoutes = () => {
   return (
     <Routes location={location} key={location.pathname}>
       <Route path="/" element={<PageWrapper><Index /></PageWrapper>} />
-      <Route path="/saveethahub" element={<PageWrapper><SaveethaHubCaseStudy /></PageWrapper>} />
-      <Route path="/case-study/saveethahub" element={<PageWrapper><SaveethaHubCaseStudy /></PageWrapper>} />
-      <Route path="/univault" element={<PageWrapper><UniVaultCaseStudy /></PageWrapper>} />
-      <Route path="/case-study/univault" element={<PageWrapper><UniVaultCaseStudy /></PageWrapper>} />
       <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
       <Route path="/resume" element={<PageWrapper><Resume /></PageWrapper>} />
       <Route path="*" element={<PageWrapper><NotFound /></PageWrapper>} />

@@ -38,7 +38,6 @@ interface ProjectItem {
 
 interface MobileProjectStackProps {
   projects: ProjectItem[];
-  saveethaStars: number | null;
   onOpenModal: (index: number) => void;
   trackEvent: (action: string, category: string, label: string) => void;
 }
@@ -58,7 +57,6 @@ const EthereumLogo = ({ className }: { className?: string }) => (
 
 export const MobileProjectStack = ({
   projects,
-  saveethaStars,
   onOpenModal,
   trackEvent,
 }: MobileProjectStackProps) => {
@@ -112,12 +110,7 @@ export const MobileProjectStack = ({
                       <h3 className="text-lg font-bold text-foreground font-outfit">
                         {project.title}
                       </h3>
-                      {project.title === "Saveetha Hub" && (
-                        <div className="flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-md border border-yellow-500/20 bg-yellow-500/10 text-yellow-500 shrink-0">
-                          <Star className="w-2.5 h-2.5 fill-current" />{" "}
-                          {saveethaStars !== null ? saveethaStars : "22"}
-                        </div>
-                      )}
+
                     </div>
                   </div>
                   {project.isFeatured && (

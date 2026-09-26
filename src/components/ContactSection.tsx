@@ -33,15 +33,15 @@ const linkedinInfo = {
   location: "Tirana, Albania",
   education: "University of New York Tirana (UNYT)",
   headline: "Building complete web applications with React, Next.js, Express.js, and NestJS.",
-  profileUrl: "https://www.linkedin.com/in/skerdi-cacaj/",
-  skills: ["React", "Next.js", "Express.js", "NestJS", "Databases", "AI integrations"]
+  profileUrl: "https://www.linkedin.com/in/skerdi-cacaj",
+  skills: ["TypeScript", "React", "Next.js", "Node.js", "Express.js", "NestJS", "PostgreSQL"]
 };
 
 // Resume Information
 const resumeInfo = {
   education: "Bachelor in Computer Science",
   focus: "Backend systems, application architecture, and system design",
-  skills: ["React", "Next.js", "Express.js", "NestJS", "Databases", "AI integrations"],
+  skills: ["TypeScript", "React", "Next.js", "Node.js", "Express.js", "NestJS", "PostgreSQL"],
   downloadUrl: "/resume",
   previewUrl: "/resume"
 };
@@ -103,7 +103,7 @@ const LinkedInBadge = ({ theme }: { theme: "light" | "dark" }) => {
       >
         <a
           className="badge-base__link LI-simple-link text-xs text-orange-400 font-grotesk font-semibold hover:underline"
-          href="https://in.linkedin.com/in/skerdi-cacaj?trk=profile-badge"
+          href="https://www.linkedin.com/in/skerdi-cacaj"
         >
           Skerdi Cacaj
         </a>
@@ -603,7 +603,7 @@ export const ContactSection = () => {
       icon: <Linkedin className="w-5 h-5 text-sky-600 dark:text-sky-400" />,
       iconBoxClass: "bg-sky-500/10 border-sky-500/30 text-sky-600 dark:bg-[#0E1A29] dark:text-sky-400 shadow-[0_0_15px_rgba(14,165,233,0.15)]",
       arrowClass: "text-sky-600 dark:text-sky-400 border-sky-500/30 bg-sky-500/10 group-hover:bg-sky-500 group-hover:text-white dark:group-hover:text-black group-hover:border-sky-500",
-      href: "https://www.linkedin.com/in/skerdi-cacaj/",
+      href: "https://www.linkedin.com/in/skerdi-cacaj",
       trackType: "linkedin_contact"
     },
     {
@@ -942,7 +942,7 @@ export const ContactSection = () => {
           </Button>
           <Button asChild className="rounded-xl text-xs py-2.5 h-auto bg-emerald-500 hover:bg-emerald-600 text-white font-bold shadow-md">
             <a href={resumeInfo.downloadUrl} className="flex items-center justify-center gap-1.5">
-              <Download className="w-3.5 h-3.5" /> Download
+              <Download className="w-3.5 h-3.5" /> Print / PDF
             </a>
           </Button>
         </div>

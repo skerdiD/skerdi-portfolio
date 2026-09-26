@@ -44,7 +44,6 @@ const Index = () => {
               
               let displayName = sectionId;
               if (sectionId === "home") displayName = "hero";
-              if (sectionId === "certifications") displayName = "certificates";
               
               const formattedName = displayName.charAt(0).toUpperCase() + displayName.slice(1);
               trackEvent("scroll", "section_view", formattedName);
@@ -116,7 +115,7 @@ const Index = () => {
     <>
       <SEO
         title="Skerdi Cacaj | Full-Stack Developer"
-        description="Full-Stack Developer building complete web applications, from modern React/Next.js interfaces to backend systems with Express.js and NestJS, databases, background processing, and AI-powered features."
+        description="Full-Stack Developer building modern web applications with React, Next.js, Node.js, Express.js, PostgreSQL, and modern backend tooling."
         schema={personSchema}
       />
 
