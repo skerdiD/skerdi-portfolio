@@ -121,7 +121,7 @@ const TechIcon = ({
           />
         </svg>
       );
-    case "Express":
+    case "Express.js":
       return (
         <div
           className={`${className} rounded-lg flex items-center justify-center shrink-0 border transition-colors`}
@@ -234,40 +234,42 @@ const skillData = {
   frontend: {
     title: "Frontend",
     subtitle: "Modern Web Interfaces",
-    badge: "Frontend",
-    items: ["React", "Next.js", "Interfaces", "Web applications"],
+    badge: "6",
+    items: ["TypeScript", "JavaScript", "React", "Next.js", "Tailwind CSS", "shadcn/ui"],
   },
   languages: {
-    title: "Languages",
-    subtitle: "Core Programming",
-    badge: "Web Languages",
-    items: ["JavaScript", "HTML", "CSS", "TypeScript"],
+    title: "Developer Tools",
+    subtitle: "Version Control",
+    badge: "2",
+    items: ["Git", "GitHub"],
   },
   databases: {
-    title: "Databases",
-    subtitle: "Data & Caching",
-    badge: "Data Layer",
-    items: ["Databases", "Data modeling", "Data access"],
+    title: "Data & Services",
+    subtitle: "Storage & Processing",
+    badge: "8",
+    items: ["PostgreSQL", "Prisma", "Supabase", "MongoDB", "Drizzle ORM", "Redis", "BullMQ", "Zod"],
   },
   backend: {
-    title: "Backend & APIs",
-    subtitle: "Server & Microservices",
-    badge: "3 Frameworks",
-    items: ["Node.js", "Express", "NestJS"],
+    title: "Backend",
+    subtitle: "Servers & APIs",
+    badge: "4",
+    items: ["Node.js", "Express.js", "NestJS", "REST APIs"],
   },
   aiMobile: {
-    title: "AI & Applications",
-    subtitle: "App & Intelligent Systems",
-    badge: "Applications",
-    items: ["AI integrations", "AI features", "Web applications"],
+    title: "Testing & Monitoring",
+    subtitle: "Quality & Observability",
+    badge: "3",
+    items: ["Vitest", "Playwright", "Sentry"],
   },
   cloud: {
-    title: "Background Processing",
-    subtitle: "Application Workflows",
-    badge: "Processing",
-    items: ["Background jobs", "Backend systems", "System design"],
+    title: "AI & Infrastructure",
+    subtitle: "AI & Deployment",
+    badge: "6",
+    items: ["LLM Integrations", "Vercel AI SDK", "Docker", "GitHub Actions", "Vercel", "Render"],
   },
 };
+
+const skillCount = Object.values(skillData).reduce((total, category) => total + category.items.length, 0);
 
 interface CardMotionConfig {
   cardY: MotionValue<number>;
@@ -417,11 +419,11 @@ export const SkillsSection = () => {
   const leftRailOpacity = useTransform(scrollYProgress, [0.10, 0.22], [0, 1], { clamp: true });
 
   const count30Text = useTransform(scrollYProgress, (v) => {
-    if (prefersReducedMotion) return "20";
+    if (prefersReducedMotion) return String(skillCount);
     if (v < 0.14) return "0";
     if (v < 0.18) return "10";
-    if (v < 0.22) return "20";
-    return "20";
+    if (v < 0.22) return String(skillCount);
+    return String(skillCount);
   });
   const count30Highlight = useTransform(scrollYProgress, [0.14, 0.22, 0.25, 0.32], [0, 0, 1, 0], { clamp: true });
   const count30Scale = useTransform(scrollYProgress, [0.16, 0.26], [0, 1], { clamp: true });
@@ -478,14 +480,14 @@ export const SkillsSection = () => {
   };
 
   // Top Row Cards Assembly
-  const langConfig = createCardConfig(0.20, 0.23, 0.25, 4);
-  const frontConfig = createCardConfig(0.23, 0.26, 0.28, 4);
-  const backConfig = createCardConfig(0.25, 0.28, 0.30, 3);
+  const langConfig = createCardConfig(0.20, 0.23, 0.25, skillData.languages.items.length);
+  const frontConfig = createCardConfig(0.23, 0.26, 0.28, skillData.frontend.items.length);
+  const backConfig = createCardConfig(0.25, 0.28, 0.30, skillData.backend.items.length);
 
   // Bottom Row Cards Assembly
-  const dataConfig = createCardConfig(0.42, 0.45, 0.47, 4);
-  const cloudConfig = createCardConfig(0.45, 0.48, 0.50, 3);
-  const aiConfig = createCardConfig(0.48, 0.51, 0.53, 3);
+  const dataConfig = createCardConfig(0.42, 0.45, 0.47, skillData.databases.items.length);
+  const cloudConfig = createCardConfig(0.45, 0.48, 0.50, skillData.cloud.items.length);
+  const aiConfig = createCardConfig(0.48, 0.51, 0.53, skillData.aiMobile.items.length);
 
   // 4. Horizontal Connection System
   const connScaleLeft = useTransform(scrollYProgress, [0.32, 0.44], [0, 1], { clamp: true });
@@ -1225,7 +1227,7 @@ export const SkillsSection = () => {
                 className="text-[9px] xl:text-[10.5px] font-grotesk mt-0.5 leading-snug pl-2.5"
                 style={{ color: isDark ? "#94A3B8" : "#64748B" }}
               >
-                Express.js, NestJS & Databases
+                Node.js, Express.js & PostgreSQL
               </p>
             </motion.div>
           </div>
@@ -1355,7 +1357,7 @@ export const SkillsSection = () => {
           }}
         >
           <div>
-            <div className="text-base sm:text-xl font-extrabold font-outfit text-[#F05323]">20</div>
+            <div className="text-base sm:text-xl font-extrabold font-outfit text-[#F05323]">{skillCount}</div>
             <div
               className="text-[9px] sm:text-[10px] font-mono tracking-wider uppercase mt-0.5"
               style={{ color: isDark ? "#94A3B8" : "#64748B" }}
@@ -1386,12 +1388,12 @@ export const SkillsSection = () => {
         {/* Comfortable Grid of All 6 Categories - 1 col on mobile phone, 2 cols on tablet */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3.5 w-full">
           {[
-            { id: "languages", data: skillData.languages },
             { id: "frontend", data: skillData.frontend },
             { id: "backend", data: skillData.backend },
             { id: "databases", data: skillData.databases },
-            { id: "aiMobile", data: skillData.aiMobile },
             { id: "cloud", data: skillData.cloud },
+            { id: "aiMobile", data: skillData.aiMobile },
+            { id: "languages", data: skillData.languages },
           ].map((item, idx) => (
             <motion.div
               key={item.id}

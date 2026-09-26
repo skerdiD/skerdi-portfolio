@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, type ComponentProps } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence, useScroll, useReducedMotion } from "framer-motion";
@@ -72,237 +72,60 @@ const getStatIcon = (iconName: string) => {
   }
 };
 
-const projects = [
+const projects: Array<ComponentProps<typeof MobileProjectStack>["projects"][number] & {
+  problem: string;
+  solution: string;
+  impact: string[];
+}> = [
   {
-    title: "Object Detection in Python",
-    desc: "Real-time object detection system built with Python and OpenCV. Utilizes machine learning models for accurate identification and classification of objects.",
-    link: "https://github.com/ComradeMohan/CSA0810PythonProgramming/tree/main/Various%20Object%20Identification",
-    githubLink: "https://github.com/ComradeMohan/CSA0810PythonProgramming/tree/main/Various%20Object%20Identification",
+    title: "BugTriage AI",
+    desc: "AI-powered issue triage with semantic duplicate detection and multi-tenant workspaces.",
+    link: "https://bug-triage-ai.vercel.app/",
+    githubLink: "https://github.com/skerdiD/BugTriage-AI",
     color: "from-slate-800/20 to-slate-800/5",
     activeColor: "border-primary",
-    icon: Camera,
+    icon: Brain,
     iconColor: "text-primary",
     iconBg: "bg-primary/10",
     isFeatured: false,
     techStack: [
-      { name: "Python", icon: "🐍" },
-      { name: "OpenCV", icon: "📷" },
-      { name: "YOLOv8", icon: "🚀" },
-      { name: "cvzone", icon: "📦" },
-      { name: "ultralytics", icon: "🔥" }
+      { name: "Next.js", icon: "N" },
+      { name: "TypeScript", icon: "TS" },
+      { name: "Prisma", icon: "P" },
+      { name: "PostgreSQL", icon: "PG" },
+      { name: "pgvector", icon: "V" },
+      { name: "Redis", icon: "R" },
+      { name: "BullMQ", icon: "B" },
+      { name: "Gemini AI", icon: "G" },
+      { name: "Vercel AI SDK", icon: "AI" }
     ],
-    imports: [
-      "import math",
-      "import cv2",
-      "from ultralytics import YOLO",
-      "import cvzone"
-    ],
-    modelLink: "https://github.com/ComradeMohan/CSA0810PythonProgramming/blob/main/Various%20Object%20Identification/yolov8n.pt",
-    problem: "Manual object identification is time-consuming and error-prone in real-world applications.",
-    solution: "Built a real-time object detection system using ML models and OpenCV for accurate recognition.",
-    impact: [
-      "Detects multiple objects",
-      "Real-time performance",
-      "High accuracy"
-    ],
-    hasLiveDemo: false
+    problem: "Incoming issues need analysis, duplicate detection, and workspace organization.",
+    solution: "Redis and BullMQ background processing with worker retries, transactional outbox dispatch, and pgvector similarity search.",
+    impact: ["Semantic duplicate detection", "Private attachments", "GitHub Issues export"],
+    hasLiveDemo: true
   },
   {
-    title: "Saveetha Hub",
-    desc: "A centralized platform for Saveetha University students to access resources, collaborate on projects, and stay connected with campus activities.",
-    link: "https://saveetha-hub.netlify.app/",
-    githubLink: "https://github.com/ComradeMohan/saveetha-companion",
-    caseStudyLink: "/case-study/saveethahub",
+    title: "DeliverFlow",
+    desc: "Client delivery portal for projects, tasks, milestones, files, payments, feedback, and approvals across owner and client workspaces.",
+    link: "https://deliver-flow.vercel.app/",
+    githubLink: "https://github.com/skerdiD/deliver-flow",
     color: "from-orange-500/20 to-orange-500/5",
     activeColor: "border-orange-500",
     icon: Users,
     iconColor: "text-orange-500",
     iconBg: "bg-orange-500/10",
     isFeatured: true,
-    liveBadges: [
-      { text: "Live Project", color: "bg-green-500/10 border-green-500/20 text-green-500" },
-      { text: "Web Platform", color: "bg-blue-500/10 border-blue-500/20 text-blue-500" }
-    ],
-    stats: [
-      { label: "Search Clicks", sublabel: "(Google Search)", value: "24,706", color: "text-red-500", path: "M0,25 Q15,10 30,20 T60,12 T90,24 T100,8" },
-      { label: "Active Users", sublabel: "(Last 28 Days)", value: "3.8K+", color: "text-green-500", path: "M0,28 Q20,25 40,15 T70,12 T90,6 T100,2" },
-      { label: "New Users", sublabel: "(Last 28 Days)", value: "1.7K+", color: "text-purple-500", path: "M0,22 Q10,5 25,18 T50,5 T75,25 T100,15" },
-      { label: "Avg Engagement Time", sublabel: "(Per Active User)", value: "50s", color: "text-blue-500", path: "M0,15 Q25,18 50,14 T75,16 T100,15" }
-    ],
-    features: [
-      { name: "Study Materials", icon: "file" },
-      { name: "Community Hub", icon: "chat" },
-      { name: "Project Collaboration", icon: "collab" },
-      { name: "CGPA Calculator", icon: "calc" },
-      { name: "Events & Updates", icon: "event" },
-      { name: "Secure Authentication", icon: "lock" }
-    ],
     techStack: [
-      { name: "React", icon: "⚛️" },
-      { name: "Tailwind CSS", icon: "🎨" },
-      { name: "Firebase", icon: "🔥" },
-      { name: "Vite", icon: "⚡" }
+      { name: "Next.js", icon: "N" },
+      { name: "TypeScript", icon: "TS" },
+      { name: "PostgreSQL", icon: "PG" },
+      { name: "Drizzle ORM", icon: "D" },
+      { name: "Supabase", icon: "S" },
+      { name: "Tailwind CSS", icon: "TW" }
     ],
-    problem: "Students lacked a unified portal to share study materials, check updates, and coordinate project work efficiently across campus.",
-    solution: "Created an all-in-one platform with real-time database syncing, community discussions, file sharing, and academic utilities to improve student productivity.",
-    impact: [
-      "Unified access to student resources and academic tools",
-      "Real-time collaboration and discussion",
-      "Active and growing campus community"
-    ],
-    hasLiveDemo: true
-  },
-  {
-    title: "Univault",
-    desc: "A smart academic management platform designed for university students to track grades, calculate CGPA, manage courses, monitor attendance, and generate detailed academic reports — all in one centralized dashboard.",
-    link: "https://web.univault.live/",
-    githubLink: "https://github.com/ComradeMohan/192210400pdd",
-    playStoreLink: "https://play.google.com/store/apps/details?id=com.simats.univault",
-    linkedinLink: "https://www.linkedin.com/posts/mmohanreddy_studenttools-campuscodex-univault-activity-7343688723240271872-Bt7C?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEq_4K8Bp2DUwoLoAZ6lkzx4xi4MtcsntWc",
-    instagramLink: "https://www.instagram.com/simats_pdd_videos/reel/DPrKUfsCRfZ/",
-    caseStudyLink: "/case-study/univault",
-    color: "from-blue-600/20 to-blue-600/5",
-    activeColor: "border-blue-600",
-    icon: Database,
-    iconColor: "text-blue-600",
-    iconBg: "bg-blue-600/10",
-    logoImg: "/univault_logo.webp",
-    isFeatured: true,
-    liveBadges: [
-      { text: "Exam Preparation Platform", color: "bg-blue-500/10 border-blue-500/20 text-blue-500" }
-    ],
-    platformBadges: [
-      { text: "Website", url: "https://web.univault.live/", icon: "globe" },
-      { text: "Play Store", url: "https://play.google.com/store/apps/details?id=com.simats.univault", icon: "playstore" }
-    ],
-    mobileMockup: "/univault_mobile.webp",
-    videoMockup: "/univaultvideo.mp4",
-    stats: [
-      { label: "Active Students", value: "2.4K+", iconName: "users" },
-      { label: "Study Materials", value: "10K+", iconName: "book" },
-      { label: "Tests Attempted", value: "5K+", iconName: "test" },
-      { label: "Preparation Focus", value: "98%", iconName: "trend" }
-    ],
-    features: [
-      { name: "Unit-wise Study Materials", icon: "book" },
-      { name: "Academic Progress Tracking", icon: "calc" },
-      { name: "Practice & Model Tests", icon: "shield" },
-      { name: "Exam-focused Preparation", icon: "event" },
-      { name: "Previous Year Papers", icon: "file" },
-      { name: "Android Application", icon: "phone" }
-    ],
-    techStack: [
-      { name: "Next.js", icon: "⚛️" },
-      { name: "Firebase", icon: "🔥" },
-      { name: "Kotlin (Android)", icon: "🤖" },
-      { name: "PHP", icon: "🐘" },
-      { name: "SQL", icon: "🛢️" }
-    ],
-    problem: "Students often struggle with scattered resources, unorganized materials, and inefficient exam preparation.",
-    solution: "Built a centralized platform with structured study materials, unit-wise tests, and smart tools for effective preparation.",
-    impact: [
-      "Faster access to academic resources",
-      "Structured exam preparation",
-      "Improved study organization",
-      "Mobile-first learning experience"
-    ],
-    hasLiveDemo: true
-  },
-  {
-    title: "Ethereum Fraud Detection Using XGBoost",
-    desc: "Machine learning-based Ethereum fraud detection system achieving 94% accuracy using XGBoost and outperforming multiple classification algorithms.",
-    link: "/Ethereum%20Fraud%20Detection%20Using%20XGBoost.pptx",
-    githubLink: "https://github.com/ComradeMohan",
-    color: "from-indigo-600/20 to-indigo-600/5",
-    activeColor: "border-indigo-600",
-    icon: Coins,
-    iconColor: "text-indigo-400",
-    iconBg: "bg-indigo-500/10",
-    logoImg: "ethereum",
-    isFeatured: false,
-    liveBadges: [
-      { text: "Research Project", color: "bg-indigo-500/10 border-indigo-500/20 text-indigo-400" }
-    ],
-    stats: [
-      { label: "Best Accuracy", value: "94%", iconName: "crosshair" },
-      { label: "Algorithms Compared", value: "4", iconName: "branch" },
-      { label: "Blockchain Dataset", value: "Ethereum", iconName: "coins" },
-      { label: "Research Project", value: "ML", iconName: "brain" }
-    ],
-    techStack: [
-      { name: "Python", icon: "🐍" },
-      { name: "Pandas", icon: "🐼" },
-      { name: "Scikit-Learn", icon: "🤖" },
-      { name: "XGBoost", icon: "⚡" },
-      { name: "Google Colab", icon: "♾️" },
-      { name: "Machine Learning", icon: "🧠" }
-    ],
-    keyResults: [
-      { name: "XGBoost (Proposed)", value: 94, color: "bg-indigo-500" },
-      { name: "Decision Tree", value: 88.5, color: "bg-green-500" },
-      { name: "Random Forest", value: 72.4, color: "bg-blue-500" },
-      { name: "AdaBoost", value: 77.1, color: "bg-yellow-500" },
-      { name: "K Nearest Neighbor", value: 82, color: "bg-blue-600" }
-    ],
-    problem: "Fraudulent Ethereum transactions can cause irreversible financial losses and are difficult to detect due to highly imbalanced blockchain datasets.",
-    solution: "Developed a fraud detection model using XGBoost and compared its performance against Decision Tree, Random Forest, AdaBoost, and KNN classifiers.",
-    impact: [
-      "94% Detection Accuracy",
-      "Statistically Significant Results",
-      "Reduced False Predictions",
-      "Improved Fraud Identification"
-    ],
-    pptLink: "/Ethereum%20Fraud%20Detection%20Using%20XGBoost.pptx",
-    researchPaperLink: "https://github.com/ComradeMohan"
-  },
-  {
-    title: "Skylink Deliveries",
-    desc: "A logistics and delivery management system with real-time tracking, route optimization, and automated dispatch capabilities.",
-    link: "https://skylinkdeliveries.netlify.app/",
-    color: "from-sky-500/20 to-sky-500/5",
-    activeColor: "border-sky-500",
-    icon: Truck,
-    iconColor: "text-sky-500",
-    iconBg: "bg-sky-500/10",
-    isFeatured: false,
-    techStack: [
-      { name: "React", icon: "⚛️" },
-      { name: "Mapbox API", icon: "🗺️" },
-      { name: "Node.js", icon: "🟢" },
-      { name: "MongoDB", icon: "🍃" }
-    ],
-    problem: "Traditional delivery operations struggle with inefficient route planning and lack of real-time client updates.",
-    solution: "Designed a logistics engine with dynamic routing algorithms and an interactive tracking map for dispatchers and clients.",
-    impact: [
-      "Optimized dispatch routes",
-      "Real-time location updates",
-      "Reduced transit delays"
-    ],
-    hasLiveDemo: true
-  },
-  {
-    title: "DevPulse ⭐",
-    desc: "A full-stack GitHub analytics and widget generator that transforms developer activity into interactive, real-time insights. It provides dynamic widgets for READMEs, tracks commits, PRs, reviews, streaks, and delivers AI-powered tech stack evolution and profile analysis with public portfolio pages.",
-    link: "https://devpulseweb.netlify.app/",
-    color: "from-purple-600/20 to-purple-600/5",
-    activeColor: "border-purple-600",
-    icon: Activity,
-    iconColor: "text-purple-600",
-    iconBg: "bg-purple-600/10",
-    isFeatured: true,
-    techStack: [
-      { name: "React", icon: "⚛️" },
-      { name: "GitHub API", icon: "🐙" },
-      { name: "Tailwind CSS", icon: "🎨" },
-      { name: "Framer Motion", icon: "✨" }
-    ],
-    problem: "Developers need an engaging, automated way to showcase their GitHub contribution metrics on personal portfolios.",
-    solution: "Engineered a high-performance widget server that fetches, aggregates, and renders clean SVG metric summaries in real-time.",
-    impact: [
-      "Custom README widgets",
-      "AI-powered stack analysis",
-      "Real-time streak counting"
-    ],
+    problem: "Client delivery work is scattered across projects, files, payments, and approvals.",
+    solution: "Role-based access, Supabase RLS, workspace-scoped data, and private storage with signed URLs.",
+    impact: ["Workspace notifications", "Delivery analytics", "Automated payment reminders"],
     hasLiveDemo: true
   }
 ];
@@ -891,7 +714,7 @@ const ProjectDetailContent = ({ project }: { project: any }) => {
 const ProjectsSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
-  const [saveethaStars, setSaveethaStars] = useState<number | null>(null);
+  const saveethaStars = null;
 
   const desktopShowcaseRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
@@ -902,28 +725,13 @@ const ProjectsSection = () => {
     offset: ["start start", "end end"],
   });
 
-  useEffect(() => {
-    fetch("https://api.github.com/repos/ComradeMohan/saveetha-companion")
-      .then((res) => {
-        if (!res.ok) throw new Error();
-        return res.json();
-      })
-      .then((data) => {
-        if (data && typeof data.stargazers_count === "number") {
-          setSaveethaStars(data.stargazers_count);
-        }
-      })
-      .catch(() => {
-        setSaveethaStars(21);
-      });
-  }, []);
 
   // Update activeIndex based on scroll position in desktop sticky container
   useEffect(() => {
     if (prefersReducedMotion) return;
 
     const unsubscribe = scrollYProgress.on("change", (latest) => {
-      // Map 0 -> 1 progress to project index (0 to 5)
+      // Map 0 -> 1 progress to project index
       const count = projects.length;
       const index = Math.min(count - 1, Math.max(0, Math.floor(latest * count)));
       setActiveIndex(index);
@@ -1106,7 +914,6 @@ const ProjectsSection = () => {
         <div ref={desktopShowcaseRef} id="projects-stage-container" className="hidden lg:block relative h-[700vh]">
           <ProjectScrollyStage
             scrollYProgress={scrollYProgress}
-            saveethaStars={saveethaStars}
           />
         </div>
 
