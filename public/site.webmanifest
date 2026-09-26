@@ -1,61 +1,17 @@
 {
-  "name": "Mohan Reddy | Full Stack & Android Developer",
-  "short_name": "Mohan Reddy",
-  "description": "Professional portfolio, engineering case studies, live developer stats, and resume of Mohan Reddy (ComradeMohan).",
+  "name": "Skerdi Cacaj — Full-Stack Developer",
+  "short_name": "Skerdi Cacaj",
+  "description": "Backend-oriented full-stack developer portfolio.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#08090b",
-  "theme_color": "#8b5cf6",
-  "orientation": "any",
-  "categories": ["developer", "portfolio", "productivity", "utilities"],
+  "background_color": "#0a0d13",
+  "theme_color": "#0a0d13",
   "icons": [
     {
-      "src": "/favicon.png",
-      "sizes": "64x64",
-      "type": "image/png",
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
       "purpose": "any"
-    },
-    {
-      "src": "/comrademohan.webp",
-      "sizes": "192x192",
-      "type": "image/webp",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/mohan-reddy-full-stack-developer.webp",
-      "sizes": "512x512",
-      "type": "image/webp",
-      "purpose": "any maskable"
-    }
-  ],
-  "shortcuts": [
-    {
-      "name": "Developer Stats",
-      "short_name": "Stats",
-      "description": "Live GitHub & LeetCode statistics",
-      "url": "/developer",
-      "icons": [{ "src": "/favicon.png", "sizes": "64x64" }]
-    },
-    {
-      "name": "Resume",
-      "short_name": "Resume",
-      "description": "Interactive developer resume",
-      "url": "/resume",
-      "icons": [{ "src": "/favicon.png", "sizes": "64x64" }]
-    },
-    {
-      "name": "SaveethaHub Case Study",
-      "short_name": "SaveethaHub",
-      "description": "SaveethaHub architecture case study",
-      "url": "/case-study/saveethahub",
-      "icons": [{ "src": "/favicon.png", "sizes": "64x64" }]
-    },
-    {
-      "name": "UniVault Case Study",
-      "short_name": "UniVault",
-      "description": "UniVault offline-first Android case study",
-      "url": "/case-study/univault",
-      "icons": [{ "src": "/favicon.png", "sizes": "64x64" }]
     }
   ]
 }

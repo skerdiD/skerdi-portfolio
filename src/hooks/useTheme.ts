@@ -43,11 +43,11 @@ export function useTheme() {
         if (nextIsDark) {
           document.documentElement.classList.remove("light");
           document.documentElement.classList.add("dark");
-          metaThemeColor?.setAttribute("content", "hsl(289, 65%, 10%)");
+          metaThemeColor?.setAttribute("content", "#0a0d13");
         } else {
           document.documentElement.classList.add("light");
           document.documentElement.classList.remove("dark");
-          metaThemeColor?.setAttribute("content", "hsla(12, 65%, 88%, 1.00)");
+          metaThemeColor?.setAttribute("content", "#f7f9fb");
         }
         window.dispatchEvent(new Event("local-storage"));
       },

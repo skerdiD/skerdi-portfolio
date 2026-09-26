@@ -10,7 +10,7 @@
  */
 
 const THEME_COLORS: Record<string, string> = {
-  dark: "#0b1020",
+  dark: "#0a0d13",
   light: "#fafafa",
   midnight: "#071025",
   violet: "#1b052f",
@@ -46,8 +46,8 @@ export const executeCircleThemeTransition = (
   const isCurrentlyDark = !document.documentElement.classList.contains("light");
   const willBeDark = targetTheme ? targetTheme !== "light" : !isCurrentlyDark;
   const overlayColor = targetTheme
-    ? (THEME_COLORS[targetTheme] || (willBeDark ? "#0b1020" : "#fafafa"))
-    : (willBeDark ? "#0b1020" : "#fafafa");
+    ? (THEME_COLORS[targetTheme] || (willBeDark ? "#0a0d13" : "#fafafa"))
+    : (willBeDark ? "#0a0d13" : "#fafafa");
 
   // Create hardware-accelerated expanding ripple element
   const overlay = document.createElement("div");
@@ -67,7 +67,7 @@ export const executeCircleThemeTransition = (
     will-change: transform, opacity;
     transform: translate3d(0, 0, 0) scale(0.01);
     transition: transform 320ms cubic-bezier(0.2, 0, 0, 1), opacity 180ms ease 220ms;
-    box-shadow: 0 0 100px rgba(249, 115, 22, 0.35);
+    box-shadow: 0 0 100px rgba(34, 199, 184, 0.25);
   `;
 
   document.body.appendChild(overlay);

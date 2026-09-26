@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
-import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform, useReducedMotion, type HTMLMotionProps } from "framer-motion";
 
-interface TiltCardProps extends React.HTMLAttributes<HTMLDivElement> {
+interface TiltCardProps extends Omit<HTMLMotionProps<"div">, "children"> {
   children: React.ReactNode;
   className?: string;
   maxTilt?: number;
@@ -66,7 +66,7 @@ export const TiltCard: React.FC<TiltCardProps> = ({
         transformStyle: "preserve-3d",
       }}
       className={`perspective-1000 transition-shadow duration-300 ${className}`}
-      {...(props as any)}
+      {...props}
     >
       <div style={{ transform: "translateZ(12px)" }} className="w-full h-full">
         {children}
