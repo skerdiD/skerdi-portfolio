@@ -7,6 +7,15 @@ import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { useGithubStats } from "@/hooks/useDeveloperStats";
 
+const skillGroups = [
+  { title: "Languages", skills: ["TypeScript", "JavaScript", "SQL"] },
+  { title: "Frontend", skills: ["React", "Next.js", "Tailwind CSS", "shadcn/ui"] },
+  { title: "Backend", skills: ["Node.js", "Express.js", "NestJS", "REST APIs", "Zod", "LLM Integrations", "Vercel AI SDK"] },
+  { title: "Data", skills: ["PostgreSQL", "Prisma", "Supabase", "MongoDB", "Drizzle ORM", "Redis"] },
+  { title: "Infrastructure & Tools", skills: ["Docker", "BullMQ", "Sentry", "Git", "GitHub", "Vercel", "Render"] },
+  { title: "Testing & CI/CD", skills: ["Vitest", "Playwright", "GitHub Actions"] },
+];
+
 const About = () => {
   const { data: githubData, isLoading: isGithubLoading } = useGithubStats("about");
   const githubFollowers = githubData?.followers ?? "—";
@@ -178,48 +187,45 @@ const About = () => {
                 </h2>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm font-grotesk">
-                  <div className="space-y-3">
-                    <h3 className="font-semibold text-foreground border-b border-border pb-1 font-outfit">Frontend</h3>
-                    <div className="flex flex-wrap gap-2">
-                      {["TypeScript", "JavaScript", "React", "Next.js", "Tailwind CSS", "shadcn/ui"].map(lang => (
-                        <span key={lang} className="px-2.5 py-1 rounded bg-muted border border-border text-foreground text-xs">
-                          {lang}
-                        </span>
-                      ))}
+                  {skillGroups.map(({ title, skills }) => (
+                    <div key={title} className="space-y-3">
+                      <h3 className="font-semibold text-foreground border-b border-border pb-1 font-outfit">{title}</h3>
+                      <div className="flex flex-wrap gap-2">
+                        {skills.map(skill => (
+                          <span key={skill} className="px-2.5 py-1 rounded bg-muted border border-border text-foreground text-xs">
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-
-                  <div className="space-y-3">
-                    <h3 className="font-semibold text-foreground border-b border-border pb-1 font-outfit">Backend, Data & Tools</h3>
-                    <div className="flex flex-wrap gap-2">
-                      {["Node.js", "Express.js", "NestJS", "REST APIs", "PostgreSQL", "Prisma", "Supabase", "MongoDB", "Drizzle ORM", "Redis", "BullMQ", "Zod", "LLM Integrations", "Vercel AI SDK", "Docker", "GitHub Actions", "Vercel", "Render", "Vitest", "Playwright", "Sentry", "Git", "GitHub"].map(tech => (
-                        <span key={tech} className="px-2.5 py-1 rounded bg-muted border border-border text-foreground text-xs">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </section>
 
 
 
               {/* Core Projects Link */}
-              <section className="bg-gradient-to-r from-primary/10 to-accent/10 rounded-2xl border border-primary/20 p-6 sm:p-8 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6">
+              <section className="bg-gradient-to-r from-primary/10 to-accent/10 rounded-2xl border border-primary/20 p-6 sm:p-8 shadow-xl flex flex-col items-center sm:items-start gap-6">
                 <div className="text-center sm:text-left space-y-2">
                   <h2 className="text-xl font-bold text-foreground font-outfit flex items-center justify-center sm:justify-start gap-2">
                     <BookOpen className="w-5 h-5 text-primary" /> Real-World Products
                   </h2>
                   <p className="text-xs text-muted-foreground font-grotesk leading-relaxed">
-                    Explore BugTriage AI and DeliverFlow: issue triage, background processing, and secure client delivery workflows.
+                    Explore BugTriage AI, DeliverFlow, LeadFlow, and ScopeFlow AI: issue triage, client delivery, sales workflows, and AI proposals.
                   </p>
                 </div>
-                <div className="flex gap-3 shrink-0">
+                <div className="flex flex-wrap justify-center sm:justify-start gap-3">
                   <Button asChild className="bg-orange-500 hover:bg-orange-600 text-white font-semibold shadow-md transition-all border border-orange-400/30">
                     <a href="https://github.com/skerdiD/BugTriage-AI" target="_blank" rel="noopener noreferrer">BugTriage AI</a>
                   </Button>
                   <Button asChild className="bg-teal-600 hover:bg-teal-700 text-white font-semibold shadow-md transition-all border border-teal-500/30">
                     <a href="https://github.com/skerdiD/deliver-flow" target="_blank" rel="noopener noreferrer">DeliverFlow</a>
+                  </Button>
+                  <Button asChild className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold shadow-md transition-all border border-emerald-500/30">
+                    <a href="https://github.com/skerdiD/lead-flow" target="_blank" rel="noopener noreferrer">LeadFlow</a>
+                  </Button>
+                  <Button asChild className="bg-violet-600 hover:bg-violet-700 text-white font-semibold shadow-md transition-all border border-violet-500/30">
+                    <a href="https://github.com/skerdiD/ScopeFlow-AI" target="_blank" rel="noopener noreferrer">ScopeFlow AI</a>
                   </Button>
                 </div>
               </section>

@@ -1,0 +1,71 @@
+[
+  {
+    "width": 1366,
+    "theme": "dark",
+    "sections": [
+      "home",
+      "about",
+      "skills",
+      "projects",
+      "contact"
+    ],
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "path": "/about",
+    "title": "About Skerdi Cacaj | Full-Stack Developer",
+    "errors": []
+  },
+  {
+    "path": "/resume",
+    "title": "Resume | Skerdi Cacaj - Full-Stack Developer",
+    "errors": []
+  },
+  {
+    "path": "/blog",
+    "title": "404 - Page Lost in Cyberspace | Skerdi Cacaj",
+    "errors": []
+  },
+  {
+    "path": "/missing",
+    "title": "404 - Page Lost in Cyberspace | Skerdi Cacaj",
+    "errors": []
+  },
+  {
+    "path": "/case-study/saveethahub",
+    "title": "SaveethaHub Case Study | Project Case Study",
+    "errors": []
+  },
+  {
+    "path": "/case-study/univault",
+    "title": "UniVault Case Study | Project Case Study",
+    "errors": []
+  },
+  {
+    "width": 1366,
+    "theme": "light",
+    "sections": [
+      "home",
+      "about",
+      "skills",
+      "projects",
+      "contact"
+    ],
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "width": 390,
+    "theme": "dark",
+    "sections": [
+      "home",
+      "about",
+      "skills",
+      "projects",
+      "contact"
+    ],
+    "overflow": false,
+    "errors": []
+  }
+]

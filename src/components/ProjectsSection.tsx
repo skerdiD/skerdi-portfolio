@@ -127,6 +127,53 @@ const projects: Array<ComponentProps<typeof MobileProjectStack>["projects"][numb
     solution: "Role-based access, Supabase RLS, workspace-scoped data, and private storage with signed URLs.",
     impact: ["Workspace notifications", "Delivery analytics", "Automated payment reminders"],
     hasLiveDemo: true
+  },
+  {
+    title: "LeadFlow",
+    desc: "Multi-tenant CRM for lead qualification, deal pipelines, revenue forecasting, and follow-ups.",
+    link: "https://lead-flow-skerdid.vercel.app/",
+    githubLink: "https://github.com/skerdiD/lead-flow",
+    color: "from-emerald-500/20 to-emerald-500/5",
+    activeColor: "border-emerald-500",
+    icon: TrendingUp,
+    iconColor: "text-emerald-500",
+    iconBg: "bg-emerald-500/10",
+    techStack: [
+      { name: "Next.js", icon: "N" },
+      { name: "TypeScript", icon: "TS" },
+      { name: "PostgreSQL", icon: "PG" },
+      { name: "Drizzle ORM", icon: "D" },
+      { name: "Clerk", icon: "C" },
+      { name: "Arcjet", icon: "A" }
+    ],
+    problem: "Sales teams need a connected view of leads, deals, follow-ups, and expected revenue.",
+    solution: "Workspace-scoped CRM workflows with role-based permissions, transactional lead qualification, and a drag-and-drop deal pipeline.",
+    impact: ["Weighted revenue forecasts", "Lead-to-deal qualification", "CSV imports and PDF exports"],
+    hasLiveDemo: true
+  },
+  {
+    title: "ScopeFlow AI",
+    desc: "AI proposal workspace for freelancers and agencies, from client requirements to export-ready proposals.",
+    link: "https://scope-flow-ai.vercel.app/",
+    githubLink: "https://github.com/skerdiD/ScopeFlow-AI",
+    color: "from-violet-500/20 to-violet-500/5",
+    activeColor: "border-violet-500",
+    icon: FileText,
+    iconColor: "text-violet-500",
+    iconBg: "bg-violet-500/10",
+    techStack: [
+      { name: "React", icon: "R" },
+      { name: "TypeScript", icon: "TS" },
+      { name: "Express.js", icon: "E" },
+      { name: "Prisma", icon: "P" },
+      { name: "PostgreSQL", icon: "PG" },
+      { name: "Supabase Auth", icon: "S" },
+      { name: "Gemini AI", icon: "G" }
+    ],
+    problem: "Turning rough client requirements into clear proposals involves repetitive drafting and review.",
+    solution: "Authenticated, user-scoped workspaces with Gemini-powered drafting, quality reviews, proposal versions, and reusable templates.",
+    impact: ["AI proposal quality reviews", "Versioned proposal drafts", "DOCX and PDF exports"],
+    hasLiveDemo: true
   }
 ];
 
@@ -771,6 +818,7 @@ const ProjectsSection = () => {
         <div ref={desktopShowcaseRef} id="projects-stage-container" className="hidden lg:block relative h-[700vh]">
           <ProjectScrollyStage
             scrollYProgress={scrollYProgress}
+            projects={projects}
           />
         </div>
 

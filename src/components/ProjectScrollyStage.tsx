@@ -10,9 +10,15 @@ import {
 import { Button } from "@/components/ui/button";
 import { trackEvent } from "@/lib/analytics";
 import { ProgressiveImage } from "./ProgressiveImage";
+import type MobileProjectStack from "./MobileProjectStack";
 
 interface ProjectScrollyStageProps {
   scrollYProgress: MotionValue<number>;
+  projects: Array<React.ComponentProps<typeof MobileProjectStack>["projects"][number] & {
+    problem: string;
+    solution: string;
+    impact: string[];
+  }>;
 }
 
 // Micro-Animation Helper: Pulsing Live Indicator
@@ -86,6 +92,8 @@ const Sparkline = ({ colorClass, path, delay = 0.2 }: { colorClass: string; path
 const bgGlowColors = [
   "rgba(249, 115, 22, 0.10)", // BugTriage AI
   "rgba(249, 115, 22, 0.14)", // DeliverFlow
+  "rgba(16, 185, 129, 0.12)", // LeadFlow
+  "rgba(139, 92, 246, 0.12)", // ScopeFlow AI
 ];
 
 const slideVariants = {
@@ -116,9 +124,11 @@ const slideVariants = {
 
 export const ProjectScrollyStage: React.FC<ProjectScrollyStageProps> = ({
   scrollYProgress,
+  projects,
 }) => {
-  // Keep the existing scroll transitions aligned with the two project cards.
-  const activeIndex = useTransform(scrollYProgress, (latest) => latest < 0.5 ? 0 : 1);
+  const activeIndex = useTransform(scrollYProgress, (latest) =>
+    Math.min(projects.length - 1, Math.max(0, Math.floor(latest * projects.length)))
+  );
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(1);
@@ -135,8 +145,7 @@ export const ProjectScrollyStage: React.FC<ProjectScrollyStageProps> = ({
   }, [activeIndex]);
 
   const handleJumpToProject = (idx: number) => {
-    const centers = [0.25, 0.75];
-    const targetProgress = centers[idx];
+    const targetProgress = (idx + 0.5) / projects.length;
     const stageEl = document.getElementById("projects-stage-container");
     if (stageEl) {
       const rect = stageEl.getBoundingClientRect();
@@ -161,12 +170,12 @@ export const ProjectScrollyStage: React.FC<ProjectScrollyStageProps> = ({
       <div className="max-w-6xl xl:max-w-7xl w-full flex flex-col justify-between flex-1 h-full max-h-[calc(100vh-85px)] xl:max-h-[calc(100vh-105px)] relative z-10 select-none">
 
         {/* ========================================================================= */}
-        {/* STAGE HEADER: Milestone Tracker & Scrolly Runner (01 / 02)                */}
+        {/* STAGE HEADER: Milestone Tracker & Scrolly Runner                         */}
         {/* ========================================================================= */}
         <div className="flex items-center justify-between pb-3 border-b border-border/60 shrink-0">
           <div className="flex items-center gap-3">
             <span className="text-xs font-mono font-bold tracking-wider px-2.5 py-1 rounded-md bg-primary/10 text-primary border border-primary/20">
-              0{currentIndex + 1} / 02
+              {String(currentIndex + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
             </span>
             <span className="text-xs text-muted-foreground uppercase font-mono tracking-widest hidden sm:inline-block">
               Scroll-Driven Project Stage
@@ -185,8 +194,8 @@ export const ProjectScrollyStage: React.FC<ProjectScrollyStageProps> = ({
                 <ChevronLeft className="w-4 h-4" />
               </button>
               <button
-                disabled={currentIndex === 1}
-                onClick={() => handleJumpToProject(Math.min(1, currentIndex + 1))}
+                disabled={currentIndex === projects.length - 1}
+                onClick={() => handleJumpToProject(Math.min(projects.length - 1, currentIndex + 1))}
                 className="p-1 rounded-md text-muted-foreground hover:text-foreground hover:bg-secondary/60 disabled:opacity-30 disabled:pointer-events-none transition-colors"
                 aria-label="Next Project"
               >
@@ -508,6 +517,71 @@ export const ProjectScrollyStage: React.FC<ProjectScrollyStageProps> = ({
               </motion.div>
             )}
 
+            {projects.slice(2).map((project, index) => {
+              if (currentIndex !== index + 2) return null;
+              const ProjectIcon = project.icon;
+              return (
+                <motion.div
+                  key={project.title}
+                  custom={direction}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  className="w-full grid grid-cols-12 gap-8 lg:gap-10 items-center"
+                >
+                  <div className="col-span-6 space-y-3.5 text-left">
+                    <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border text-xs font-mono font-bold ${project.iconBg} ${project.iconColor}`}>
+                      <ProjectIcon className="w-3.5 h-3.5" />
+                      <span>{project.title === "LeadFlow" ? "CRM & Revenue Pipeline" : "AI Proposal Workspace"}</span>
+                    </div>
+                    <h3 className="text-3xl lg:text-4xl font-extrabold font-outfit text-foreground leading-tight">{project.title}</h3>
+                    <p className="text-sm text-muted-foreground font-grotesk leading-relaxed">{project.desc}</p>
+                    <div className="grid grid-cols-2 gap-2.5">
+                      <div className="p-3 rounded-xl bg-card/80 border border-border/80">
+                        <h4 className="text-xs font-bold text-foreground mb-1">Problem</h4>
+                        <p className="text-xs text-muted-foreground leading-relaxed">{project.problem}</p>
+                      </div>
+                      <div className="p-3 rounded-xl bg-card/80 border border-border/80">
+                        <h4 className="text-xs font-bold text-foreground mb-1">Solution</h4>
+                        <p className="text-xs text-muted-foreground leading-relaxed">{project.solution}</p>
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap gap-1.5">
+                      {project.techStack.map(tech => <TechTag key={tech.name} tag={tech.name} />)}
+                    </div>
+                    <div className="flex flex-wrap gap-3 pt-1">
+                      <Button asChild>
+                        <a href={project.link} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent("click", "demo", project.title)}>
+                          <ExternalLink className="w-4 h-4 mr-2" /> Live Demo
+                        </a>
+                      </Button>
+                      <Button asChild variant="outline">
+                        <a href={project.githubLink} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent("click", "github", project.title)}>
+                          <Github className="w-4 h-4 mr-2" /> Source Code
+                        </a>
+                      </Button>
+                    </div>
+                  </div>
+                  <div className={`col-span-6 rounded-2xl border border-border/60 bg-gradient-to-br ${project.color} p-6 space-y-5`}>
+                    <div className="flex items-center gap-3">
+                      <div className={`p-3 rounded-xl ${project.iconBg}`}>
+                        <ProjectIcon className={`w-7 h-7 ${project.iconColor}`} />
+                      </div>
+                      <h4 className="text-xl font-bold font-outfit">Workflow Highlights</h4>
+                    </div>
+                    <div className="space-y-3">
+                      {project.impact.map((feature, featureIndex) => (
+                        <AnimatedMetricCard key={feature} delay={featureIndex * 0.05} className="p-4 rounded-xl bg-card/80 border border-border/60 flex items-center gap-3">
+                          <CheckCircle2 className={`w-5 h-5 shrink-0 ${project.iconColor}`} />
+                          <span className="text-sm font-medium text-foreground">{feature}</span>
+                        </AnimatedMetricCard>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
           </AnimatePresence>
         </div>
 
@@ -519,17 +593,17 @@ export const ProjectScrollyStage: React.FC<ProjectScrollyStageProps> = ({
             Scroll down ↓
           </span>
           <div className="flex items-center gap-1.5 ml-auto">
-            {["01", "02"].map((num, idx) => (
+            {projects.map((project, idx) => (
               <button
-                key={num}
+                key={project.title}
                 onClick={() => handleJumpToProject(idx)}
                 className={`px-2 py-0.5 rounded text-[11px] font-mono cursor-pointer transition-all duration-300 ${currentIndex === idx
                   ? "bg-primary text-primary-foreground font-bold shadow-xs scale-105"
                   : "text-muted-foreground/60 hover:text-foreground hover:bg-secondary/60"
                   }`}
-                aria-label={`Jump to Project ${num}`}
+                aria-label={`Jump to Project ${String(idx + 1).padStart(2, "0")}: ${project.title}`}
               >
-                {num}
+                {String(idx + 1).padStart(2, "0")}
               </button>
             ))}
           </div>
