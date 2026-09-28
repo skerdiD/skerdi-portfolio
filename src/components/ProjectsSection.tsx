@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, type ComponentProps } from "react";
+import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence, useScroll, useReducedMotion } from "framer-motion";
@@ -13,6 +13,7 @@ import { trackEvent } from "@/lib/analytics";
 import { SpotlightCard } from "./SpotlightCard";
 import ProjectScrollyStage from "./ProjectScrollyStage";
 import MobileProjectStack from "./MobileProjectStack";
+import { projects } from "@/data/projects";
 import { ProgressiveImage } from "./ProgressiveImage";
 
 const Sparkline = ({ colorClass, path }: { colorClass: string; path: string }) => (
@@ -72,110 +73,6 @@ const getStatIcon = (iconName: string) => {
   }
 };
 
-const projects: Array<ComponentProps<typeof MobileProjectStack>["projects"][number] & {
-  problem: string;
-  solution: string;
-  impact: string[];
-}> = [
-  {
-    title: "BugTriage AI",
-    desc: "AI-powered issue triage with semantic duplicate detection and multi-tenant workspaces.",
-    link: "https://bug-triage-ai.vercel.app/",
-    githubLink: "https://github.com/skerdiD/BugTriage-AI",
-    color: "from-slate-800/20 to-slate-800/5",
-    activeColor: "border-primary",
-    icon: Brain,
-    iconColor: "text-primary",
-    iconBg: "bg-primary/10",
-    isFeatured: false,
-    techStack: [
-      { name: "Next.js", icon: "N" },
-      { name: "TypeScript", icon: "TS" },
-      { name: "Prisma", icon: "P" },
-      { name: "PostgreSQL", icon: "PG" },
-      { name: "pgvector", icon: "V" },
-      { name: "Redis", icon: "R" },
-      { name: "BullMQ", icon: "B" },
-      { name: "Gemini AI", icon: "G" },
-      { name: "Vercel AI SDK", icon: "AI" }
-    ],
-    problem: "Incoming issues need analysis, duplicate detection, and workspace organization.",
-    solution: "Redis and BullMQ background processing with worker retries, transactional outbox dispatch, and pgvector similarity search.",
-    impact: ["Semantic duplicate detection", "Private attachments", "GitHub Issues export"],
-    hasLiveDemo: true
-  },
-  {
-    title: "DeliverFlow",
-    desc: "Client delivery portal for projects, tasks, milestones, files, payments, feedback, and approvals across owner and client workspaces.",
-    link: "https://deliver-flow.vercel.app/",
-    githubLink: "https://github.com/skerdiD/deliver-flow",
-    color: "from-orange-500/20 to-orange-500/5",
-    activeColor: "border-orange-500",
-    icon: Users,
-    iconColor: "text-orange-500",
-    iconBg: "bg-orange-500/10",
-    isFeatured: true,
-    techStack: [
-      { name: "Next.js", icon: "N" },
-      { name: "TypeScript", icon: "TS" },
-      { name: "PostgreSQL", icon: "PG" },
-      { name: "Drizzle ORM", icon: "D" },
-      { name: "Supabase", icon: "S" },
-      { name: "Tailwind CSS", icon: "TW" }
-    ],
-    problem: "Client delivery work is scattered across projects, files, payments, and approvals.",
-    solution: "Role-based access, Supabase RLS, workspace-scoped data, and private storage with signed URLs.",
-    impact: ["Workspace notifications", "Delivery analytics", "Automated payment reminders"],
-    hasLiveDemo: true
-  },
-  {
-    title: "LeadFlow",
-    desc: "Multi-tenant CRM for lead qualification, deal pipelines, revenue forecasting, and follow-ups.",
-    link: "https://lead-flow-skerdid.vercel.app/",
-    githubLink: "https://github.com/skerdiD/lead-flow",
-    color: "from-emerald-500/20 to-emerald-500/5",
-    activeColor: "border-emerald-500",
-    icon: TrendingUp,
-    iconColor: "text-emerald-500",
-    iconBg: "bg-emerald-500/10",
-    techStack: [
-      { name: "Next.js", icon: "N" },
-      { name: "TypeScript", icon: "TS" },
-      { name: "PostgreSQL", icon: "PG" },
-      { name: "Drizzle ORM", icon: "D" },
-      { name: "Clerk", icon: "C" },
-      { name: "Arcjet", icon: "A" }
-    ],
-    problem: "Sales teams need a connected view of leads, deals, follow-ups, and expected revenue.",
-    solution: "Workspace-scoped CRM workflows with role-based permissions, transactional lead qualification, and a drag-and-drop deal pipeline.",
-    impact: ["Weighted revenue forecasts", "Lead-to-deal qualification", "CSV imports and PDF exports"],
-    hasLiveDemo: true
-  },
-  {
-    title: "ScopeFlow AI",
-    desc: "AI proposal workspace for freelancers and agencies, from client requirements to export-ready proposals.",
-    link: "https://scope-flow-ai.vercel.app/",
-    githubLink: "https://github.com/skerdiD/ScopeFlow-AI",
-    color: "from-violet-500/20 to-violet-500/5",
-    activeColor: "border-violet-500",
-    icon: FileText,
-    iconColor: "text-violet-500",
-    iconBg: "bg-violet-500/10",
-    techStack: [
-      { name: "React", icon: "R" },
-      { name: "TypeScript", icon: "TS" },
-      { name: "Express.js", icon: "E" },
-      { name: "Prisma", icon: "P" },
-      { name: "PostgreSQL", icon: "PG" },
-      { name: "Supabase Auth", icon: "S" },
-      { name: "Gemini AI", icon: "G" }
-    ],
-    problem: "Turning rough client requirements into clear proposals involves repetitive drafting and review.",
-    solution: "Authenticated, user-scoped workspaces with Gemini-powered drafting, quality reviews, proposal versions, and reusable templates.",
-    impact: ["AI proposal quality reviews", "Versioned proposal drafts", "DOCX and PDF exports"],
-    hasLiveDemo: true
-  }
-];
 
 const ProjectDetailContent = ({ project }: { project: any }) => {
   const [isHoveringVideo, setIsHoveringVideo] = useState(false);
@@ -550,7 +447,7 @@ const ProjectDetailContent = ({ project }: { project: any }) => {
             onClick={() => trackEvent("click", "case_study", project.title)}
             className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2"
           >
-            <BookOpen className="w-4 h-4 mr-2" /> Open Case Study
+            <BookOpen className="w-4 h-4 mr-2" /> View Project
           </Link>
         )}
 
@@ -753,7 +650,7 @@ const ProjectsSection = () => {
                             onClick={() => trackEvent("click", "case_study", project.title)}
                             className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2"
                           >
-                            <BookOpen className="w-4 h-4 mr-2" /> Open Case Study
+                            <BookOpen className="w-4 h-4 mr-2" /> View Project
                           </Link>
                         )}
                         {project.hasLiveDemo && (

@@ -10,15 +10,11 @@ import {
 import { Button } from "@/components/ui/button";
 import { trackEvent } from "@/lib/analytics";
 import { ProgressiveImage } from "./ProgressiveImage";
-import type MobileProjectStack from "./MobileProjectStack";
+import type { Project } from "@/data/projects";
 
 interface ProjectScrollyStageProps {
   scrollYProgress: MotionValue<number>;
-  projects: Array<React.ComponentProps<typeof MobileProjectStack>["projects"][number] & {
-    problem: string;
-    solution: string;
-    impact: string[];
-  }>;
+  projects: Project[];
 }
 
 // Micro-Animation Helper: Pulsing Live Indicator
@@ -304,17 +300,18 @@ export const ProjectScrollyStage: React.FC<ProjectScrollyStageProps> = ({
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="flex items-center gap-3 pt-1">
+                  <div className="flex flex-wrap items-center gap-2 pt-1">
+                    <Button asChild size="sm"><Link to={projects[0].caseStudyLink}>View Project</Link></Button>
                     <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                       <Button asChild className="bg-primary hover:bg-primary/80 h-9 px-4 text-xs font-semibold shadow-md hover:shadow-primary/20" onClick={() => trackEvent("click", "github_project", "BugTriage AI")}>
-                        <a href="https://github.com/skerdiD/BugTriage-AI" target="_blank" rel="noopener noreferrer">
+                        <a href={projects[0].githubLink} target="_blank" rel="noopener noreferrer">
                           <Github className="w-4 h-4 mr-2" /> View GitHub Repository
                         </a>
                       </Button>
                     </motion.div>
                     <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                       <Button asChild variant="outline" className="border-border hover:bg-secondary/60 hover:text-foreground h-9 px-4 text-xs font-semibold" onClick={() => trackEvent("click", "demo", "BugTriage AI")}>
-                        <a href="https://bug-triage-ai.vercel.app/" target="_blank" rel="noopener noreferrer">
+                        <a href={projects[0].link} target="_blank" rel="noopener noreferrer">
                           Live Demo
                         </a>
                       </Button>
@@ -329,11 +326,13 @@ export const ProjectScrollyStage: React.FC<ProjectScrollyStageProps> = ({
                     transition={{ duration: 0.3 }}
                     className="w-full rounded-2xl overflow-hidden border border-border/80 bg-card/80 shadow-2xl p-2.5 relative group"
                   >
-                    <ProgressiveImage
-                      src="/placeholder.svg"
-                      alt="Project preview unavailable"
-                      className="w-full h-[240px] xl:h-[270px] rounded-xl object-cover"
-                    />
+                    <a href={projects[0].link} target="_blank" rel="noopener noreferrer" aria-label="Open BugTriage AI Live Demo (opens in a new tab)" className="block rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" onClick={() => trackEvent("click", "demo", projects[0].title)}>
+                      <ProgressiveImage
+                        src={projects[0].heroImage.src}
+                        alt={projects[0].heroImage.alt}
+                        className="w-full h-[240px] xl:h-[270px] rounded-xl object-contain"
+                      />
+                    </a>
 
                     {/* Subtle detection scanline micro-effect */}
                     <div className="absolute inset-x-2.5 top-2.5 h-[2px] bg-gradient-to-r from-transparent via-orange-500/40 to-transparent animate-[scanline_3s_ease-in-out_infinite] pointer-events-none" />
@@ -343,7 +342,7 @@ export const ProjectScrollyStage: React.FC<ProjectScrollyStageProps> = ({
                         <PulsingDot colorClass="bg-orange-400" /> BugTriage AI
                       </span>
                       <span className="text-emerald-400 font-bold flex items-center gap-1.5">
-                        <PulsingDot colorClass="bg-emerald-400" /> Preview unavailable
+                        <PulsingDot colorClass="bg-emerald-400" /> Open Live Demo
                       </span>
                     </div>
                   </motion.div>
@@ -452,17 +451,18 @@ export const ProjectScrollyStage: React.FC<ProjectScrollyStageProps> = ({
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="flex items-center gap-3 pt-1">
+                  <div className="flex flex-wrap items-center gap-2 pt-1">
+                    <Button asChild size="sm"><Link to={projects[1].caseStudyLink}>View Project</Link></Button>
                     <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                       <Button asChild className="bg-primary hover:bg-primary/80 h-9 px-4 text-xs font-semibold shadow-md hover:shadow-primary/20" onClick={() => trackEvent("click", "github_project", "DeliverFlow")}>
-                        <a href="https://github.com/skerdiD/deliver-flow" target="_blank" rel="noopener noreferrer">
+                        <a href={projects[1].githubLink} target="_blank" rel="noopener noreferrer">
                           <Github className="w-4 h-4 mr-2" /> View GitHub Repository
                         </a>
                       </Button>
                     </motion.div>
                     <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                       <Button asChild variant="outline" className="border-border hover:bg-secondary/60 h-9 px-4 text-xs font-semibold" onClick={() => trackEvent("click", "demo", "DeliverFlow")}>
-                        <a href="https://deliver-flow.vercel.app/" target="_blank" rel="noopener noreferrer">
+                        <a href={projects[1].link} target="_blank" rel="noopener noreferrer">
                           <ExternalLink className="w-4 h-4 mr-2" /> Live Demo
                         </a>
                       </Button>
@@ -551,6 +551,7 @@ export const ProjectScrollyStage: React.FC<ProjectScrollyStageProps> = ({
                       {project.techStack.map(tech => <TechTag key={tech.name} tag={tech.name} />)}
                     </div>
                     <div className="flex flex-wrap gap-3 pt-1">
+                      <Button asChild><Link to={project.caseStudyLink}>View Project</Link></Button>
                       <Button asChild>
                         <a href={project.link} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent("click", "demo", project.title)}>
                           <ExternalLink className="w-4 h-4 mr-2" /> Live Demo

@@ -14,6 +14,7 @@ import CommandMenu from "./components/CommandMenu";
 const NotFound = lazy(() => import("./pages/NotFound"));
 const About = lazy(() => import("./pages/About"));
 const Resume = lazy(() => import("./pages/Resume"));
+const ProjectDetails = lazy(() => import("./pages/ProjectDetails"));
 
 const queryClient = new QueryClient();
 
@@ -76,6 +77,7 @@ const AnimatedRoutes = () => {
       <Route path="/" element={<PageWrapper><Index /></PageWrapper>} />
       <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
       <Route path="/resume" element={<PageWrapper><Resume /></PageWrapper>} />
+      <Route path="/projects/:slug" element={<PageWrapper><ProjectDetails /></PageWrapper>} />
       <Route path="*" element={<PageWrapper><NotFound /></PageWrapper>} />
     </Routes>
   );
