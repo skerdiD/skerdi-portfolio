@@ -21,7 +21,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { trackEvent } from "@/lib/analytics";
 import { MagneticButton } from "./MagneticButton";
-import { useGithubContributions } from "@/hooks/useDeveloperStats";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
 
 const roles = ["Full-Stack Developer"];
@@ -101,11 +100,6 @@ const HeroSection = () => {
     if (typeof window !== "undefined" && window.innerWidth < 1024) return true;
     return false;
   });
-
-  const { data: contributionsData } = useGithubContributions("hero");
-  const liveCommitsCount = contributionsData?.totalLifetime
-    ? `${contributionsData.totalLifetime.toLocaleString()}+`
-    : "—";
 
   // Scroll transforms for hero container
   const { scrollYProgress } = useScroll({
@@ -219,10 +213,10 @@ const HeroSection = () => {
   }, [displayText, isDeleting, roleIndex, typewriterStarted]);
 
   const stats = [
-    { value: "2026", label: "Education" },
-    { value: "UNYT", label: "University" },
-    { value: "Web", label: "Applications" },
-    { value: liveCommitsCount, label: "Contributions" },
+    { value: "BSc CS", label: "Computer Science" },
+    { value: "Full-Stack", label: "Backend-Focused" },
+    { value: "800+", label: "Contributions" },
+    { value: "Open", label: "Full-Time Roles" },
   ];
 
   return (
@@ -347,55 +341,55 @@ const HeroSection = () => {
 
         {/* Statistics 4-grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-[clamp(8px,1.5svh,16px)] md:gap-3.5 pt-0.5">
-          {/* 2026 Graduate */}
+          {/* Computer Science */}
           <div className="p-[clamp(9px,1.6svh,16px)] md:p-3.5 rounded-2xl bg-white/80 dark:bg-card/75 border border-slate-200/80 dark:border-border/70 backdrop-blur-xs flex items-center gap-2.5 md:gap-3 shadow-2xs">
             <div className="w-[clamp(34px,4.5svh,44px)] h-[clamp(34px,4.5svh,44px)] rounded-full bg-purple-500/15 text-purple-500 dark:text-purple-400 flex items-center justify-center shrink-0 border border-purple-500/25">
               <GraduationCap className="w-3.5 h-3.5 md:w-4 md:h-4" />
             </div>
             <div className="min-w-0">
               <div className="text-[clamp(1.05rem,2.5svh,1.45rem)] md:text-xl font-extrabold text-[#FF4500] font-outfit leading-tight truncate">
-                <AnimatedCounter value="2026" />
+                <AnimatedCounter value={stats[0].value} />
               </div>
-              <div className="text-[10px] sm:text-xs text-slate-500 dark:text-muted-foreground font-grotesk truncate">Education</div>
+              <div className="text-[10px] sm:text-xs text-slate-500 dark:text-muted-foreground font-grotesk truncate">{stats[0].label}</div>
             </div>
           </div>
 
-          {/* University */}
+          {/* Backend-Focused */}
           <div className="p-[clamp(9px,1.6svh,16px)] md:p-3.5 rounded-2xl bg-white/80 dark:bg-card/75 border border-slate-200/80 dark:border-border/70 backdrop-blur-xs flex items-center gap-2.5 md:gap-3 shadow-2xs">
             <div className="w-[clamp(34px,4.5svh,44px)] h-[clamp(34px,4.5svh,44px)] rounded-full bg-purple-500/15 text-purple-500 dark:text-purple-400 flex items-center justify-center shrink-0 border border-purple-500/25">
               <ChartColumn className="w-3.5 h-3.5 md:w-4 md:h-4" />
             </div>
             <div className="min-w-0">
               <div className="text-[clamp(1.05rem,2.5svh,1.45rem)] md:text-xl font-extrabold text-[#FF4500] font-outfit leading-tight truncate">
-                <AnimatedCounter value="UNYT" />
+                <AnimatedCounter value={stats[1].value} />
               </div>
-              <div className="text-[10px] sm:text-xs text-slate-500 dark:text-muted-foreground font-grotesk truncate">University</div>
+              <div className="text-[10px] sm:text-xs text-slate-500 dark:text-muted-foreground font-grotesk truncate">{stats[1].label}</div>
             </div>
           </div>
 
-          {/* Web Applications */}
+          {/* Contributions */}
           <div className="p-[clamp(9px,1.6svh,16px)] md:p-3.5 rounded-2xl bg-white/80 dark:bg-card/75 border border-slate-200/80 dark:border-border/70 backdrop-blur-xs flex items-center gap-2.5 md:gap-3 shadow-2xs">
             <div className="w-[clamp(34px,4.5svh,44px)] h-[clamp(34px,4.5svh,44px)] rounded-full bg-purple-500/15 text-purple-500 dark:text-purple-400 flex items-center justify-center shrink-0 border border-purple-500/25">
               <FolderCode className="w-3.5 h-3.5 md:w-4 md:h-4" />
             </div>
             <div className="min-w-0">
               <div className="text-[clamp(1.05rem,2.5svh,1.45rem)] md:text-xl font-extrabold text-[#FF4500] font-outfit leading-tight truncate">
-                <AnimatedCounter value="Web" />
+                <AnimatedCounter value={stats[2].value} />
               </div>
-              <div className="text-[10px] sm:text-xs text-slate-500 dark:text-muted-foreground font-grotesk truncate">Applications</div>
+              <div className="text-[10px] sm:text-xs text-slate-500 dark:text-muted-foreground font-grotesk truncate">{stats[2].label}</div>
             </div>
           </div>
 
-          {/* Live Commits */}
+          {/* Full-Time Roles */}
           <div className="p-[clamp(9px,1.6svh,16px)] md:p-3.5 rounded-2xl bg-white/80 dark:bg-card/75 border border-slate-200/80 dark:border-border/70 backdrop-blur-xs flex items-center gap-2.5 md:gap-3 shadow-2xs">
             <div className="w-[clamp(34px,4.5svh,44px)] h-[clamp(34px,4.5svh,44px)] rounded-full bg-purple-500/15 text-purple-500 dark:text-purple-400 flex items-center justify-center shrink-0 border border-purple-500/25">
               <CodeXml className="w-3.5 h-3.5 md:w-4 md:h-4" />
             </div>
             <div className="min-w-0">
               <div className="text-[clamp(1.05rem,2.5svh,1.45rem)] md:text-xl font-extrabold text-[#FF4500] font-outfit leading-tight truncate">
-                <AnimatedCounter value={liveCommitsCount} />
+                <AnimatedCounter value={stats[3].value} />
               </div>
-              <div className="text-[10px] sm:text-xs text-slate-500 dark:text-muted-foreground font-grotesk truncate">Contributions</div>
+              <div className="text-[10px] sm:text-xs text-slate-500 dark:text-muted-foreground font-grotesk truncate">{stats[3].label}</div>
             </div>
           </div>
         </div>
