@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import {
   motion,
   useScroll,
@@ -11,7 +12,7 @@ import {
   Github,
   Linkedin,
   Instagram,
-  Download,
+  BookOpen,
   ChevronDown,
   GraduationCap,
   ChartColumn,
@@ -317,16 +318,14 @@ const HeroSection = () => {
           Building complete web applications from modern interfaces to backend systems, databases, background processing, and AI integrations.
         </p>
 
-        {/* View Resume Button */}
+        {/* Read Full Biography Button */}
         <div>
-          <a
-            href="/Skerdi_Cacaj_CV.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to="/about"
             className="whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 px-4 py-2 w-full h-[clamp(40px,5.2svh,50px)] md:h-12 rounded-2xl bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold font-outfit text-sm md:text-base flex items-center justify-center gap-2 shadow-lg shadow-orange-500/25 cursor-pointer"
           >
-            <Download className="w-4 h-4 md:w-5 md:h-5" /> Resume
-          </a>
+            <BookOpen className="w-4 h-4 md:w-5 md:h-5" /> Read Full Biography
+          </Link>
         </div>
 
         {/* Statistics 4-grid */}
@@ -504,7 +503,7 @@ const HeroSection = () => {
                 </div>
               </div>
 
-              {/* 5. Action Row: Socials + View Resume */}
+              {/* 5. Action Row: Socials + Read Full Biography */}
               <div className="flex flex-wrap items-center gap-3 mb-7 sm:mb-8">
                 {/* Social circular outline buttons */}
                 <div className="flex items-center gap-2">
@@ -532,7 +531,7 @@ const HeroSection = () => {
                   ))}
                 </div>
 
-                {/* Orange-red View Resume Button */}
+                {/* Orange-red Read Full Biography Button */}
                 <motion.div
                   initial={prefersReducedMotion ? false : { scale: 0.96, y: 10, opacity: 0 }}
                   animate={{ scale: 1, y: 0, opacity: 1 }}
@@ -545,11 +544,10 @@ const HeroSection = () => {
                       asChild
                       role="button"
                       className="h-11 px-6 rounded-full bg-gradient-to-r from-[#FF4500] to-[#FF3300] hover:from-[#FF5A1A] hover:to-[#FF4010] text-white font-bold font-outfit text-sm sm:text-base flex items-center gap-2 shadow-lg shadow-[#FF4500]/30 hover:shadow-xl hover:shadow-[#FF4500]/45 transition-all cursor-pointer"
-                      onClick={() => trackEvent("download", "resume", "resume_hero")}
                     >
-                      <a href="/Skerdi_Cacaj_CV.pdf" role="button" target="_blank" rel="noopener noreferrer">
-                        <Download className="w-4 h-4 mr-1.5 shrink-0" /> View Resume
-                      </a>
+                      <Link to="/about" role="button">
+                        <BookOpen className="w-4 h-4 mr-1.5 shrink-0" /> Read Full Biography
+                      </Link>
                     </Button>
                   </MagneticButton>
                 </motion.div>
