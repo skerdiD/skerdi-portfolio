@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import { formatDistanceToNow } from "date-fns";
 import { trackEvent } from "@/lib/analytics";
 import { useLatestCommit } from "@/hooks/useDeveloperStats";
+import BrandLogo from "./BrandLogo";
 
 // Geographically Authentic Dot-Matrix Map of India with Animated Walking Theme Border
 const IndiaMap = () => {
@@ -818,8 +819,8 @@ const Footer = () => {
 
             {/* 1. Identity & Signature Bio Section (Mobile: full, SM: Col 1, LG: Cols 1-4) */}
             <div className="sm:col-span-1 lg:col-span-4 flex flex-col justify-center lg:pr-4">
-              <h3 className="font-signature text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent leading-tight tracking-wide">
-                Skerdi Cacaj
+              <h3>
+                <BrandLogo />
               </h3>
               <p className="text-[11px] sm:text-xs text-muted-foreground font-grotesk mt-0.5 leading-snug">
                 Building solutions that make an impact.

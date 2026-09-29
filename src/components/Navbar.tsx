@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MagneticButton } from "./MagneticButton";
+import BrandLogo from "./BrandLogo";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const navLinks = [
@@ -332,13 +333,13 @@ const Navbar = ({ skipEntryAnim = false, introActive = false }: { skipEntryAnim?
               href="/" 
               onClick={handleLogoClick}
               id="navbar-logo"
+              aria-label="Skerdi Cacaj — home"
               initial={prefersReducedMotion ? false : { opacity: 0, y: 6 }}
               animate={introActive ? { opacity: 0, y: 0 } : animStage === "ready" ? { opacity: 1, y: 0 } : { opacity: 0, y: 6 }}
               transition={{ duration: 0.3, delay: introActive ? 0 : 0.05, ease: [0.22, 1, 0.36, 1] }}
-              className="font-outfit text-xl font-extrabold tracking-wider cursor-pointer select-none whitespace-nowrap shrink-0"
+              className="group inline-flex shrink-0 cursor-pointer select-none rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF5722] focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
-              <span className="text-[#FF5722] drop-shadow-[0_0_8px_rgba(255,87,34,0.4)]">SKERDI</span>{" "}
-              <span className="text-foreground dark:text-white">CACAJ</span>
+              <BrandLogo compact />
             </motion.a>
 
             {/* Desktop Navigation Links */}
