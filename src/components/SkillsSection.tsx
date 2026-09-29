@@ -1,3 +1,4 @@
+import { BrainCircuit, Sparkles, Workflow, Triangle, Layers } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import {
   motion,
@@ -19,6 +20,16 @@ const TechIcon = ({
   className?: string;
 }) => {
   switch (name) {
+    case "LLM Integrations":
+      return <BrainCircuit className={className} aria-hidden="true" />;
+    case "Vercel AI SDK":
+      return <Sparkles className={className} aria-hidden="true" />;
+    case "GitHub Actions":
+      return <Workflow className={className} aria-hidden="true" />;
+    case "Vercel":
+      return <Triangle className={className} aria-hidden="true" />;
+    case "Render":
+      return <Layers className={className} aria-hidden="true" />;
     case "React":
       return (
         <svg viewBox="-11.5 -10.23174 23 20.46348" className={className}>
@@ -592,7 +603,7 @@ export const SkillsSection = () => {
     <section
       id="skills"
       ref={sectionRef}
-      className="relative w-full min-h-[100svh] lg:h-screen lg:max-h-screen flex flex-col justify-between items-center pt-2 sm:pt-4 lg:pt-2.5 pb-2.5 lg:pb-3 xl:pb-6 px-3 sm:px-6 lg:px-8 xl:px-12 select-none overflow-x-hidden lg:overflow-y-hidden transition-colors duration-300 border-t scroll-mt-16 sm:scroll-mt-20"
+      className="relative w-full min-h-[100svh] lg:min-h-screen flex flex-col justify-between items-center pt-2 sm:pt-4 lg:pt-2.5 pb-2.5 lg:pb-3 xl:pb-6 px-3 sm:px-6 lg:px-8 xl:px-12 select-none overflow-x-hidden transition-colors duration-300 border-t scroll-mt-16 sm:scroll-mt-20"
       style={{
         backgroundColor: isDark ? "#06080F" : "#FAFAFC",
         borderColor: isDark ? "rgba(255, 255, 255, 0.05)" : "rgba(226, 232, 240, 0.8)",
@@ -687,7 +698,7 @@ export const SkillsSection = () => {
       {/* ========================================================================= */}
       {/* 2. DESKTOP COHESIVE CONSTELLATION DASHBOARD                                */}
       {/* ========================================================================= */}
-      <div className="hidden lg:flex w-full max-w-5xl xl:max-w-6xl mx-auto items-center justify-center gap-3 xl:gap-5 z-10">
+      <div className="hidden lg:flex w-full max-w-5xl xl:max-w-6xl min-[1800px]:max-w-[1600px] mx-auto items-center justify-center gap-3 xl:gap-5 py-8 z-10">
         
         {/* LEFT RAIL: Stats + Editorial Quote */}
         <motion.div
@@ -699,7 +710,7 @@ export const SkillsSection = () => {
                   opacity: leftRailOpacity,
                 }
           }
-          className="flex flex-col justify-between h-[390px] xl:h-[460px] 2xl:h-[500px] w-36 xl:w-48 shrink-0 py-1.5 xl:py-2 border-r border-border/50 pr-4 xl:pr-7 z-20"
+          className="hidden min-[1800px]:flex flex-col justify-between h-[390px] xl:h-[460px] 2xl:h-[500px] w-36 xl:w-48 shrink-0 py-1.5 xl:py-2 border-r border-border/50 pr-4 xl:pr-7 z-20"
         >
           <div className="space-y-2.5 xl:space-y-4">
             <div>
@@ -799,12 +810,12 @@ export const SkillsSection = () => {
         {/* CENTER: 3-COLUMN ORBITAL ARCHITECTURE */}
         <motion.div
           style={prefersReducedMotion ? {} : { y: centerGridY }}
-          className="w-fit shrink-0"
+          className="min-w-0 flex-1"
         >
-          <div className="grid grid-cols-3 gap-4 xl:gap-6 items-center relative">
+          <div className="grid grid-cols-3 gap-4 xl:gap-6 items-stretch relative">
             
             {/* COLUMN 1: Languages (Top) -> Circuit Connection -> Databases (Bottom) */}
-            <div className="flex flex-col justify-between h-[390px] xl:h-[460px] 2xl:h-[500px]">
+            <div className="flex flex-col justify-between gap-4 min-h-[390px] xl:min-h-[460px] 2xl:min-h-[500px]">
               <SkillCard
                 id="languages"
                 data={skillData.languages}
@@ -868,7 +879,7 @@ export const SkillsSection = () => {
             </div>
 
             {/* COLUMN 2: Frontend (Top) -> CENTRAL NEXUS (Center) -> Cloud & DevOps (Bottom) */}
-            <div className="flex flex-col justify-between h-[390px] xl:h-[460px] 2xl:h-[500px] items-center relative">
+            <div className="flex flex-col justify-between gap-4 min-h-[390px] xl:min-h-[460px] 2xl:min-h-[500px] items-center relative">
               <div className="w-full">
                 <SkillCard
                   id="frontend"
@@ -882,7 +893,7 @@ export const SkillsSection = () => {
               </div>
 
               {/* CENTRAL VISUAL ANCHOR (The Orbit Nexus) */}
-              <div className="h-14 lg:h-16 xl:h-24 flex items-center justify-center relative w-full my-auto">
+              <div className="h-[110px] xl:h-[132px] shrink-0 flex items-center justify-center relative w-full my-auto">
                 {/* Cross-axis connector lines */}
                 <motion.div
                   style={{
@@ -1046,7 +1057,7 @@ export const SkillsSection = () => {
             </div>
 
             {/* COLUMN 3: Backend & APIs (Top) -> Circuit Connection -> AI & Mobile (Bottom) */}
-            <div className="flex flex-col justify-between h-[390px] xl:h-[460px] 2xl:h-[500px]">
+            <div className="flex flex-col justify-between gap-4 min-h-[390px] xl:min-h-[460px] 2xl:min-h-[500px]">
               <SkillCard
                 id="backend"
                 data={skillData.backend}
@@ -1122,7 +1133,7 @@ export const SkillsSection = () => {
                   opacity: rightRailOpacity,
                 }
           }
-          className="flex flex-col justify-between h-[390px] xl:h-[460px] 2xl:h-[500px] w-38 xl:w-52 shrink-0 py-1.5 xl:py-2 border-l border-border/50 pl-3.5 xl:pl-4.5 text-left z-20"
+          className="hidden min-[1800px]:flex flex-col justify-between h-[390px] xl:h-[460px] 2xl:h-[500px] w-38 xl:w-52 shrink-0 py-1.5 xl:py-2 border-l border-border/50 pl-3.5 xl:pl-4.5 text-left z-20"
         >
           {/* Top: Impact Statement */}
           <div
@@ -1618,7 +1629,7 @@ const SkillCard = ({
                     } shrink-0 transition-transform duration-200 ease-out group-hover/chip:scale-110`}
                   />
                   <span
-                    className={`font-medium font-outfit tracking-tight whitespace-nowrap transition-colors duration-200 ${
+                    className={`min-w-0 font-medium font-outfit tracking-tight whitespace-normal break-words leading-snug transition-colors duration-200 ${
                       isMobile
                         ? "text-xs sm:text-[13px]"
                         : "text-[11px] lg:text-[11px] xl:text-[13.5px]"

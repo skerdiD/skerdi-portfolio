@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { trackEvent } from "@/lib/analytics";
 import { SpotlightCard } from "./SpotlightCard";
 import ProjectScrollyStage from "./ProjectScrollyStage";
+import ProjectScreenshot from "./projects/ProjectScreenshot";
 import MobileProjectStack from "./MobileProjectStack";
 import { projects } from "@/data/projects";
 import { ProgressiveImage } from "./ProgressiveImage";
@@ -615,6 +616,10 @@ const ProjectsSection = () => {
                       )}
                     </div>
                     <p className="text-sm text-muted-foreground line-clamp-3 font-grotesk mb-4">{project.desc}</p>
+
+                    <div className="mb-4" onClick={(event) => event.stopPropagation()}>
+                      <ProjectScreenshot screenshot={project.heroImage} name={project.title} liveUrl={project.link} />
+                    </div>
 
                     {/* Tech Stack for mobile */}
                     <div className="flex flex-wrap gap-1.5 mb-6">

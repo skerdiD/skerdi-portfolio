@@ -1,3 +1,5 @@
+import ProjectScreenshot from "./projects/ProjectScreenshot";
+import type { ProjectScreenshot as Screenshot } from "@/data/projects";
 import { Link } from "react-router-dom";
 import {
   ExternalLink, Github, BookOpen, FileDown, FileText,
@@ -13,6 +15,7 @@ interface TechItem {
 
 interface ProjectItem {
   title: string;
+  heroImage: Screenshot;
   desc: string;
   link?: string;
   githubLink?: string;
@@ -118,6 +121,10 @@ export const MobileProjectStack = ({
                       ⭐ Featured
                     </span>
                   )}
+                </div>
+
+                <div className="mb-4" onClick={(event) => event.stopPropagation()}>
+                  <ProjectScreenshot screenshot={project.heroImage} name={project.title} liveUrl={project.link} />
                 </div>
 
                 {/* Description: Original font size (text-sm) and line clamp */}

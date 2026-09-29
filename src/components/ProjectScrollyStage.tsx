@@ -12,6 +12,27 @@ import { trackEvent } from "@/lib/analytics";
 import { ProgressiveImage } from "./ProgressiveImage";
 import type { Project } from "@/data/projects";
 
+const ProjectPreview = ({ project }: { project: Project }) => (
+  <a
+    href={project.link}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={`Open ${project.title} Live Demo (opens in a new tab)`}
+    onClick={() => trackEvent("click", "demo", project.title)}
+    className="block w-full rounded-2xl border border-border/80 bg-card/80 p-2.5 shadow-xl transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+  >
+    <ProgressiveImage
+      src={project.heroImage.src}
+      alt={project.heroImage.alt}
+      className="w-full h-[240px] xl:h-[270px] rounded-xl object-contain"
+    />
+    <span className="flex items-center justify-between gap-2 px-2 pt-2 text-[10px] font-mono">
+      <span className={project.iconColor}>{project.title}</span>
+      <span className="inline-flex items-center gap-1.5 text-emerald-500">Open Live Demo <ExternalLink className="h-3 w-3" /></span>
+    </span>
+  </a>
+);
+
 interface ProjectScrollyStageProps {
   scrollYProgress: MotionValue<number>;
   projects: Project[];
@@ -470,41 +491,9 @@ export const ProjectScrollyStage: React.FC<ProjectScrollyStageProps> = ({
                   </div>
                 </div>
 
-                {/* Right Visual Column: Live Google Analytics Metric Dashboard */}
+                {/* Live application screenshot */}
                 <div className="col-span-12 lg:col-span-6 flex flex-col justify-center gap-3">
-                  <motion.div
-                    whileHover={{ scale: 1.015 }}
-                    transition={{ duration: 0.3 }}
-                    className="w-full p-5 rounded-2xl border border-orange-500/30 bg-card/80 backdrop-blur-md shadow-xl space-y-4"
-                  >
-                    <div className="flex items-center justify-between border-b border-border/60 pb-3">
-                      <span className="text-xs font-bold font-outfit uppercase tracking-wider text-orange-400 flex items-center gap-1.5">
-                        <TrendingUp className="w-4 h-4" /> Delivery Engineering
-                      </span>
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-bold flex items-center gap-1.5">
-                        <PulsingDot colorClass="bg-emerald-400" /> Workspaces
-                      </span>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-3">
-                      <AnimatedMetricCard delay={0.05} className="p-3 rounded-xl bg-secondary/80 border border-border/40 hover:border-red-400/40">
-                        <span className="text-lg lg:text-xl font-extrabold text-red-400 font-outfit block">RLS</span>
-                        <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-tight">Workspace Isolation</p>
-                      </AnimatedMetricCard>
-                      <AnimatedMetricCard delay={0.1} className="p-3 rounded-xl bg-secondary/80 border border-border/40 hover:border-emerald-400/40">
-                        <span className="text-lg lg:text-xl font-extrabold text-emerald-400 font-outfit block">Roles</span>
-                        <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-tight">Owner & Client</p>
-                      </AnimatedMetricCard>
-                      <AnimatedMetricCard delay={0.15} className="p-3 rounded-xl bg-secondary/80 border border-border/40 hover:border-purple-400/40">
-                        <span className="text-lg lg:text-xl font-extrabold text-purple-400 font-outfit block">Private</span>
-                        <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-tight">Signed File URLs</p>
-                      </AnimatedMetricCard>
-                      <AnimatedMetricCard delay={0.2} className="p-3 rounded-xl bg-secondary/80 border border-border/40 hover:border-blue-400/40">
-                        <span className="text-lg lg:text-xl font-extrabold text-blue-400 font-outfit block">Reminders</span>
-                        <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-tight">Payment Follow-ups</p>
-                      </AnimatedMetricCard>
-                    </div>
-                  </motion.div>
+                  <ProjectPreview project={projects[1]} />
 
                   {/* Architecture & Reliability Pill */}
                   <div className="p-3 rounded-xl border border-border/60 bg-secondary/40 flex items-center justify-between text-xs font-mono">
@@ -564,21 +553,8 @@ export const ProjectScrollyStage: React.FC<ProjectScrollyStageProps> = ({
                       </Button>
                     </div>
                   </div>
-                  <div className={`col-span-6 rounded-2xl border border-border/60 bg-gradient-to-br ${project.color} p-6 space-y-5`}>
-                    <div className="flex items-center gap-3">
-                      <div className={`p-3 rounded-xl ${project.iconBg}`}>
-                        <ProjectIcon className={`w-7 h-7 ${project.iconColor}`} />
-                      </div>
-                      <h4 className="text-xl font-bold font-outfit">Workflow Highlights</h4>
-                    </div>
-                    <div className="space-y-3">
-                      {project.impact.map((feature, featureIndex) => (
-                        <AnimatedMetricCard key={feature} delay={featureIndex * 0.05} className="p-4 rounded-xl bg-card/80 border border-border/60 flex items-center gap-3">
-                          <CheckCircle2 className={`w-5 h-5 shrink-0 ${project.iconColor}`} />
-                          <span className="text-sm font-medium text-foreground">{feature}</span>
-                        </AnimatedMetricCard>
-                      ))}
-                    </div>
+                  <div className="col-span-6">
+                    <ProjectPreview project={project} />
                   </div>
                 </motion.div>
               );
