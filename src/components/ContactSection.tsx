@@ -1123,16 +1123,16 @@ export const ContactSection = () => {
               <div className="space-y-4">
                 <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-orange-500/30 bg-orange-500/10 text-orange-500 dark:text-orange-400 text-xs font-bold uppercase tracking-wider font-outfit shadow-[0_0_12px_rgba(249,115,22,0.15)]">
                   <Rocket className="w-3.5 h-3.5 text-orange-500" />
-                  <span>Let's Connect</span>
+                  <span>LET'S CONNECT</span>
                 </div>
 
                 <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-extrabold text-foreground leading-[1.18] font-outfit tracking-tight">
                   Have an opportunity?<br />
-                  Let's <span className="bg-gradient-to-r from-orange-500 via-amber-500 to-orange-500 bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(249,115,22,0.3)]">build something amazing</span> together.
+                  Let's <span className="bg-gradient-to-r from-orange-500 via-amber-500 to-orange-500 bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(249,115,22,0.3)]">work</span> together.
                 </h2>
 
                 <p className="text-xs sm:text-sm text-muted-foreground font-grotesk leading-relaxed">
-                  I'm always open to discussing new opportunities, interesting projects, and innovative ideas.
+                  I'm currently open to full-time Full-Stack Developer and backend-focused software engineering opportunities.
                 </p>
               </div>
 
@@ -1178,14 +1178,14 @@ export const ContactSection = () => {
                 <div className="flex items-center gap-2">
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_10px_#10b981]" />
                   <span className="text-xs font-bold text-emerald-500 dark:text-emerald-400 font-outfit uppercase tracking-wider">
-                    Available for Opportunities
+                    AVAILABLE FOR OPPORTUNITIES
                   </span>
                 </div>
                 <p className="text-xs sm:text-sm text-muted-foreground font-grotesk leading-snug">
-                  Actively looking for Full-Stack Developer roles.
+                  Actively looking for full-time Full-Stack Developer and backend-focused software engineering roles.
                 </p>
                 <div className="flex flex-wrap gap-2 pt-0.5">
-                  {["Full Time", "Collaboration", "Remote", "On-site"].map((tag) => (
+                  {["Full Time", "Backend-Focused", "Remote", "On-site"].map((tag) => (
                     <span
                       key={tag}
                       className="text-xs font-medium px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-300 border border-emerald-500/30 font-grotesk"
@@ -1408,7 +1408,7 @@ export const ContactSection = () => {
                         <input
                           type="text"
                           name="fi-text-subject"
-                          placeholder="e.g. Project Collaboration"
+                          placeholder="e.g. Full-Stack Developer Opportunity"
                           value={form.subject}
                           onChange={(e) => setForm({ ...form, subject: e.target.value })}
                           onFocus={() => setFocusedField("subject")}
@@ -1810,7 +1810,7 @@ const LiquidWaveButton = ({
             className="flex items-center gap-3 z-10 text-foreground group-hover:text-orange-500 transition-colors"
           >
             <Send className="w-4 h-4 text-orange-500 transition-transform group-hover:scale-110 group-hover:translate-x-0.5" />
-            <span className="font-extrabold text-base tracking-wide">Prepare Email</span>
+            <span className="font-extrabold text-base tracking-wide">Contact Me</span>
           </motion.div>
         )}
       </AnimatePresence>
