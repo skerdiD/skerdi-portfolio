@@ -1,34 +1,111 @@
-# Skerdi Cacaj - Portfolio
+# Skerdi Cacaj — Full-Stack Developer Portfolio
 
-Full-Stack Developer based in Tirana, Albania.
+Personal portfolio showcasing my work as a **Full-Stack Developer** with a strong interest in backend systems, APIs, databases, background processing, application architecture, and modern web development.
 
-React/Next.js interfaces, Express.js and NestJS backend systems, databases, background processing, and AI integrations. Interested in backend systems, application architecture, and system design.
+🌐 **Live Portfolio:**  
+https://skerdi-cacaj.vercel.app
 
-- Email: [skerdi.cacaj.dev@gmail.com](mailto:skerdi.cacaj.dev@gmail.com)
-- Phone: +355 67 64 29 267
-- [GitHub](https://github.com/skerdiD)
-- [LinkedIn](https://www.linkedin.com/in/skerdi-cacaj)
+---
 
-## Development
+## About
 
-```sh
+This portfolio presents my technical background, skills, education, and selected full-stack projects.
+
+My work focuses on building complete web applications, from modern React interfaces to backend systems involving REST APIs, relational databases, authentication, asynchronous processing, and AI-powered features.
+
+---
+
+## Portfolio Features
+
+- Responsive desktop, tablet, and mobile layouts
+- Dark and light themes
+- Scroll-driven project showcase
+- Real project previews
+- Technical skills organized by engineering area
+- About and education sections
+- GitHub, LinkedIn, and email integration
+- Full-time opportunity focused contact section
+- Animated UI with Framer Motion
+
+---
+
+## Tech Stack
+
+### Frontend
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- Framer Motion
+- React Router
+
+### UI & Components
+- Radix UI
+- shadcn/ui
+- Lucide React
+
+### Testing & Quality
+- Vitest
+- Playwright
+- ESLint
+
+### Deployment
+- Vercel
+
+---
+
+## Local Development
+
+Clone the repository:
+
+```bash
+git clone https://github.com/skerdiD/skerdi-portfolio.git
+cd skerdi-portfolio
+```
+
+Install dependencies:
+
+```bash
 npm install
+```
+
+Start the development server:
+
+```bash
 npm run dev
+```
+
+Build for production:
+
+```bash
 npm run build
 ```
 
-The site uses React, TypeScript, Vite, Tailwind CSS, and Framer Motion. The approved styling, layouts, and animation code are preserved during the content migration.
+Run tests:
 
-## Content migration
+```bash
+npm run test
+```
 
-Education: Bachelor in Computer Science, University of New York Tirana (UNYT), 2023-2026, Tirana, Albania.
+---
 
-Languages: Albanian - Native; English - B2 (Upper-Intermediate).
+## Project Structure
 
-Projects: [BugTriage AI](https://github.com/skerdiD/BugTriage-AI) and [DeliverFlow](https://github.com/skerdiD/deliver-flow). The homepage, resume, About page, footer, and command menu use these projects. Live demos are linked only after verification.
+```text
+skerdi-portfolio/
+├── public/
+├── src/
+│   ├── components/
+│   ├── data/
+│   ├── hooks/
+│   ├── pages/
+│   └── ...
+├── package.json
+├── vite.config.ts
+├── tailwind.config.ts
+└── README.md
+```
 
-No CV PDF has been supplied. Add the real document at `public/skerdi-cacaj-cv.pdf`, then point the existing resume/download links to `/skerdi-cacaj-cv.pdf`. Until then, links open the resume page and its browser print option; no downloadable CV is claimed.
+## Author
 
-Contact submissions prepare an email draft to Skerdi; a new hosted submission endpoint has not been supplied. Resume links open the printable resume page. Profile images use the supplied local photo at `public/images/skerdi-profile.png`, with a CSS circle crop in the hero. Canonical URLs use the current site origin; no production domain is assumed.
-
-See [CONTENT_MIGRATION.md](CONTENT_MIGRATION.md) for the current content audit and validation results.
+**Skerdi Cacaj**  
