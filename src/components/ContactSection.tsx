@@ -12,7 +12,7 @@ import { trackEvent } from "@/lib/analytics";
 
 // Fallback GitHub data
 const githubFallback = {
-  avatar: "https://github.com/skerdiD.png",
+  avatar: "/images/skerdi-profile.png",
   name: "Skerdi Cacaj",
   bio: "Full-Stack Developer building complete web applications, from modern React/Next.js interfaces to backend systems with Express.js and NestJS, databases, background processing, and AI-powered features.",
   followers: "—",
@@ -29,7 +29,7 @@ const githubFallback = {
 const linkedinInfo = {
   name: "Skerdi Cacaj",
   title: "Full-Stack Developer",
-  avatar: "https://github.com/skerdiD.png",
+  avatar: "/images/skerdi-profile.png",
   location: "Tirana, Albania",
   education: "University of New York Tirana (UNYT)",
   headline: "Building complete web applications with React, Next.js, Express.js, and NestJS.",
@@ -251,7 +251,7 @@ export const ContactSection = () => {
   }, []);
 
   // Preload LinkedIn CDN Avatar, fallback safely to local WebP if loading or offline
-  const linkedinAvatar = "https://github.com/skerdiD.png";
+  const linkedinAvatar = "/images/skerdi-profile.png";
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -361,7 +361,7 @@ export const ContactSection = () => {
       }
 
       setGithubData({
-        avatar: userData.avatar_url,
+        avatar: "/images/skerdi-profile.png",
         name: userData.name || "Skerdi Cacaj",
         bio: userData.bio || "Full-Stack Developer",
         followers: userData.followers ?? "—",
@@ -667,7 +667,7 @@ export const ContactSection = () => {
     return (
       <div className="w-full text-left space-y-4 font-outfit text-foreground">
         <div className="flex items-center gap-3">
-          <img src={user.avatar} alt={user.name} className="w-12 h-12 rounded-full border border-purple-500/40 object-cover shrink-0" />
+          <img src="/images/skerdi-profile.png" alt={user.name} className="w-12 h-12 rounded-full border border-purple-500/40 object-cover shrink-0" />
           <div>
             <h4 className="text-sm font-extrabold text-foreground leading-tight">{user.name}</h4>
             <p className="text-xs text-orange-500 font-grotesk mt-0.5 leading-none">@skerdiD</p>

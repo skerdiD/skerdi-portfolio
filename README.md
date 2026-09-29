@@ -29,6 +29,6 @@ Projects: [BugTriage AI](https://github.com/skerdiD/BugTriage-AI) and [DeliverFl
 
 No CV PDF has been supplied. Add the real document at `public/skerdi-cacaj-cv.pdf`, then point the existing resume/download links to `/skerdi-cacaj-cv.pdf`. Until then, links open the resume page and its browser print option; no downloadable CV is claimed.
 
-Contact submissions prepare an email draft to Skerdi; a new hosted submission endpoint has not been supplied. Resume links open the printable resume page. Profile images use the supplied GitHub account's avatar. Canonical URLs use the current site origin; no production domain is assumed.
+Contact submissions prepare an email draft to Skerdi; a new hosted submission endpoint has not been supplied. Resume links open the printable resume page. Profile images use the supplied local photo at `public/images/skerdi-profile.png`, with a CSS circle crop in the hero. Canonical URLs use the current site origin; no production domain is assumed.
 
 See [CONTENT_MIGRATION.md](CONTENT_MIGRATION.md) for the current content audit and validation results.

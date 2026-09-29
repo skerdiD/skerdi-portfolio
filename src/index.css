@@ -2,6 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Crop the supplied photo in the browser without retouching its pixels. */
+.profile-photo-frame {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #d7d8da;
+}
+
+.profile-photo {
+  position: absolute;
+  width: 128%;
+  height: 128%;
+  max-width: none;
+  left: -14%;
+  top: -18%;
+  object-fit: cover;
+}
+
 @layer base {
   :root {
     --background: 210 44% 3.5%;

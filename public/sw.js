@@ -1,4 +1,4 @@
-const CACHE_NAME = "skerdi-portfolio-v4";
+const CACHE_NAME = "skerdi-portfolio-v5";
 const STATIC_ASSETS = [
   "/",
   "/about",

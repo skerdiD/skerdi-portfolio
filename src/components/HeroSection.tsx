@@ -130,10 +130,6 @@ const HeroSection = () => {
   const portraitMouseX = useTransform(smoothMouseX, [-1, 1], [-3.5, 3.5]);
   const portraitMouseY = useTransform(smoothMouseY, [-1, 1], [-3.5, 3.5]);
 
-  // Orange circle: max 5-6px movement
-  const circleMouseX = useTransform(smoothMouseX, [-1, 1], [-5.5, 5.5]);
-  const circleMouseY = useTransform(smoothMouseY, [-1, 1], [-5.5, 5.5]);
-
   // BUILD / INNOVATE / REPEAT: max 6-8px in opposite direction
   const textMouseX = useTransform(smoothMouseX, [-1, 1], [7, -7]);
   const textMouseY = useTransform(smoothMouseY, [-1, 1], [7, -7]);
@@ -148,7 +144,6 @@ const HeroSection = () => {
 
   // Scroll transitions per specification:
   const scrollTextY = useTransform(scrollYProgress, [0, 0.45], prefersReducedMotion ? [0, 0] : [0, -10]);
-  const scrollCircleY = useTransform(scrollYProgress, [0, 0.45], prefersReducedMotion ? [0, 0] : [0, -6]);
   const scrollPortraitY = useTransform(scrollYProgress, [0, 0.45], prefersReducedMotion ? [0, 0] : [0, -12]);
   const scrollContentY = useTransform(scrollYProgress, [0, 0.45], prefersReducedMotion ? [0, 0] : [0, -5]);
   const scrollIndicatorsY = useTransform(scrollYProgress, [0, 0.25], prefersReducedMotion ? [0, 0] : [0, 8]);
@@ -156,7 +151,6 @@ const HeroSection = () => {
 
   // Combined mouse parallax + scroll depth
   const portraitTotalY = useTransform([portraitMouseY, scrollPortraitY], ([m, s]: any[]) => m + s);
-  const circleTotalY = useTransform([circleMouseY, scrollCircleY], ([m, s]: any[]) => m + s);
   const textTotalY = useTransform([textMouseY, scrollTextY], ([m, s]: any[]) => m + s);
   const contentTotalY = useTransform([contentMouseY, scrollContentY], ([m, s]: any[]) => m + s);
 
@@ -257,12 +251,8 @@ const HeroSection = () => {
         <div className="bg-white/80 dark:bg-[#0C1015]/85 border border-slate-200/80 dark:border-white/10 rounded-[2rem] md:rounded-[2.5rem] p-[clamp(11px,2svh,22px)] md:p-6 shadow-xl backdrop-blur-md relative overflow-hidden">
           <div className="flex items-center gap-[clamp(10px,2.2svh,22px)] md:gap-6">
             {/* Photo with live status */}
-            <div className="w-[clamp(110px,17svh,165px)] md:w-[170px] h-[clamp(135px,21svh,205px)] md:h-[205px] rounded-2xl md:rounded-3xl overflow-hidden relative shrink-0 border border-purple-500/30 bg-gradient-to-b from-purple-950/40 via-card to-card p-[1px]">
-              <img
-                src="https://github.com/skerdiD.png"
-                alt="Skerdi Cacaj - Full-Stack Developer"
-                className="w-full h-full object-cover object-top rounded-[15px] md:rounded-[23px]"
-              />
+            <div className="w-[clamp(110px,17svh,165px)] md:w-[170px] aspect-square rounded-full relative shrink-0 border-[3px] border-[#FF5722]/80 bg-[#d7d8da] shadow-[0_0_24px_rgba(255,87,34,0.2)]">
+              <span className="profile-photo-frame"><img src="/images/skerdi-profile.png" alt="Skerdi Cacaj - Full-Stack Developer" width={1130} height={1122} fetchPriority="high" className="profile-photo" /></span>
               <span className="absolute bottom-2 right-2 md:bottom-2.5 md:right-2.5 flex h-3.5 w-3.5 md:h-4 md:w-4">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-3.5 w-3.5 md:h-4 md:w-4 bg-emerald-500 border-2 border-background" />
@@ -588,7 +578,7 @@ const HeroSection = () => {
 
             {/* ========================================================================= */}
             {/* RIGHT COLUMN: Dedicated Unified Art-Directed Composition (.hero-visual)   */}
-            {/* Outlined Typography + Orange Circle + Grounded Cutout Portrait Locked Here */}
+            {/* Outlined typography with a natural circular portrait and orange halo */}
             {/* ========================================================================= */}
             <div className="hero-visual relative w-full h-full min-h-[460px] lg:min-h-0 z-10 overflow-visible flex items-center justify-center lg:justify-start">
               {/* Anchored Stage: Pegged to portrait height so text, circle, and portrait NEVER separate on larger screens, tall viewports, or zoom */}
@@ -632,128 +622,27 @@ const HeroSection = () => {
                   ))}
                 </motion.div>
 
-                {/* 2. Unified Portrait & Halo Circle Container (strictly locked together) */}
-                <div className="absolute z-[2] bottom-0 left-[30px] xl:left-[45px] h-full aspect-square pointer-events-none select-none">
-                  {/* 2a. Orange Circle (z-index: 1) mathematically centered on the portrait */}
+                {/* Photo and halo share one frame so they stay aligned during parallax. */}
+                <div className="absolute inset-0 z-[2] flex items-center justify-center pt-12 xl:pt-16">
                   <motion.div
-                    style={{
-                      x: circleMouseX,
-                      y: circleTotalY,
-                    }}
-                    className="hero-circle absolute z-[1] left-[52.8%] top-[24%] -translate-x-1/2 -translate-y-1/2 w-[clamp(280px,36vh,330px)] aspect-square rounded-full pointer-events-none opacity-65 dark:opacity-85"
+                    style={{ x: portraitMouseX, y: portraitTotalY }}
+                    className="hero-circle relative w-[min(90%,420px)] xl:w-[min(90%,460px)] aspect-square rounded-full bg-[#FF5722] p-[5px] shadow-[0_0_55px_rgba(255,87,34,0.25)]"
                   >
                     <motion.div
-                      initial={
-                        prefersReducedMotion
-                          ? false
-                          : {
-                              scale: 0.86,
-                              opacity: 0,
-                              boxShadow: "0 0 50px rgba(255, 69, 0, 0.22), inset 0 0 30px rgba(255, 120, 0, 0.15)",
-                            }
-                      }
-                      animate={{
-                        scale: [0.86, 1.03, 1],
-                        opacity: [0, 1, 1],
-                        boxShadow: [
-                          "0 0 50px rgba(255, 69, 0, 0.22), inset 0 0 30px rgba(255, 120, 0, 0.15)",
-                          "0 0 75px rgba(255, 69, 0, 0.40), inset 0 0 35px rgba(255, 120, 0, 0.25)",
-                          "0 0 50px rgba(255, 69, 0, 0.22), inset 0 0 30px rgba(255, 120, 0, 0.15)",
-                        ],
-                      }}
-                      transition={{
-                        duration: 0.6,
-                        delay: 0.22,
-                        times: [0, 0.7, 1],
-                        ease: [0.25, 1, 0.5, 1],
-                      }}
-                      style={{
-                        background:
-                          "radial-gradient(circle at 45% 45%, rgba(255, 75, 10, 0.94) 0%, rgba(220, 50, 0, 0.82) 50%, rgba(160, 30, 0, 0.65) 85%, transparent 100%)",
-                      }}
-                      className="w-full h-full rounded-full"
+                      initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.97 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.5, delay: 0.28 }}
+                      className="profile-photo-frame"
                     >
-                      {/* Very subtle 1% breathing scale for Phase 14 */}
-                      <motion.div
-                        animate={
-                          prefersReducedMotion
-                            ? {}
-                            : {
-                                scale: [1, 1.01, 1],
-                              }
-                        }
-                        transition={{
-                          duration: 6,
-                          repeat: Infinity,
-                          ease: "easeInOut",
-                          delay: 3.5,
-                        }}
-                        className="w-full h-full rounded-full"
+                      <img
+                        src="/images/skerdi-profile.png"
+                        alt="Skerdi Cacaj - Full-Stack Developer"
+                        width={1130}
+                        height={1122}
+                        loading="eager"
+                        fetchPriority="high"
+                        className="hero-portrait profile-photo"
                       />
-                    </motion.div>
-                  </motion.div>
-
-                  {/* 2b. Cutout Portrait (z-index: 2) in front of circle */}
-                  <motion.div
-                    style={{
-                      x: portraitMouseX,
-                      y: portraitTotalY,
-                    }}
-                    className="absolute z-[2] inset-0 w-full h-full pointer-events-none select-none"
-                  >
-                    <motion.div
-                      initial={
-                        prefersReducedMotion
-                          ? false
-                          : {
-                              opacity: 0,
-                              y: 24,
-                              scale: 1.035,
-                              filter: "blur(6px)",
-                            }
-                      }
-                      animate={{
-                        opacity: 1,
-                        y: 0,
-                        scale: 1,
-                        filter: "blur(0px)",
-                      }}
-                      transition={{
-                        duration: 0.7,
-                        delay: 0.28,
-                        ease: [0.22, 1, 0.36, 1],
-                      }}
-                      className="w-full h-full"
-                    >
-                      <motion.div
-                        animate={
-                          prefersReducedMotion
-                            ? {}
-                            : {
-                                y: [0, -2, 0],
-                              }
-                        }
-                        transition={{
-                          duration: 4.8,
-                          repeat: Infinity,
-                          ease: "easeInOut",
-                          delay: 5.8,
-                        }}
-                        className="w-full h-full"
-                      >
-                        <img
-                          src="https://github.com/skerdiD.png"
-                          alt="Skerdi Cacaj"
-                          width="1254"
-                          height="1254"
-                          loading="eager"
-                          className="hero-portrait w-full h-full object-contain object-bottom contrast-[1.04] brightness-[1.0]"
-                          style={{
-                            maskImage: "linear-gradient(to bottom, black 0%, black 93%, rgba(0,0,0,0.8) 97%, transparent 100%)",
-                            WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 93%, rgba(0,0,0,0.8) 97%, transparent 100%)",
-                          }}
-                        />
-                      </motion.div>
                     </motion.div>
                   </motion.div>
                 </div>

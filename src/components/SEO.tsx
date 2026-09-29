@@ -20,7 +20,7 @@ const SEO = ({
   canonical,
   robots = "index, follow, max-image-preview:large",
   ogType = "website",
-  ogImage = "https://github.com/skerdiD.png",
+  ogImage = "/images/skerdi-profile.png",
   ogUrl,
   schema
 }: SEOProps) => {
@@ -56,14 +56,14 @@ const SEO = ({
     setMetaTag("property", "og:description", description);
     setMetaTag("property", "og:type", ogType);
     setMetaTag("property", "og:url", currentUrl);
-    setMetaTag("property", "og:image", ogImage);
+    setMetaTag("property", "og:image", new URL(ogImage, window.location.origin).href);
     setMetaTag("property", "og:image:alt", title);
     setMetaTag("property", "og:site_name", "Skerdi Cacaj Portfolio");
 
     // 5. Set Twitter Card meta tags
     setMetaTag("name", "twitter:title", title);
     setMetaTag("name", "twitter:description", description);
-    setMetaTag("name", "twitter:image", ogImage);
+    setMetaTag("name", "twitter:image", new URL(ogImage, window.location.origin).href);
     setMetaTag("name", "twitter:image:alt", title);
     setMetaTag("name", "twitter:card", "summary_large_image");
 

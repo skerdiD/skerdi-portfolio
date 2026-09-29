@@ -83,7 +83,7 @@ export const DEFAULT_LEETCODE_DETAILS = {
 export const DEFAULT_GITHUB_STATS = {
   followers: null as number | null,
   public_repos: null as number | null,
-  avatar_url: "https://github.com/skerdiD.png",
+  avatar_url: "/images/skerdi-profile.png",
   login: GITHUB_USERNAME,
 };
 

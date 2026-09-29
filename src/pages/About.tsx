@@ -20,7 +20,7 @@ const About = () => {
   const { data: githubData, isLoading: isGithubLoading } = useGithubStats("about");
   const githubFollowers = githubData?.followers ?? "—";
   const githubRepos = githubData?.public_repos ?? "—";
-  const avatarUrl = githubData?.avatar_url || "https://github.com/skerdiD.png";
+  const avatarUrl = "/images/skerdi-profile.png";
   const personSchema = {
   "@type": "Person",
   "name": "Skerdi Cacaj",
@@ -82,7 +82,8 @@ const About = () => {
 
               {/* Profile Photo Section (Optimized Image representation) */}
               <figure className="bg-card rounded-2xl border border-border overflow-hidden shadow-xl">
-                <div className="h-64 w-full bg-gradient-to-b from-primary/10 to-card relative">
+                <div className="mx-auto my-6 h-56 w-56 rounded-full border-[3px] border-[#FF5722]/80 shadow-[0_0_24px_rgba(255,87,34,0.2)]">
+                  <span className="profile-photo-frame">
                   <img
                     src={avatarUrl}
                     alt="Skerdi Cacaj, Full-Stack Developer"
@@ -90,12 +91,12 @@ const About = () => {
                     width="400"
                     height="400"
                     loading="eager"
-                    className="w-full h-full object-cover object-top opacity-90 mix-blend-luminosity hover:mix-blend-normal transition-all duration-500"
+                    className="profile-photo"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
+                  </span>
                 </div>
 
-                <figcaption className="p-6 relative -mt-12 z-10">
+                <figcaption className="px-6 pb-6 relative z-10">
                   <div className="flex items-center gap-2 mb-1">
                     <h1 className="text-2xl font-bold text-foreground tracking-tight">Skerdi Cacaj</h1>
                     <span className="flex items-center gap-1 text-[10px] font-semibold text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded-md border border-purple-500/20">
