@@ -320,7 +320,7 @@ const HeroSection = () => {
         {/* View Resume Button */}
         <div>
           <a
-            href="/resume"
+            href="/Skerdi_Cacaj_CV.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 px-4 py-2 w-full h-[clamp(40px,5.2svh,50px)] md:h-12 rounded-2xl bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold font-outfit text-sm md:text-base flex items-center justify-center gap-2 shadow-lg shadow-orange-500/25 cursor-pointer"
@@ -547,7 +547,7 @@ const HeroSection = () => {
                       className="h-11 px-6 rounded-full bg-gradient-to-r from-[#FF4500] to-[#FF3300] hover:from-[#FF5A1A] hover:to-[#FF4010] text-white font-bold font-outfit text-sm sm:text-base flex items-center gap-2 shadow-lg shadow-[#FF4500]/30 hover:shadow-xl hover:shadow-[#FF4500]/45 transition-all cursor-pointer"
                       onClick={() => trackEvent("download", "resume", "resume_hero")}
                     >
-                      <a href="/resume" role="button" target="_blank" rel="noopener noreferrer">
+                      <a href="/Skerdi_Cacaj_CV.pdf" role="button" target="_blank" rel="noopener noreferrer">
                         <Download className="w-4 h-4 mr-1.5 shrink-0" /> View Resume
                       </a>
                     </Button>
